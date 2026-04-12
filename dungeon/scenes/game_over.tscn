@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://go001dungeon"]
+
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_goscript"]
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource("1_goscript")
