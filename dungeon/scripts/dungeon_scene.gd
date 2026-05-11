@@ -74,13 +74,14 @@ var _tex_ceil:  ImageTexture   # rough ceiling stone
 
 # ─────────────────────────────────────────────────────────────────────────────
 func _ready() -> void:
+	print("Generating with seed: ", GameManager.rng.seed)
 	if GameManager.dungeon_map.size() > 0:
 		_map     = GameManager.dungeon_map
 		_pos     = GameManager.player_grid_pos
 		_facing  = GameManager.player_facing
 		_visited = GameManager.visited_tiles
 	else:
-		var d := DungeonGenerator.generate(GameManager.current_floor)
+		var d := DungeonGenerator.generate(GameManager.current_floor, GameManager.rng.seed)
 		_map     = d["map"]
 		_pos     = d["entrance"]
 		GameManager.dungeon_map = _map
@@ -597,7 +598,7 @@ func _on_tile(tile: int) -> void:
 			_trigger_combat([EnemyData.EnemyType.DEMON], true)
 			return
 		DungeonGenerator.Tile.TRAP:
-			var dmg: int = randi_range(5, 15)
+			var dmg: int = GameManager.rng.randi_range(5, 15)
 			GameManager.player.take_damage(dmg, true)
 			_flash("TRAP! Took %d spike damage!" % dmg)
 			_update_hud()

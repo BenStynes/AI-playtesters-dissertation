@@ -23,7 +23,12 @@ var kills: int = 0
 var floors_cleared: int = 0
 var game_start_time: float = 0.0
 
-func start_new_game(p_class: String) -> void:
+#------seed stuff
+
+var current_seed: int = 0
+var rng := RandomNumberGenerator.new()
+
+func start_new_game(p_class: String, seed_value: int = 0) -> void:
 	player = PlayerData.new(p_class)
 	current_floor = 1
 	floor_start_time = Time.get_ticks_msec() / 1000.0
@@ -33,6 +38,10 @@ func start_new_game(p_class: String) -> void:
 	score = 0
 	kills = 0
 	floors_cleared = 0
+	
+	current_seed = seed_value if seed_value != 0 else randi()
+	rng.seed = current_seed
+
 
 func next_floor() -> void:
 	floors_cleared += 1
@@ -42,10 +51,13 @@ func next_floor() -> void:
 	dungeon_map = []
 	visited_tiles = {}
 	floor_start_time = Time.get_ticks_msec() / 1000.0
+	
+	rng.seed = current_seed + current_floor	
+	
 	if player:
 		player.heal(int(player.max_hp * 0.5))
 		player.restore_mp(int(player.max_mp * 0.5))
-
+	
 func add_combat_score(enemies: Array) -> void:
 	for e: EnemyData in enemies:
 		kills += 1

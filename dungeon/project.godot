@@ -24,7 +24,6 @@ GameManager="*res://scripts/game_manager.gd"
 
 window/size/viewport_width=1440
 window/size/viewport_height=810
-window/size/resizable=true
 
 [physics]
 

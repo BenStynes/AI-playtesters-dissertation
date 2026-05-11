@@ -197,7 +197,7 @@ func _set_card_style(panel: PanelContainer, col: Color, hovered: bool) -> void:
 	panel.add_theme_stylebox_override("panel", sb)
 
 func _start(cls: String) -> void:
-	GameManager.start_new_game(cls)
+	GameManager.start_new_game(cls, 42)
 	get_tree().change_scene_to_file("res://scenes/dungeon.tscn")
 
 # ── dungeon background ────────────────────────────────────────────────────────

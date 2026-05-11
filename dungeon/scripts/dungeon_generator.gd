@@ -17,7 +17,9 @@ enum Tile {
 
 # Returns: { "map": Array, "entrance": Vector2i, "boss": Vector2i,
 #             "width": int, "height": int }
-static func generate(floor_num: int = 1) -> Dictionary:
+static func generate(floor_num: int = 1, seed_value: int = 0) -> Dictionary:
+	var rng := RandomNumberGenerator.new()
+	rng.seed = seed_value
 	var map: Array = []
 	for _y in range(GRID_H):
 		var row: Array = []
@@ -31,10 +33,10 @@ static func generate(floor_num: int = 1) -> Dictionary:
 
 	while rooms.size() < target and attempts < 500:
 		attempts += 1
-		var w: int = randi_range(4, 9)
-		var h: int = randi_range(4, 9)
-		var rx: int = randi_range(1, GRID_W - w - 1)
-		var ry: int = randi_range(1, GRID_H - h - 1)
+		var w: int = rng.randi_range(4, 9)
+		var h: int = rng.randi_range(4, 9)
+		var rx: int = rng.randi_range(1, GRID_W - w - 1)
+		var ry: int = rng.randi_range(1, GRID_H - h - 1)
 		var new_room := Rect2i(rx, ry, w, h)
 
 		var overlaps: bool = false
@@ -69,15 +71,15 @@ static func generate(floor_num: int = 1) -> Dictionary:
 
 	# Chests in middle rooms
 	for i in range(1, rooms.size() - 1):
-		if randi() % 2 == 0:
+		if rng.randi() % 2 == 0:
 			var cp: Vector2i = _room_center(rooms[i])
 			if map[cp.y][cp.x] == Tile.FLOOR:
 				map[cp.y][cp.x] = Tile.CHEST
 
 	# Heal spots — guarantee one per 2 middle rooms
 	for i in range(1, rooms.size() - 1):
-		if i % 2 == 0 or randi() % 2 == 0:
-			var hp_pos: Vector2i = _random_floor(map, rooms[i])
+		if i % 2 == 0 or rng.randi() % 2 == 0:
+			var hp_pos: Vector2i = _random_floor(map, rooms[i], rng)
 			if hp_pos != Vector2i(-1, -1):
 				map[hp_pos.y][hp_pos.x] = Tile.HEAL
 
@@ -87,16 +89,20 @@ static func generate(floor_num: int = 1) -> Dictionary:
 	var tattempts: int = 0
 	while placed < trap_count and tattempts < 500:
 		tattempts += 1
-		var tx: int = randi_range(1, GRID_W - 2)
-		var ty: int = randi_range(1, GRID_H - 2)
+		var tx: int = rng.randi_range(1, GRID_W - 2)
+		var ty: int = rng.randi_range(1, GRID_H - 2)
 		if map[ty][tx] == Tile.FLOOR:   # only FLOOR, not HEAL
 			map[ty][tx] = Tile.TRAP
 			placed += 1
 
 	# Secret doors — 2-3 placed on walls adjacent to middle rooms
-	var secret_count: int = randi_range(2, 3)
+	var secret_count: int = rng.randi_range(2, 3)
 	var srooms: Array = rooms.slice(1, rooms.size() - 1)
-	srooms.shuffle()
+	for i in range(srooms.size() - 1, 0, -1):
+		var j = rng.randi_range(0, i)
+		var temp = srooms[i]
+		srooms[i] = srooms[j]
+		srooms[j] = temp
 	var secrets_placed: int = 0
 	for sr: Rect2i in srooms:
 		if secrets_placed >= secret_count: break
@@ -125,10 +131,10 @@ static func generate(floor_num: int = 1) -> Dictionary:
 static func _room_center(r: Rect2i) -> Vector2i:
 	return Vector2i(r.position.x + r.size.x / 2, r.position.y + r.size.y / 2)
 
-static func _random_floor(map: Array, room: Rect2i) -> Vector2i:
+static func _random_floor(map: Array, room: Rect2i, rng: RandomNumberGenerator) -> Vector2i:
 	for _a in range(20):
-		var x: int = randi_range(room.position.x, room.position.x + room.size.x - 1)
-		var y: int = randi_range(room.position.y, room.position.y + room.size.y - 1)
+		var x: int = rng.randi_range(room.position.x, room.position.x + room.size.x - 1)
+		var y: int = rng.randi_range(room.position.y, room.position.y + room.size.y - 1)
 		if map[y][x] == Tile.FLOOR:
 			return Vector2i(x, y)
 	return Vector2i(-1, -1)
