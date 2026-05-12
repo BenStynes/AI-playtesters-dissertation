@@ -491,7 +491,7 @@ func _do_enemy_turn() -> void:
 		if enemy.is_boss:
 			line += "\n" + enemy.get_weakness_hint(action["type"])
 		if enemy.enemy_type == EnemyData.EnemyType.ORC:
-			if randi() % 2 == 0:
+			if GameManager.rng.randi() % 2 == 0:
 				line += "\n[The Orc is winding up — consider Defending!]"
 
 		_log(line)

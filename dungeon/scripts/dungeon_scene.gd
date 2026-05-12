@@ -670,9 +670,9 @@ func _random_combat() -> void:
 		pool.append(EnemyData.EnemyType.ORC)
 
 	var enemies: Array = []
-	var count: int = randi_range(1, mini(3, 1 + fn))
+	var count: int = GameManager.rng.randi_range(1, mini(3, 1 + fn))
 	for _i in range(count):
-		enemies.append(pool[randi() % pool.size()])
+		enemies.append(pool[GameManager.rng.randi() % pool.size()])
 	_trigger_combat(enemies, false)
 
 func _trigger_combat(enemy_types: Array, is_boss: bool) -> void:

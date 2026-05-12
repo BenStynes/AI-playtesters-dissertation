@@ -73,7 +73,7 @@ func calculate_final_score() -> int:
 	return score + hp_bonus + gold_bonus + time_bonus
 
 func check_encounter(steps_taken: int) -> bool:
-	var roll: int = randi_range(0, 100)
+	var roll: int = rng.randi_range(0, 100)
 	return (roll + steps_taken) > encounter_threshold
 
 func get_floor_elapsed() -> float:
