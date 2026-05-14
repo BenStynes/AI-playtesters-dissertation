@@ -19,6 +19,7 @@ config/main_scene="res://Main.tscn"
 [autoload]
 
 GameManager="*res://scripts/game_manager.gd"
+AiBridge="*uid://bnigktjil0eps"
 
 [display]
 

@@ -564,15 +564,30 @@ func _mm_col(tile: int) -> Color:
 # ── Input ─────────────────────────────────────────────────────────────────────
 func _input(event: InputEvent) -> void:
 	if _blocked: return
-	if not (event is InputEventKey and event.pressed): return
-	var fd: Vector2i = DIRS[_facing]
-	match event.keycode:
-		KEY_W, KEY_UP:    _move(fd)
-		KEY_S, KEY_DOWN:  _move(Vector2i(-fd.x, -fd.y))
-		KEY_A, KEY_LEFT:  _turn(-1)
-		KEY_D, KEY_RIGHT: _turn(1)
-		KEY_E:            _interact()
-
+	if not AiBridge.ai_enabled:
+	
+		if not (event is InputEventKey and event.pressed): return
+		var fd: Vector2i = DIRS[_facing]
+		match event.keycode:
+				KEY_W, KEY_UP:    _move(fd)
+				KEY_S, KEY_DOWN:  _move(Vector2i(-fd.x, -fd.y))
+				KEY_A, KEY_LEFT:  _turn(-1)
+				KEY_D, KEY_RIGHT: _turn(1)
+				KEY_E:            _interact()
+	else:
+		if not (event is InputEventKey and event.pressed): return
+		_do_ai_turn()
+func _do_ai_turn() -> void:
+	AiBridge.write_exploration_state(_map,_pos,_facing)
+	var action: String = AiBridge.read_action()
+	
+	var fd: Vector2i =DIRS[_facing]
+	match  action:
+		"move_forward": _move(fd)
+		"move_backward": _move(Vector2i(-fd.x,-fd.y))
+		"turn_left": _turn(-1)
+		"turn_right": _turn(1)
+		"interact": _interact()
 func _move(dir: Vector2i) -> void:
 	var np: Vector2i = _pos + dir
 	if np.x < 0 or np.x >= DungeonGenerator.GRID_W: return

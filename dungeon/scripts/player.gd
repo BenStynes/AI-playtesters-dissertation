@@ -17,13 +17,13 @@ var exp_to_next: int = 60
 
 const CLASS_STATS: Dictionary = {
 	"warrior": {
-		"max_hp": 120, "max_mp": 30,
-		"attack": 15, "magic_power": 5,
+		"max_hp": 150, "max_mp": 30,
+		"attack": 20, "magic_power": 5,
 		"defense": 12, "crit_chance": 0.05
 	},
 	"mage": {
-		"max_hp": 70, "max_mp": 100,
-		"attack": 6, "magic_power": 20,
+		"max_hp": 70, "max_mp": 200,
+		"attack": 6, "magic_power": 50,
 		"defense": 5, "crit_chance": 0.05
 	},
 	"thief": {

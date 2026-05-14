@@ -532,7 +532,18 @@ func _set_buttons(enabled: bool) -> void:
 	_btn_attack.disabled = not enabled
 	_btn_magic.disabled  = not enabled
 	_btn_defend.disabled = not enabled
-
+	
+	if enabled and AiBridge.ai_enabled and not _combat_over:
+		_do_ai_combat_turn()
+	
+func _do_ai_combat_turn() -> void:
+	AiBridge.write_combat_state(_enemies,true,_defending)
+	var action: String = AiBridge.read_action()
+	
+	match  action:
+		"attack": _on_attack()
+		"magic": _on_magic()
+		"defend": _on_defend()
 func _log(line: String) -> void:
 	_log_lines.append(line)
 	if _log_lines.size() > 6:

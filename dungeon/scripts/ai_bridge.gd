@@ -1,11 +1,17 @@
 extends Node
 
 #paths for the two json files
-const STATE_FILE: String = "user://game_state.json"
-const ACTION_FILE: String= "user://agent_action.json"
+var STATE_FILE: String
+var ACTION_FILE: String
 # AI mode active or nor
 var ai_enabled: bool = true
 
+func _ready() -> void:
+	var base: String = ProjectSettings.globalize_path("res://").path_join("../bridge")
+	STATE_FILE = base +"/game_state.json"
+	ACTION_FILE = base + "/agent_action.json"
+	
+	DirAccess.make_dir_recursive_absolute(base)
 func _is_walkable(map: Array, pos: Vector2i) -> bool:
 		if pos.x < 0 or pos.x >= DungeonGenerator.GRID_W: return false
 		if pos.y <0 or pos.y >= DungeonGenerator.GRID_H: return false
@@ -79,7 +85,7 @@ func write_exploration_state(map: Array,pos: Vector2i, facing: int) -> void:
 				"facing": facing,
 				"current_tile": map[pos.y][pos.x],
 				"tile_ahead":  _get_tile_(map,ahead),
-				"avalible actions": _get_exploration_Actions(map,pos,facing), 
+				"available_actions": _get_exploration_Actions(map,pos,facing), 
 		}
 		#think thats all ill need for data for exploration phase
 		_write_json(state)
@@ -122,7 +128,32 @@ func write_combat_state(enemies: Array, player_turn: bool, defending: bool) -> v
 				"enemies": enemy_list,
 				"is_boss":  GameManager.is_boss_fight,
 				"player_turn": player_turn,
-				"avalible actions": actions, 
+				"available_actions": actions, 
 		}
 		#think thats all ill need for data for combat  phase
 		_write_json(state)
+
+func read_action() -> String:
+	if FileAccess.file_exists(ACTION_FILE):
+		DirAccess.remove_absolute(ACTION_FILE)
+	
+	var timeout: float = 10.0
+	var elapsed: float =0.0
+	var wait: float =0.05
+	
+	while elapsed< timeout:
+		if FileAccess.file_exists(ACTION_FILE):
+			var file := FileAccess.open(ACTION_FILE, FileAccess.READ)
+			if file:
+				var text: String = file.get_as_text()
+				file.close()
+				var parsed = JSON.parse_string(text)
+				if parsed and parsed.has("action") and parsed.has("ready"):
+					if parsed["ready"] == true:
+						return parsed["action"]
+		OS.delay_msec(50)
+		elapsed += wait
+		
+	push_warning("AI BRIDGE: Timedout defaulting action")
+	return "defend"
+		
