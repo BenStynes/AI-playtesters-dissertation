@@ -15,6 +15,13 @@ def write_action(action: str):
         print(f"==== wrote action: {action}")
 
 def run():
+   
+   #reset code
+   if os.path.exists(ACTION_FILE):
+    os.remove(ACTION_FILE)
+   if os.path.exists(STATE_FILE):
+    os.remove(STATE_FILE)
+   
     print("random agent started waiting for game")
     print(f"watching:{STATE_FILE}")
 

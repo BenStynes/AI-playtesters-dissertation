@@ -1,13 +1,12 @@
 {
 	"available_actions": [
 		"attack",
-		"defend",
-		"magic"
+		"defend"
 	],
 	"enemies": [
 		{
 			"attack": 9,
-			"hp": 3,
+			"hp": 9,
 			"is_boss": false,
 			"max_hp": 45,
 			"name": "Skeleton",
@@ -18,13 +17,13 @@
 	"is_boss": false,
 	"phase": "exploration",
 	"player": {
-		"attack": 20,
+		"attack": 21,
 		"defending": false,
-		"hp": 132,
-		"magic_power": 5,
-		"max_hp": 150,
-		"max_mp": 30,
-		"mp": 10
+		"hp": 73,
+		"magic_power": 11,
+		"max_hp": 126,
+		"max_mp": 50,
+		"mp": 0
 	},
 	"player_turn": true,
 	"seed": 42

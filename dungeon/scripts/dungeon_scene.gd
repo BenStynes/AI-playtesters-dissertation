@@ -90,6 +90,14 @@ func _ready() -> void:
 	_mark_visited(_pos)
 	_build_hud()
 	_update_hud()
+	
+	if  AiBridge.ai_enabled:
+		var timer := Timer.new()
+		timer.wait_time =0.3
+		timer.one_shot = false
+		timer.timeout.connect(_do_ai_turn)
+		add_child(timer)
+		timer.start()
 
 # ── Texture generation ────────────────────────────────────────────────────────
 func _create_textures() -> void:
@@ -563,20 +571,19 @@ func _mm_col(tile: int) -> Color:
 
 # ── Input ─────────────────────────────────────────────────────────────────────
 func _input(event: InputEvent) -> void:
+	if AiBridge.ai_enabled: return
 	if _blocked: return
-	if not AiBridge.ai_enabled:
 	
-		if not (event is InputEventKey and event.pressed): return
-		var fd: Vector2i = DIRS[_facing]
-		match event.keycode:
+	
+	if not (event is InputEventKey and event.pressed): return
+	var fd: Vector2i = DIRS[_facing]
+	match event.keycode:
 				KEY_W, KEY_UP:    _move(fd)
 				KEY_S, KEY_DOWN:  _move(Vector2i(-fd.x, -fd.y))
 				KEY_A, KEY_LEFT:  _turn(-1)
 				KEY_D, KEY_RIGHT: _turn(1)
 				KEY_E:            _interact()
-	else:
-		if not (event is InputEventKey and event.pressed): return
-		_do_ai_turn()
+
 func _do_ai_turn() -> void:
 	AiBridge.write_exploration_state(_map,_pos,_facing)
 	var action: String = AiBridge.read_action()
@@ -588,6 +595,8 @@ func _do_ai_turn() -> void:
 		"turn_left": _turn(-1)
 		"turn_right": _turn(1)
 		"interact": _interact()
+		
+	
 func _move(dir: Vector2i) -> void:
 	var np: Vector2i = _pos + dir
 	if np.x < 0 or np.x >= DungeonGenerator.GRID_W: return

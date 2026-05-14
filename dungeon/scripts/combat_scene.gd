@@ -6,7 +6,7 @@ var _player:      PlayerData
 var _defending:   bool  = false
 var _player_turn: bool  = true
 var _combat_over: bool  = false
-
+var _ai_thinking: bool = false
 # ── UI refs ───────────────────────────────────────────────────────────────────
 var _enemy_nodes:   Array  = []   # Array[Control] — top-level panels per enemy
 var _enemy_hp_bars: Array  = []   # Array[ProgressBar]
@@ -34,7 +34,15 @@ func _ready() -> void:
 	_log("Combat begins!")
 	if GameManager.is_boss_fight:
 		_log("The Demon Lord appears! Watch the pattern hints.")
-
+	if AiBridge.ai_enabled:
+			
+		var timer := Timer.new()
+		timer.wait_time =0.3
+		timer.one_shot = true
+		timer.timeout.connect(_do_ai_combat_turn)
+		add_child(timer)
+		timer.start()
+		
 # ── background drawn procedurally ────────────────────────────────────────────
 func _draw() -> void:
 	var vw: float = get_viewport_rect().size.x
@@ -529,14 +537,23 @@ func _refresh_enemies() -> void:
 			info["panel"].modulate = Color(0.35, 0.35, 0.35, 0.7)
 
 func _set_buttons(enabled: bool) -> void:
+	print("_set_buttons called — enabled: ", enabled, " combat_over: ", _combat_over, " ai_thinking: ", _ai_thinking)
+	_btn_attack.disabled = not enabled
 	_btn_attack.disabled = not enabled
 	_btn_magic.disabled  = not enabled
 	_btn_defend.disabled = not enabled
 	
-	if enabled and AiBridge.ai_enabled and not _combat_over:
-		_do_ai_combat_turn()
+	if enabled and AiBridge.ai_enabled and not _combat_over and not _ai_thinking:
+		_ai_thinking = true
+		var timer := Timer.new()
+		timer.wait_time =0.3
+		timer.one_shot = true
+		timer.timeout.connect(_do_ai_combat_turn)
+		add_child(timer)
+		timer.start()
 	
 func _do_ai_combat_turn() -> void:
+	_ai_thinking = false
 	AiBridge.write_combat_state(_enemies,true,_defending)
 	var action: String = AiBridge.read_action()
 	
