@@ -474,10 +474,11 @@ func _begin_victory() -> void:
 	await get_tree().create_timer(2.0).timeout
 
 	if GameManager.is_boss_fight:
-		_log("Floor cleared! Descending deeper…")
-		GameManager.next_floor()
+		AiBridge.write_game_over_state("won")
 		await get_tree().create_timer(1.0).timeout
-
+		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+		return
+		
 	get_tree().change_scene_to_file("res://scenes/dungeon.tscn")
 
 # ── async enemy turn ──────────────────────────────────────────────────────────

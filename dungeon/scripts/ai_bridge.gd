@@ -156,4 +156,28 @@ func read_action() -> String:
 		
 	push_warning("AI BRIDGE: Timedout defaulting action")
 	return "defend"
+func write_game_over(outcome: String,state: Dictionary) -> void:
+		state["game_over"] = true
+		state["outcome"] = outcome
+		_write_json(state)
+func write_game_over_state(outcome: String) -> void:
+		if not ai_enabled: return
+		
+		var p: PlayerData = GameManager.player
+		var state: Dictionary = {
+			"phase": "game_over",
+			"outcome": outcome,
+			"game_over": true,
+			"seed": GameManager.current_seed,
+			"player": {
+				"hp": p.hp,
+				"max_hp": p.max_hp,
+				"gold": p.gold,
+				"level": p.level
+			},
+			"score": GameManager.calculate_final_score(),
+			"kills": GameManager.kills,
+			"available_actions": ["replay","quit"]
+		}
+		_write_json(state)
 		

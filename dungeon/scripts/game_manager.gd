@@ -71,7 +71,8 @@ func calculate_final_score() -> int:
 	var gold_bonus: int = player.gold * 2
 	var elapsed: float = (Time.get_ticks_msec() / 1000.0) - game_start_time
 	var time_bonus: int = max(0, int(600 - elapsed)) * 2
-	return score + hp_bonus + gold_bonus + time_bonus
+	var fled_penalty: int= 2000
+	return score + hp_bonus + gold_bonus + time_bonus - fled_penalty
 
 func check_encounter(steps_taken: int) -> bool:
 	var roll: int = rng.randi_range(0, 100)

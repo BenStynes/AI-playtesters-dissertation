@@ -712,12 +712,14 @@ func _trigger_combat(enemy_types: Array, is_boss: bool) -> void:
 func _leave_dungeon() -> void:
 	_blocked = true
 	_flash("Leaving the dungeon…")
+	AiBridge.write_game_over_state("fled")
 	await get_tree().create_timer(1.2).timeout
 	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 
 func _game_over() -> void:
 	_blocked = true
 	_flash("You have fallen…")
+	AiBridge.write_game_over_state("died")
 	await get_tree().create_timer(2.0).timeout
 	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 
