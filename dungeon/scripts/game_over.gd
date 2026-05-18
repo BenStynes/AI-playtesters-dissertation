@@ -10,7 +10,7 @@ var _defeated: bool = false   # true = died, false = escaped
 func _ready() -> void:
 	var p: PlayerData = GameManager.player
 	_defeated = (p == null or p.is_dead())
-
+	var _won =(p != null and not p.is_dead() and GameManager.is_boss_fight == false)
 	var final_score: int = GameManager.calculate_final_score() if p != null else 0
 
 	var vp: Vector2 = get_viewport().size
@@ -24,6 +24,9 @@ func _ready() -> void:
 	var header := Label.new()
 	if _defeated:
 		header.text = "DEFEATED"
+		header.add_theme_color_override("font_color", Color(0.90, 0.20, 0.20))
+	elif _won:
+		header.text = "VICTORY!!"
 		header.add_theme_color_override("font_color", Color(0.90, 0.20, 0.20))
 	else:
 		header.text = "ESCAPED!"
@@ -103,9 +106,28 @@ func _ready() -> void:
 	btn_row.add_child(menu_btn)
 
 	retry_btn.pressed.connect(func() -> void:
-		get_tree().change_scene_to_file("res://scenes/class_select.tscn"))
+		if AiBridge.ai_enabled:
+			GameManager.start_new_game(GameManager.ai_class, GameManager.current_seed)
+			get_tree().change_scene_to_file("res://scenes/dungeon.tscn")
+		else:
+			get_tree().change_scene_to_file("res://scenes/class_select.tscn"))
+		
 	menu_btn.pressed.connect(func() -> void:
 		get_tree().change_scene_to_file("res://Main.tscn"))
+		
+		
+	if AiBridge.ai_enabled:
+		await get_tree().create_timer(2.0).timeout
+		
+		
+		var action: String =AiBridge.read_action()
+		
+		if action== "quit":
+			get_tree().quit()
+		else:
+		
+			GameManager.start_new_game(GameManager.ai_class,GameManager.current_seed)
+			get_tree().change_scene_to_file("res://scenes/dungeon.tscn")
 
 func _add_row(parent: VBoxContainer, label: String, value: String) -> void:
 	var row := HBoxContainer.new()
