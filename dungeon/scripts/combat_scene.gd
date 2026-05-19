@@ -7,6 +7,7 @@ var _defending:   bool  = false
 var _player_turn: bool  = true
 var _combat_over: bool  = false
 var _ai_thinking: bool = false
+var _enemy_stunned: bool = false
 # ── UI refs ───────────────────────────────────────────────────────────────────
 var _enemy_nodes:   Array  = []   # Array[Control] — top-level panels per enemy
 var _enemy_hp_bars: Array  = []   # Array[ProgressBar]
@@ -397,12 +398,19 @@ func _on_attack() -> void:
 
 	var is_crit: bool = randf() < _player.crit_chance
 	var dmg: int = _player.attack
-	if is_crit: dmg = int(dmg * 2.0)
-	var dealt: int = target.take_damage(dmg, false)
+	
+	if is_crit: 
+		dmg = int(dmg * 2.5)
+		var dealt: int = target.take_damage(dmg, true)
 
-	var msg: String = "You strike with your %s for %d damage!" % [_player.get_class_weapon(), dealt]
-	if is_crit: msg += "  CRITICAL HIT!"
-	_log(msg)
+		var msg: String = "You strike with your %s for %d damage!  CRITICAL HIT!" % [_player.get_class_weapon(), dealt]
+	
+		_log(msg)
+		
+	else:
+		var dealt: int = target.take_damage(dmg,false)
+		var msg: String = "You strike with your %s for %d damage!" % [_player.get_class_weapon(), dealt]
+		_log(msg)
 	_refresh_enemies()
 
 	if _all_enemies_dead():
@@ -441,7 +449,13 @@ func _on_defend() -> void:
 	if not _player_turn or _combat_over: return
 	_set_buttons(false)
 	_defending = true
-	_log("You brace yourself! Incoming damage halved this turn.")
+	
+	var stun_roll: float = randf()
+	if stun_roll < GameManager.player.stun_chance:
+		_enemy_stunned = true
+		_log("You brace yourself! Incoming damage reduced, The enemy was stunned!")
+	else:
+		_log("You brace yourself! Incoming damage reduced this turn.")
 	_do_enemy_turn()
 
 # ── pure bool victory check ───────────────────────────────────────────────────
@@ -489,7 +503,10 @@ func _do_enemy_turn() -> void:
 
 	for enemy: EnemyData in _enemies:
 		if enemy.is_dead(): continue
-
+		
+		if _enemy_stunned:
+			_log("%s is stunned and cannot act" % enemy.enemy_name)
+			continue
 		var action: Dictionary = enemy.get_attack_action()
 		var raw_dmg: int       = action["damage"]
 		if _defending: raw_dmg = int(raw_dmg * 0.5)
@@ -514,7 +531,7 @@ func _do_enemy_turn() -> void:
 			await get_tree().create_timer(2.5).timeout
 			get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 			return
-
+	_enemy_stunned = false
 	_defending   = false
 	_player_turn = true
 	_lbl_phaser.text = "YOUR TURN"

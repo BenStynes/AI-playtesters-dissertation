@@ -23,29 +23,29 @@ var pattern_index: int = 0
 const ENEMY_DATA: Dictionary = {
 	EnemyType.SLIME: {
 		"name": "Slime",
-		"max_hp": 28, "attack": 4, "magic_attack": 2,
-		"phys_defense": 1, "magic_defense": 1,
-		"gold": 6, "exp": 18, "is_boss": false
+		"max_hp": 25, "attack": 4, "magic_attack": 2,
+		"phys_defense": 0, "magic_defense": 0,
+		"gold": 6, "exp": 15, "is_boss": false
 	},
 	EnemyType.SKELETON: {
 		"name": "Skeleton",
 		# Armored against physical, shattered by magic
-		"max_hp": 45, "attack": 9, "magic_attack": 7,
-		"phys_defense": 12, "magic_defense": 0,
-		"gold": 12, "exp": 28, "is_boss": false
+		"max_hp": 35, "attack": 9, "magic_attack": 7,
+		"phys_defense": 8, "magic_defense": 0,
+		"gold": 12, "exp": 25, "is_boss": false
 	},
 	EnemyType.ORC: {
 		"name": "Orc",
 		# Hits hard but slow; magic is decent against it
-		"max_hp": 85, "attack": 14, "magic_attack": 4,
-		"phys_defense": 8, "magic_defense": 5,
-		"gold": 22, "exp": 45, "is_boss": false
+		"max_hp": 55, "attack": 10, "magic_attack": 3,
+		"phys_defense": 4, "magic_defense": 3,
+		"gold": 18, "exp": 35, "is_boss": false
 	},
 	EnemyType.DEMON: {
 		"name": "Demon Lord",
 		# Balanced for a fresh floor-1 player: killable if defend is used on strong/magic turns
-		"max_hp": 110, "attack": 13, "magic_attack": 13,
-		"phys_defense": 10, "magic_defense": 10,
+		"max_hp": 100, "attack": 11, "magic_attack": 11,
+		"phys_defense": 6, "magic_defense": 6,
 		"gold": 150, "exp": 300, "is_boss": true
 	}
 }

@@ -682,19 +682,14 @@ func _random_combat() -> void:
 	var pool: Array = [
 		EnemyData.EnemyType.SLIME,
 		EnemyData.EnemyType.SLIME,
+		EnemyData.EnemyType.SKELETON,
+		EnemyData.EnemyType.SKELETON,
+		EnemyData.EnemyType.ORC,
 	]
-	# Skeleton: 1 entry on floor 1, 3 on floor 2+
-	pool.append(EnemyData.EnemyType.SKELETON)
-	if fn >= 2:
-		pool.append(EnemyData.EnemyType.SKELETON)
-		pool.append(EnemyData.EnemyType.SKELETON)
-		pool.append(EnemyData.EnemyType.ORC)
-	if fn >= 3:
-		pool.append(EnemyData.EnemyType.ORC)
-		pool.append(EnemyData.EnemyType.ORC)
+
 
 	var enemies: Array = []
-	var count: int = GameManager.rng.randi_range(1, mini(3, 1 + fn))
+	var count: int = GameManager.rng.randi_range(1, 2)
 	for _i in range(count):
 		enemies.append(pool[GameManager.rng.randi() % pool.size()])
 	_trigger_combat(enemies, false)
