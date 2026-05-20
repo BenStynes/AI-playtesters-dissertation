@@ -28,6 +28,8 @@ const C_STONE    := Color(0.22, 0.18, 0.16)
 
 # ─────────────────────────────────────────────────────────────────────────────
 func _ready() -> void:
+	if AiBridge.ai_enabled:
+		AiBridge.clear_state_file()
 	_player = GameManager.player
 	for type: int in GameManager.pending_enemies:
 		_enemies.append(EnemyData.new(type))
@@ -528,7 +530,7 @@ func _do_enemy_turn() -> void:
 			_log("You have been defeated…")
 			_lbl_phaser.text = "DEFEAT"
 			_lbl_phaser.add_theme_color_override("font_color", Color(0.8, 0.2, 0.2))
-			await get_tree().create_timer(2.5).timeout
+			await get_tree().create_timer(0.25).timeout
 			get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 			return
 	_enemy_stunned = false

@@ -50,6 +50,7 @@ func _get_exploration_Actions(map: Array,pos: Vector2i, facing: int) -> Array:
 		return actions
 		
 func _write_json(state: Dictionary) -> void:
+		state["waiting_for_action"] = true
 		var file := FileAccess.open(STATE_FILE,FileAccess.WRITE)
 		if file:
 			file.store_string(JSON.stringify(state, "\t"))
@@ -68,6 +69,7 @@ func write_exploration_state(map: Array,pos: Vector2i, facing: int) -> void:
 		
 		var state: Dictionary ={
 			"phase": "exploration",
+			"waiting_for_action": true,
 			"seed": GameManager.current_seed,
 			"floor": GameManager.current_floor,
 			"player": {
@@ -116,6 +118,7 @@ func write_combat_state(enemies: Array, player_turn: bool, defending: bool) -> v
 			"phase": "exploration",
 			"seed": GameManager.current_seed,
 			"floor": GameManager.current_floor,
+			"waiting_for_action": true,
 			"player": {
 				"hp": p.hp,
 				"max_hp": p.max_hp,
@@ -134,24 +137,30 @@ func write_combat_state(enemies: Array, player_turn: bool, defending: bool) -> v
 		_write_json(state)
 
 func read_action() -> String:
-	if FileAccess.file_exists(ACTION_FILE):
-		DirAccess.remove_absolute(ACTION_FILE)
 	
-	var timeout: float = 10.0
+		
+	
+	var timeout: float = 15.0
 	var elapsed: float =0.0
-	var wait: float =0.05
+	var wait: float =0.1
 	
 	while elapsed< timeout:
 		if FileAccess.file_exists(ACTION_FILE):
+			OS.delay_msec(100)
 			var file := FileAccess.open(ACTION_FILE, FileAccess.READ)
 			if file:
 				var text: String = file.get_as_text()
 				file.close()
 				var parsed = JSON.parse_string(text)
-				if parsed and parsed.has("action") and parsed.has("ready"):
-					if parsed["ready"] == true:
-						return parsed["action"]
-		OS.delay_msec(50)
+				
+				if parsed and parsed.get("ready") == true:
+					var action: String =parsed.get("action","defend")
+					
+					DirAccess.remove_absolute(ACTION_FILE)
+					_clear_waiting_flag()
+					return action
+				
+		OS.delay_msec(100)
 		elapsed += wait
 		
 	push_warning("AI BRIDGE: Timedout defaulting action")
@@ -168,6 +177,7 @@ func write_game_over_state(outcome: String) -> void:
 			"phase": "game_over",
 			"outcome": outcome,
 			"game_over": true,
+			"waiting_for_action": true,
 			"seed": GameManager.current_seed,
 			"player": {
 				"hp": p.hp,
@@ -180,4 +190,19 @@ func write_game_over_state(outcome: String) -> void:
 			"available_actions": ["replay","quit"]
 		}
 		_write_json(state)
-		
+func clear_state_file() -> void:
+	if FileAccess.file_exists(STATE_FILE):
+		DirAccess.remove_absolute(STATE_FILE)
+func _clear_waiting_flag() -> void:
+	if FileAccess.file_exists(STATE_FILE):
+		var file:= FileAccess.open(STATE_FILE,FileAccess.READ)
+		if file:
+			var text: String =file.get_as_text()
+			file.close()
+			var parsed = JSON.parse_string(text)
+			if parsed:
+				parsed["waiting_for_action"] = false
+				var out := FileAccess.open(STATE_FILE,FileAccess.WRITE)
+				if out:
+					out.store_string(JSON.stringify(parsed,"\t"))
+					out.close()

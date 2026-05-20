@@ -117,18 +117,31 @@ func _ready() -> void:
 		
 		
 	if AiBridge.ai_enabled:
-		await get_tree().create_timer(2.0).timeout
+		var timer := Timer.new()
+		timer.wait_time = 0.2
+		timer.timeout.connect(_check_for_ai_action)
+		add_child(timer)
+		timer.start()
+func _check_for_ai_action() -> void:
+	if not FileAccess.file_exists(AiBridge.ACTION_FILE):
+		return
+	OS.delay_msec(100)
+	var file := FileAccess.open(AiBridge.ACTION_FILE, FileAccess.READ)
+	if not file: return
+	
+	var text : String = file.get_as_text()
+	file.close()
+	var parsed = JSON.parse_string(text)
+	
+	if parsed and parsed.get("ready") == true:
+		DirAccess.remove_absolute(AiBridge.ACTION_FILE)
+		var action:String = parsed.get("action","replay")
 		
-		
-		var action: String =AiBridge.read_action()
-		
-		if action== "quit":
+		if action =="quit":
 			get_tree().quit()
 		else:
-		
 			GameManager.start_new_game(GameManager.ai_class,GameManager.current_seed)
 			get_tree().change_scene_to_file("res://scenes/dungeon.tscn")
-
 func _add_row(parent: VBoxContainer, label: String, value: String) -> void:
 	var row := HBoxContainer.new()
 	parent.add_child(row)

@@ -20,7 +20,7 @@ class RunLogger:
         self.actions_taken = [] # full list of actions taken
         self.decision_times = [] # how many millieseconds per decision
         self.combat_encounters = 0 # how many fighrs happened
-        self.combat_won = 0        
+        self.combats_won = 0        
         self.final_hp = 0
         self.final_hp_percent = 0.0
         self.gold_collected = 0
@@ -28,7 +28,7 @@ class RunLogger:
 
         #combat metrics
         self.current_combat_start_hp = 0
-        self.health_efficiency_scores - [] #REMAING % OF HP
+        self.health_efficiency_scores = [] #REMAING % OF HP
 
         #phase tracking
         self.current_phase = "exploration"
@@ -56,7 +56,7 @@ class RunLogger:
 
     def log_combat_end(self, outcome:str,state: dict):
         if outcome == "won":
-            self.combat_won +=1
+            self.combats_won +=1
 
             max_hp = state.get("player", {}).get("max_hp", 1)
             final_hp =  state.get("player", {}).get("hp", 0)
@@ -139,7 +139,7 @@ class RunLogger:
             "outcome": self.outcome,
             "turns_taken": self.turns_taken,
             "combat_encounters": self.combat_encounters,
-            "combats_won": self.combat_won,
+            "combats_won": self.combats_won,
             "final_hp": self.final_hp,
             "final_hp_percent": round(self.final_hp_percent,4),
             "gold_collected": self.gold_collected,

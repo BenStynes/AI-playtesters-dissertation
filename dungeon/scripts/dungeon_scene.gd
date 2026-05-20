@@ -74,6 +74,8 @@ var _tex_ceil:  ImageTexture   # rough ceiling stone
 
 # ─────────────────────────────────────────────────────────────────────────────
 func _ready() -> void:
+	if AiBridge.ai_enabled:
+		AiBridge.clear_state_file()
 	print("Generating with seed: ", GameManager.rng.seed)
 	if GameManager.dungeon_map.size() > 0:
 		_map     = GameManager.dungeon_map
@@ -708,14 +710,14 @@ func _leave_dungeon() -> void:
 	_blocked = true
 	_flash("Leaving the dungeon…")
 	AiBridge.write_game_over_state("fled")
-	await get_tree().create_timer(1.2).timeout
+	await get_tree().create_timer(0.2).timeout
 	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 
 func _game_over() -> void:
 	_blocked = true
 	_flash("You have fallen…")
 	AiBridge.write_game_over_state("died")
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(0.2).timeout
 	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 
 func _mark_visited(pos: Vector2i) -> void:

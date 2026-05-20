@@ -13,7 +13,7 @@ var _lbl_prompt:  Label
 func _ready() -> void:
 	
 	if AiBridge.ai_enabled:
-		GameManager.start_new_game(GameManager.ai_class,42)
+		GameManager.start_new_game(GameManager.ai_class,0)
 		get_tree().change_scene_to_file("res://scenes/dungeon.tscn")
 		return
 	
