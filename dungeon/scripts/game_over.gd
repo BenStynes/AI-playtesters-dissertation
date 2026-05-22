@@ -19,7 +19,9 @@ func _ready() -> void:
 
 	var canvas := CanvasLayer.new()
 	add_child(canvas)
-
+	if AiBridge.ai_training:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MINIMIZED)
+		RenderingServer.set_render_loop_enabled(false)
 	# ── Outcome header ────────────────────────────────────────────────────
 	var header := Label.new()
 	if _defeated:
@@ -59,6 +61,7 @@ func _ready() -> void:
 	panel.add_child(vbox)
 
 	if p != null:
+		
 		var elapsed: float = (Time.get_ticks_msec() / 1000.0) - GameManager.game_start_time
 		var mins: int = int(elapsed) / 60
 		var secs: int = int(elapsed) % 60
@@ -136,11 +139,13 @@ func _check_for_ai_action() -> void:
 	if parsed and parsed.get("ready") == true:
 		DirAccess.remove_absolute(AiBridge.ACTION_FILE)
 		var action:String = parsed.get("action","replay")
-		
+		var seed_value: int = parsed.get("seed",0)
+		if seed_value == 0:
+			seed_value = randi()
 		if action =="quit":
 			get_tree().quit()
 		else:
-			GameManager.start_new_game(GameManager.ai_class,GameManager.current_seed)
+			GameManager.start_new_game(GameManager.ai_class,seed_value)
 			get_tree().change_scene_to_file("res://scenes/dungeon.tscn")
 func _add_row(parent: VBoxContainer, label: String, value: String) -> void:
 	var row := HBoxContainer.new()

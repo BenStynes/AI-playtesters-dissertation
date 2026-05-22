@@ -11,7 +11,7 @@ var _facing:  int        = 0   # 0=N 1=E 2=S 3=W
 var _visited: Dictionary = {}
 var _steps:   int        = 0
 var _blocked: bool       = false
-
+var _ai_timer: Timer = null
 # ── Atmosphere ────────────────────────────────────────────────────────────────
 var _bob_y:   float = 0.0   # vertical camera bob
 var _bob_vel: float = 0.0
@@ -94,13 +94,18 @@ func _ready() -> void:
 	_update_hud()
 	
 	if  AiBridge.ai_enabled:
-		var timer := Timer.new()
-		timer.wait_time =0.3
-		timer.one_shot = false
-		timer.timeout.connect(_do_ai_turn)
-		add_child(timer)
-		timer.start()
-
+		await  get_tree().create_timer(1.0).timeout
+		_ai_timer = Timer.new()
+		_ai_timer.wait_time = 0.3
+		_ai_timer.one_shot = false
+		_ai_timer.timeout.connect(_do_ai_turn)
+		add_child(_ai_timer)
+		_ai_timer.start()
+func  _stop_ai()-> void:
+	if _ai_timer and is_instance_valid(_ai_timer):
+		_ai_timer.stop()
+		_ai_timer.queue_free()
+		_ai_timer = null
 # ── Texture generation ────────────────────────────────────────────────────────
 func _create_textures() -> void:
 	_tex_wall  = _make_brick_tex()
@@ -587,6 +592,10 @@ func _input(event: InputEvent) -> void:
 				KEY_E:            _interact()
 
 func _do_ai_turn() -> void:
+	if _blocked:
+		_stop_ai()
+		return
+	
 	AiBridge.write_exploration_state(_map,_pos,_facing)
 	var action: String = AiBridge.read_action()
 	
@@ -697,6 +706,7 @@ func _random_combat() -> void:
 	_trigger_combat(enemies, false)
 
 func _trigger_combat(enemy_types: Array, is_boss: bool) -> void:
+	_stop_ai()
 	_steps = 0   # reset so encounters don't pile up immediately after returning
 	GameManager.pending_enemies = enemy_types
 	GameManager.is_boss_fight   = is_boss
@@ -707,6 +717,7 @@ func _trigger_combat(enemy_types: Array, is_boss: bool) -> void:
 	get_tree().change_scene_to_file("res://scenes/combat.tscn")
 
 func _leave_dungeon() -> void:
+	_stop_ai()
 	_blocked = true
 	_flash("Leaving the dungeon…")
 	AiBridge.write_game_over_state("fled")
@@ -715,6 +726,7 @@ func _leave_dungeon() -> void:
 
 func _game_over() -> void:
 	_blocked = true
+	_stop_ai()
 	_flash("You have fallen…")
 	AiBridge.write_game_over_state("died")
 	await get_tree().create_timer(0.2).timeout

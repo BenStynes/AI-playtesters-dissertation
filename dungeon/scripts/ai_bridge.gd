@@ -5,9 +5,12 @@ var STATE_FILE: String
 var ACTION_FILE: String
 # AI mode active or nor
 var ai_enabled: bool = true
-
+var ai_training: bool = true
+var start_seed:  int  = 42
 func _ready() -> void:
-	var base: String = ProjectSettings.globalize_path("res://").path_join("../bridge")
+	
+	var exe_dir: String = OS.get_executable_path().get_base_dir()
+	var base: String = exe_dir.path_join("bridge") 
 	STATE_FILE = base +"/game_state.json"
 	ACTION_FILE = base + "/agent_action.json"
 	
@@ -115,7 +118,7 @@ func write_combat_state(enemies: Array, player_turn: bool, defending: bool) -> v
 			actions.append("magic")
 			
 		var state: Dictionary ={
-			"phase": "exploration",
+			"phase": "combat",
 			"seed": GameManager.current_seed,
 			"floor": GameManager.current_floor,
 			"waiting_for_action": true,

@@ -13,8 +13,7 @@ var _lbl_prompt:  Label
 func _ready() -> void:
 	
 	if AiBridge.ai_enabled:
-		GameManager.start_new_game(GameManager.ai_class,0)
-		get_tree().change_scene_to_file("res://scenes/dungeon.tscn")
+		call_deferred("_start_ai_game")
 		return
 	
 	var vp: Vector2 = get_viewport().size
@@ -65,8 +64,13 @@ func _ready() -> void:
 	_lbl_prompt.add_theme_color_override("font_color", Color(0.90, 0.90, 0.80))
 	canvas.add_child(_lbl_prompt)
 
-
+func _start_ai_game() -> void:
+	
+	GameManager.start_new_game(GameManager.ai_class,AiBridge.start_seed)
+	get_tree().change_scene_to_file("res://scenes/dungeon.tscn")
 func _process(delta: float) -> void:
+	if _lbl_prompt == null: return
+	
 	_blink_timer += delta
 	if _blink_timer >= 0.55:
 		_blink_timer = 0.0

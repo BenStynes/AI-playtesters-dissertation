@@ -8,6 +8,7 @@ var _player_turn: bool  = true
 var _combat_over: bool  = false
 var _ai_thinking: bool = false
 var _enemy_stunned: bool = false
+var _ai_combat_timer: Timer = null
 # ── UI refs ───────────────────────────────────────────────────────────────────
 var _enemy_nodes:   Array  = []   # Array[Control] — top-level panels per enemy
 var _enemy_hp_bars: Array  = []   # Array[ProgressBar]
@@ -30,6 +31,7 @@ const C_STONE    := Color(0.22, 0.18, 0.16)
 func _ready() -> void:
 	if AiBridge.ai_enabled:
 		AiBridge.clear_state_file()
+		
 	_player = GameManager.player
 	for type: int in GameManager.pending_enemies:
 		_enemies.append(EnemyData.new(type))
@@ -39,13 +41,18 @@ func _ready() -> void:
 		_log("The Demon Lord appears! Watch the pattern hints.")
 	if AiBridge.ai_enabled:
 			
-		var timer := Timer.new()
-		timer.wait_time =0.3
-		timer.one_shot = true
-		timer.timeout.connect(_do_ai_combat_turn)
-		add_child(timer)
-		timer.start()
-		
+		_ai_combat_timer = Timer.new()
+		_ai_combat_timer.wait_time =0.3
+		_ai_combat_timer.one_shot = true
+		_ai_combat_timer.timeout.connect(_do_ai_combat_turn)
+		add_child(_ai_combat_timer)
+		_ai_combat_timer.start()
+func _stop_ai() -> void:
+	if _ai_combat_timer and is_instance_valid(_ai_combat_timer):
+		_ai_combat_timer.stop()
+		_ai_combat_timer.queue_free()
+		_ai_combat_timer = null
+
 # ── background drawn procedurally ────────────────────────────────────────────
 func _draw() -> void:
 	var vw: float = get_viewport_rect().size.x
@@ -468,6 +475,7 @@ func _all_enemies_dead() -> bool:
 
 # ── async victory handler ─────────────────────────────────────────────────────
 func _begin_victory() -> void:
+	_stop_ai()
 	_combat_over = true
 	_set_buttons(false)
 
@@ -526,10 +534,12 @@ func _do_enemy_turn() -> void:
 		_refresh_player_ui()
 
 		if _player.is_dead():
+			_stop_ai()
 			_combat_over = true
 			_log("You have been defeated…")
 			_lbl_phaser.text = "DEFEAT"
 			_lbl_phaser.add_theme_color_override("font_color", Color(0.8, 0.2, 0.2))
+			AiBridge.write_game_over_state("died")
 			await get_tree().create_timer(0.25).timeout
 			get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 			return
@@ -571,8 +581,10 @@ func _set_buttons(enabled: bool) -> void:
 		timer.timeout.connect(_do_ai_combat_turn)
 		add_child(timer)
 		timer.start()
-	
+	elif _combat_over:
+		_stop_ai()
 func _do_ai_combat_turn() -> void:
+	_stop_ai()
 	_ai_thinking = false
 	AiBridge.write_combat_state(_enemies,true,_defending)
 	var action: String = AiBridge.read_action()

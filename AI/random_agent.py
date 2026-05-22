@@ -4,7 +4,8 @@ import time
 import random
 from logger import RunLogger
 
-
+TRAINING_MODE = False
+FIXED_SEED = 42
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 BRIDGE_DIR = os.path.join(BASE_DIR, "..", "bridge")
 STATE_FILE = os.path.join(BRIDGE_DIR, "game_state.json")
@@ -12,9 +13,9 @@ ACTION_FILE = os.path.join(BRIDGE_DIR, "agent_action.json")
 
 TOTAL_RUNS = 2
 
-def write_action(action: str):
+def write_action(action: str, seed: int = 0):
     with open(ACTION_FILE, "w") as f:
-        json.dump({"action": action, "ready": True}, f)
+        json.dump({"action": action, "ready": True, "seed": seed}, f)
         
         print(f"==== wrote action: {action}")
 
@@ -46,7 +47,7 @@ def run():
 
                     with open(STATE_FILE, "r") as f:
                         state = json.load(f)
-
+                    print(f"State read — waiting: {state.get('waiting_for_action')} | phase: {state.get('phase')}")
                     phase = state.get("phase","unknown")
                     actions = state.get("available_actions",[])
                     if not state.get("waiting_for_action",False):
@@ -62,6 +63,7 @@ def run():
                         print(f"run{runs_completed}/{TOTAL_RUNS} completed | outcome: {outcome}")
 
                         if runs_completed < TOTAL_RUNS:
+                            new_seed = 0 if TRAINING_MODE else FIXED_SEED
                             logger = RunLogger(agent_type="random",seed=0)
                             last_phase = None
 
