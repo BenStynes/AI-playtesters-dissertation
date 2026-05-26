@@ -6,7 +6,7 @@ const C_FLOOR  := Color(0.12, 0.08, 0.06)
 const C_STONE  := Color(0.22, 0.18, 0.16)
 
 var _defeated: bool = false   # true = died, false = escaped
-
+var _processed_ai_action := false
 func _ready() -> void:
 	var p: PlayerData = GameManager.player
 	_defeated = (p == null or p.is_dead())
@@ -19,9 +19,7 @@ func _ready() -> void:
 
 	var canvas := CanvasLayer.new()
 	add_child(canvas)
-	if AiBridge.ai_training:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MINIMIZED)
-		RenderingServer.set_render_loop_enabled(false)
+	
 	# ── Outcome header ────────────────────────────────────────────────────
 	var header := Label.new()
 	if _defeated:
@@ -126,6 +124,9 @@ func _ready() -> void:
 		add_child(timer)
 		timer.start()
 func _check_for_ai_action() -> void:
+	
+	if _processed_ai_action:
+		return
 	if not FileAccess.file_exists(AiBridge.ACTION_FILE):
 		return
 	OS.delay_msec(100)
@@ -137,6 +138,7 @@ func _check_for_ai_action() -> void:
 	var parsed = JSON.parse_string(text)
 	
 	if parsed and parsed.get("ready") == true:
+		_processed_ai_action = true
 		DirAccess.remove_absolute(AiBridge.ACTION_FILE)
 		var action:String = parsed.get("action","replay")
 		var seed_value: int = parsed.get("seed",0)

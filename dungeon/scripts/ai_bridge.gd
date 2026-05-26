@@ -15,6 +15,11 @@ func _ready() -> void:
 	ACTION_FILE = base + "/agent_action.json"
 	
 	DirAccess.make_dir_recursive_absolute(base)
+	
+	if FileAccess.file_exists(ACTION_FILE):
+			DirAccess.remove_absolute(ACTION_FILE)
+	if FileAccess.file_exists(STATE_FILE):
+			DirAccess.remove_absolute(STATE_FILE)
 func _is_walkable(map: Array, pos: Vector2i) -> bool:
 		if pos.x < 0 or pos.x >= DungeonGenerator.GRID_W: return false
 		if pos.y <0 or pos.y >= DungeonGenerator.GRID_H: return false
@@ -36,17 +41,13 @@ func _get_exploration_Actions(map: Array,pos: Vector2i, facing: int) -> Array:
 		if _is_walkable(map,forward):
 			actions.append("move_forward")
 		
-		#check for wall  behind
-		var backward: Vector2i = pos - dirs[facing]
-		if _is_walkable(map, backward):
-			actions.append("move_backward")
+		
 		
 		#check for interactable
 		var current_tile: int = map[pos.y][pos.x]
 		if current_tile in [
 			DungeonGenerator.Tile.CHEST,
 			DungeonGenerator.Tile.HEAL,
-			DungeonGenerator.Tile.ENTRANCE,
 			DungeonGenerator.Tile.SECRET_DOOR
 		]:
 			actions.append("interact")
@@ -69,6 +70,28 @@ func write_exploration_state(map: Array,pos: Vector2i, facing: int) -> void:
 		var dirs: Array =[Vector2i(0,-1), Vector2i(1,0),Vector2i(0,1), Vector2i(-1,0)]
 		var fd: Vector2i = dirs[facing]
 		var ahead: Vector2i = pos +fd
+		var visible_special_tiles: Array = []
+		var radius: int = 3
+		
+		for dy in range(-radius, radius +1):
+			for dx in range(-radius, radius +1):
+				if dx * dx + dy *dy >radius* radius +1: continue
+				var check_pos: Vector2i = pos + Vector2i(dx,dy)
+				if check_pos.x <0 or check_pos.x >= DungeonGenerator.GRID_W: continue
+				if check_pos.y < 0 or check_pos.y >= DungeonGenerator.GRID_H: continue
+				var tile: int = map[check_pos.y][check_pos.x]
+				if tile in [DungeonGenerator.Tile.BOSS, DungeonGenerator.Tile.CHEST,
+						DungeonGenerator.Tile.HEAL, DungeonGenerator.Tile.TRAP,
+						DungeonGenerator.Tile.SECRET_DOOR]:
+							
+					var dist: float = sqrt(float(dx*dx + dy*dy))
+					visible_special_tiles.append({
+						"tile": tile,
+						"dx":dx,
+						"dy":dy,
+						"distance": dist
+					})
+		
 		
 		var state: Dictionary ={
 			"phase": "exploration",
@@ -90,6 +113,11 @@ func write_exploration_state(map: Array,pos: Vector2i, facing: int) -> void:
 				"facing": facing,
 				"current_tile": map[pos.y][pos.x],
 				"tile_ahead":  _get_tile_(map,ahead),
+				"tile_north": _get_tile_(map, pos + Vector2i(0, -1)),
+				"tile_east":  _get_tile_(map, pos + Vector2i(1,  0)),
+				"tile_south": _get_tile_(map, pos + Vector2i(0,  1)),
+				"tile_west":  _get_tile_(map, pos + Vector2i(-1, 0)),
+				"visible_special_tiles": visible_special_tiles,
 				"available_actions": _get_exploration_Actions(map,pos,facing), 
 		}
 		#think thats all ill need for data for exploration phase

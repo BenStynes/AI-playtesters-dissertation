@@ -578,7 +578,10 @@ func _set_buttons(enabled: bool) -> void:
 		var timer := Timer.new()
 		timer.wait_time =0.3
 		timer.one_shot = true
-		timer.timeout.connect(_do_ai_combat_turn)
+		timer.timeout.connect(
+			func():
+				timer.queue_free()
+				_do_ai_combat_turn())
 		add_child(timer)
 		timer.start()
 	elif _combat_over:

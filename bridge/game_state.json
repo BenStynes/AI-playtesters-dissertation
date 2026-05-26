@@ -4,16 +4,16 @@
 		"quit"
 	],
 	"game_over": true,
-	"kills": 23,
+	"kills": 1,
 	"outcome": "died",
 	"phase": "game_over",
 	"player": {
-		"gold": 240,
+		"gold": 6,
 		"hp": 0,
-		"level": 5,
-		"max_hp": 180
+		"level": 1,
+		"max_hp": 100
 	},
-	"score": -245,
-	"seed": 3805993405,
+	"score": -823,
+	"seed": 42,
 	"waiting_for_action": true
 }
