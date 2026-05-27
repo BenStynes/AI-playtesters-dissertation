@@ -48,7 +48,9 @@ class MCTSNode:
 
         if self.visit_count == 0:
             return float('inf')
-        
+        if self.parent is None or self.parent.visit_count == 0:
+            return float('inf')
+
         exploitation = self.total_reward / self.visit_count
 
         exploration = exploration_constant * math.sqrt(math.log(self.parent.visit_count)/self.visit_count)
@@ -79,9 +81,17 @@ def _apply_combat_action(state:dict,action: str)-> dict:
     if action == "attack":
         dmg = player.get("attack",10)
         defense = target.get("phys_defense",0)
-        actual_dmg = max(1,dmg - int(defense*0.5))
+        crit_chance = player.get("crit_chance",0.05)
+        if random.random() < crit_chance:
+            dmg = int(dmg *2.5)
+            actual_dmg = max(1,dmg)
+        else:
+            reduction_factor = 100.0/ (100.0 + float(defense *0.5))
+       
+            actual_dmg = max(1,int(dmg *reduction_factor))
         target["hp"] = max(0, target["hp"]- actual_dmg)
     elif action == "magic":
+        player["mp"] = max(0, player.get("mp", 0) - 10)
         dmg = int(player.get("magic_power",5)*1.5)
         actual_dmg = max(1,dmg)
         target["hp"] = max(0, target["hp"]-actual_dmg)
@@ -95,10 +105,18 @@ def _apply_combat_action(state:dict,action: str)-> dict:
             state["battle_won"] = True
             return state
     
-    enemy_attack = target.get("attack",8)
     if action == "defend":
-        enemy_attack = int(enemy_attack*0.5)
-    
+        stun_chance = player.get("stun_chance", 0.1)
+        if random.random() < stun_chance:
+            state["enemy_stunned"] = True
+        
+    enemy_attack = target.get("attack",8)
+    if action =="defend":
+        enemy_attack = int(enemy_attack * 0.5)
+    if state.get("enemy_stunned"):
+        enemy_attack = 0  
+        state["enemy_stunned"] = False
+ 
     player_defense = player.get("defense",0)
     reduction = 100.0/ (100.0 + float(player_defense))
     actual_enemy_dmg = max(1,int(enemy_attack* reduction))
@@ -107,7 +125,12 @@ def _apply_combat_action(state:dict,action: str)-> dict:
     if player["hp"] <= 0:
         state["game_over"] = True
         state["player_died"] = True
-
+    player = state["player"]
+    actions = ["attack", "defend"]
+    if player.get("mp", 0) >= 10:
+        actions.append("magic")
+    state["available_actions"] = actions
+    
     return state
 
 def _apply_exploration_action(state:dict,action: str)-> dict:
@@ -116,10 +139,8 @@ def _apply_exploration_action(state:dict,action: str)-> dict:
     facing = state.get("facing",0)
     player = state["player"]
     visted = state.setdefault("visited_tiles",{})
-
-    key = f"{pos['x']},pos[{['y']}"
-
-    visted[key] = visted.get(key,0) + 1
+    recent_actions = state.setdefault("recent_actions", [])
+    
     dirs = [
         {"x":0,"y":-1}, #north
         {"x":1,"y":0}, #east
@@ -132,6 +153,15 @@ def _apply_exploration_action(state:dict,action: str)-> dict:
         pos["x"] += fd["x"]
         pos["y"] += fd["y"]
         state["position"] = pos
+        key = f"{pos['x']},{pos['y']}"
+
+        visted[key] = visted.get(key,0) + 1
+        recent = state.setdefault("recent_positions", [])
+
+        recent.append(key)
+
+        if len(recent) > 6:
+            recent.pop(0)
         state = _check_tile_effects(state)
     elif action == "turn_right":
         state["facing"] = (facing + 1) % 4
@@ -149,6 +179,10 @@ def _apply_exploration_action(state:dict,action: str)-> dict:
             max_mp = player.get("max_mp",50)
             player["hp"] = min(max_hp, player["hp"] + int(max_hp * 0.5))
             player["mp"] = min(max_mp, player.get("mp", 0) + int(max_mp * 0.4))
+    recent_actions.append(action)
+
+    if len(recent_actions) > 6:
+        recent_actions.pop(0)
     return state
 def _check_tile_effects(state:dict)-> dict:
 
@@ -173,7 +207,29 @@ def _check_tile_effects(state:dict)-> dict:
 def evaluate_terminal_state(state:dict)->float:
 #reward function will have to redo
     visited = state.get("visited_tiles", {})
-    
+    recent_positions = state.get("recent_positions", [])
+    spin_penalty = 0.0
+    recent_actions = state.get("recent_actions", [])
+    if len(recent_actions) >= 4:
+
+        turn_count = sum(
+            1 for a in recent_actions
+            if a in ["turn_left", "turn_right"]
+     )
+
+        if turn_count >= 4:
+            spin_penalty = -1.5
+    loop_penalty = 0.0
+
+    if len(recent_positions) >= 4:
+
+        unique_recent = len(set(recent_positions))
+
+        if unique_recent <= 2:
+            loop_penalty = -1.5
+
+        elif unique_recent <= 3:
+            loop_penalty = -0.7
     player = state.get("player",{})
     hp_ratio = player.get("hp",0) / max(player.get("max_hp",1),1)
     gold = player.get("gold", 0)
@@ -181,27 +237,32 @@ def evaluate_terminal_state(state:dict)->float:
 
     if state.get("battle_won"):
         
-        return 1.0+ hp_ratio
+        boss_bonus = 10.0 if state.get("is_boss") else 3.0
+        return boss_bonus + (hp_ratio *1.5)
     
     elif state.get("player_died"):
-        return -1.0
+        return -10.0
     elif state.get("game_over"):
         return -0.5
     
     else:
-        revisit_penalty = 0.0
+       
 
-        for count in visited.values():
-            if count > 1:
-                revisit_penalty += (count -1) * 0.03
-
-        health_score = hp_ratio *0.7
-
+        health_score = hp_ratio *1.5
+        enemies = state.get("enemies",[])
+        living_enemies = [e for e in enemies if e.get("hp", 0) > 0]
+        enemy_hp_total = sum(e.get("hp",0) for e in enemies)
+        enemy_max_total = sum(e.get("max_hp", 1) for e in enemies)
+        enemy_damage_score =0.0
+        if enemy_max_total > 0:
+            enemy_damage_score = (1.0 - (enemy_hp_total /enemy_max_total))*1.5
+        danger_penalty = 0.0
+        if living_enemies and hp_ratio <0.4:
+            danger_penalty = -0.5 *(0.4 - hp_ratio)
         gold_score = min(gold/300,0.3)
-        if level < 5:
-            level_score = (level - 1) * 0.1
-        else: 
-            level_score = 0.01
+        
+        level_score = (level - 1) * 0.1
+      
         visible = state.get("visible_special_tiles", []) 
 
         boss_score =0.0
@@ -216,17 +277,34 @@ def evaluate_terminal_state(state:dict)->float:
             proximity = 1.0 / max(dist,0.5)
             
             if tile == 3:
-                boss_score = max(boss_score, 0.4 * proximity)
+                boss_score = max(boss_score, 4.0 * proximity)
             elif tile == 5:
-                if hp_ratio < 0.6:
+                if hp_ratio < 0.7:
                     heal_score =max(heal_score, 0.4 * proximity)
             elif tile == 4:
                 chest_score = max(chest_score, 0.5 * proximity)
             elif tile ==6:
                 trap_penalty += -0.5 *proximity
 
+        revisit_penalty = sum((count - 1) * 0.5 for count in state.get("visited_tiles", {}).values() if count > 1)
+        unique_tiles = len(visited)
 
-        return health_score + gold_score + level_score + boss_score + heal_score + chest_score + trap_penalty - revisit_penalty
+        exploration_bonus = exploration_bonus = min(unique_tiles * 0.015, 0.5)
+        return (
+    health_score
+    + gold_score
+    + danger_penalty
+    + level_score
+    + boss_score
+    + heal_score
+    + chest_score
+    + trap_penalty
+    + enemy_damage_score
+    - revisit_penalty
+    +loop_penalty
+    +exploration_bonus
+    +spin_penalty
+)
     
 
 class MCTSAgent:
@@ -272,7 +350,9 @@ class MCTSAgent:
         return node
     def _expand(self, node: MCTSNode) -> MCTSNode:
         
-        action = node.unexplored_actions.pop()
+        action = random.choice(node.unexplored_actions)
+
+        node.unexplored_actions.remove(action)
 
         new_state = apply_action(node.game_state,action)
 
@@ -294,8 +374,53 @@ class MCTSAgent:
 
             if not avaliable:
                 break
+            if simulated_state.get("phase") == "combat":
 
-            random_action = random.choice(avaliable)
+                player = simulated_state["player"]
+                enemies = simulated_state.get("enemies", [])
+                target = next((e for e in enemies if e.get("hp", 0) > 0), None)
+                hp_ratio = ( player.get("hp", 1)
+        / max(player.get("max_hp", 1), 1))
+                
+                if target:
+                    enemy_hp = target.get("hp", 0)
+                    atk_dmg = player.get("attack", 10)
+                    mag_dmg = int(player.get("magic_power", 5) * 1.5)
+                    defense = target.get("phys_defense", 0)
+                    reduction = 100.0 / (100.0 + float(defense * 0.5))
+                    actual_atk = max(1, int(atk_dmg * reduction))
+
+                    can_kill_with_attack = actual_atk >= enemy_hp
+                    can_kill_with_magic  = mag_dmg >= enemy_hp and player.get("mp", 0) >= 10
+
+                if  can_kill_with_attack:
+                    random_action = "attack"
+
+                elif can_kill_with_magic:
+                    random_action = "magic"
+                elif hp_ratio < 0.5 and "defend" in avaliable:
+                    random_action = "defend"
+                elif player.get("mp", 0) >= 10 and "magic" in avaliable:
+                    random_action = "magic"
+                else:
+                    random_action = "attack"
+            else:
+
+                forward_bias = []
+
+                if "move_forward" in avaliable:
+                    forward_bias += ["move_forward"] * 5
+
+                if "turn_left" in avaliable:
+                    forward_bias += ["turn_left"] 
+
+                if "turn_right" in avaliable:
+                    forward_bias += ["turn_right"] 
+
+                if "interact" in avaliable:
+                    forward_bias += ["interact"] * 3
+
+                random_action = random.choice(forward_bias)
             simulated_state = apply_action(simulated_state, random_action)
             steps +=1
 
@@ -333,7 +458,9 @@ def run():
     runs_completed = 0
     last_modified = 0
     last_phase  = None
-   
+    real_visited = {}
+    real_recent_positions = []
+
     while runs_completed < TOTAL_RUNS:
         try:
             if os.path.exists(STATE_FILE):
@@ -387,9 +514,22 @@ def run():
                     if last_phase == "combat" and phase == "exploration":
                         logger.log_combat_end("won", state)
 
-
+                    if runs_completed < TOTAL_RUNS:
+                        real_visited = {}
+                        real_recent_positions = []
                     time.sleep(0.1)
                     decision_start = time.time()
+                    if phase == "exploration":
+                        pos = state.get("position", {})
+                        key = f"{pos.get('x', 0)},{pos.get('y', 0)}"
+                        real_visited[key] = real_visited.get(key, 0) + 1
+                        real_recent_positions.append(key)
+                    if len(real_recent_positions) > 10:
+                        real_recent_positions.pop(0)
+                        state["visited_tiles"] = real_visited
+                        state["recent_positions"] = real_recent_positions
+
+
                     action = agent.choose_action(state)
                     decision_time = (time.time() - decision_start) * 1000
                     print(f"Phase: {phase} | MCTS chose: {action} in {decision_time:.1f}ms")

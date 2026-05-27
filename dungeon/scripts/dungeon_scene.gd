@@ -596,7 +596,7 @@ func _do_ai_turn() -> void:
 		_stop_ai()
 		return
 	
-	AiBridge.write_exploration_state(_map,_pos,_facing)
+	AiBridge.write_exploration_state(_map,_pos,_facing,_visited)
 	var action: String = AiBridge.read_action()
 	
 	var fd: Vector2i =DIRS[_facing]
@@ -695,12 +695,15 @@ func _random_combat() -> void:
 		EnemyData.EnemyType.SLIME,
 		EnemyData.EnemyType.SKELETON,
 		EnemyData.EnemyType.SKELETON,
-		EnemyData.EnemyType.ORC,
+		
 	]
-
+	if GameManager.player.level >= 2:
+		pool.append(EnemyData.EnemyType.ORC)
 
 	var enemies: Array = []
 	var count: int = GameManager.rng.randi_range(1, 2)
+	if count == 2 and GameManager.rng.randi() % 3 != 0:
+		count = 1  #nerf two fights
 	for _i in range(count):
 		enemies.append(pool[GameManager.rng.randi() % pool.size()])
 	_trigger_combat(enemies, false)

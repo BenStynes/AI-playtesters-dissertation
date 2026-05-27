@@ -60,7 +60,7 @@ func _write_json(state: Dictionary) -> void:
 			file.store_string(JSON.stringify(state, "\t"))
 			file.close()
 #write the exploration state/phase to json
-func write_exploration_state(map: Array,pos: Vector2i, facing: int) -> void:
+func write_exploration_state(map: Array,pos: Vector2i, facing: int,visited: Dictionary = {}) -> void:
 		if not ai_enabled: return
 		
 		var p: PlayerData = GameManager.player
@@ -111,6 +111,7 @@ func write_exploration_state(map: Array,pos: Vector2i, facing: int) -> void:
 				},
 				"position": {"x": pos.x,"y": pos.y},
 				"facing": facing,
+				"visited_count": visited.size(),
 				"current_tile": map[pos.y][pos.x],
 				"tile_ahead":  _get_tile_(map,ahead),
 				"tile_north": _get_tile_(map, pos + Vector2i(0, -1)),
@@ -137,6 +138,9 @@ func write_combat_state(enemies: Array, player_turn: bool, defending: bool) -> v
 					"hp": e.hp,
 					"max_hp": e.max_hp,
 					"attack": e.attack,
+					"magic_attack": e.magic_attack,  
+					"phys_defense": e.phys_defense,
+					"magic_defense": e.magic_defense, 
 					"type": e.enemy_type,
 					"is_boss": e.is_boss
 			})
@@ -157,6 +161,9 @@ func write_combat_state(enemies: Array, player_turn: bool, defending: bool) -> v
 				"max_mp": p.max_mp,
 				"attack": p.attack,
 				"magic_power": p.magic_power,
+				"defense": p.defense,
+				"crit_chance": p.crit_chance,
+				"stun_chance": p.stun_chance,
 				"defending": defending
 				},
 				"enemies": enemy_list,
