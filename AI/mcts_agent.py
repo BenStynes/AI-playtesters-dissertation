@@ -462,8 +462,8 @@ class MCTSAgent:
     def _simulate(self, game_state: dict) ->float:
 
         simulated_state =copy.deepcopy(game_state)
-        if hasattr(self, "seen_map"):
-             simulated_state["seen_map"] = self.seen_map
+       
+        simulated_state.pop("seen_map", None)
         max_steps = 600
         steps = 0
 
@@ -677,6 +677,9 @@ def run():
                             real_visited = {}
                             real_recent_positions = []
                             real_recent_actions = []
+                            last_known_boss_pos = None
+                            agent.seen_map = {}
+                            
                             time.sleep(2.0)
                             write_action("replay", new_seed)
                         else:
