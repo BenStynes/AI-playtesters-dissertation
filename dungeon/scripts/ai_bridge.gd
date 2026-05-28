@@ -6,7 +6,7 @@ var ACTION_FILE: String
 # AI mode active or nor
 var ai_enabled: bool = true
 var ai_training: bool = true
-var start_seed:  int  = 42
+var start_seed:  int  = 123
 func _ready() -> void:
 	
 	var exe_dir: String = OS.get_executable_path().get_base_dir()
@@ -71,8 +71,12 @@ func write_exploration_state(map: Array,pos: Vector2i, facing: int,visited: Dict
 		var fd: Vector2i = dirs[facing]
 		var ahead: Vector2i = pos +fd
 		var visible_special_tiles: Array = []
-		var radius: int = 3
-		
+		var radius: int = 6
+		var walkable_count: int = 0
+		for y in range(DungeonGenerator.GRID_H):
+			for x in range(DungeonGenerator.GRID_W):
+				if map[y][x] != DungeonGenerator.Tile.WALL:
+					walkable_count +=1
 		for dy in range(-radius, radius +1):
 			for dx in range(-radius, radius +1):
 				if dx * dx + dy *dy >radius* radius +1: continue
@@ -91,8 +95,16 @@ func write_exploration_state(map: Array,pos: Vector2i, facing: int,visited: Dict
 						"dy":dy,
 						"distance": dist
 					})
-		
-		
+		var full_map: Array = []
+		for y in range(DungeonGenerator.GRID_H):
+				var row: Array = []
+				for x in range(DungeonGenerator.GRID_W):
+					row.append(map[y][x])
+					full_map.append(row)
+		var seen_map  = {}
+		for posi in visited:
+			var key = str(posi.x)+","+str(posi.y)
+			seen_map[key] = map[posi.y][posi.x]
 		var state: Dictionary ={
 			"phase": "exploration",
 			"waiting_for_action": true,
@@ -111,6 +123,8 @@ func write_exploration_state(map: Array,pos: Vector2i, facing: int,visited: Dict
 				},
 				"position": {"x": pos.x,"y": pos.y},
 				"facing": facing,
+				
+				"seen_map": seen_map,
 				"visited_count": visited.size(),
 				"current_tile": map[pos.y][pos.x],
 				"tile_ahead":  _get_tile_(map,ahead),
@@ -119,6 +133,7 @@ func write_exploration_state(map: Array,pos: Vector2i, facing: int,visited: Dict
 				"tile_south": _get_tile_(map, pos + Vector2i(0,  1)),
 				"tile_west":  _get_tile_(map, pos + Vector2i(-1, 0)),
 				"visible_special_tiles": visible_special_tiles,
+				"total_walkable_tiles": walkable_count,
 				"available_actions": _get_exploration_Actions(map,pos,facing), 
 		}
 		#think thats all ill need for data for exploration phase

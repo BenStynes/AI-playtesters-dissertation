@@ -737,7 +737,7 @@ func _game_over() -> void:
 
 func _mark_visited(pos: Vector2i) -> void:
 	_visited[pos] = true
-	var radius: int = 3
+	var radius: int = 6
 	for dy in range(-radius, radius + 1):
 		for dx in range(-radius, radius + 1):
 			if dx * dx + dy * dy > radius * radius + 1: continue

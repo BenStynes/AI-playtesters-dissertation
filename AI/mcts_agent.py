@@ -13,12 +13,12 @@ BRIDGE_DIR = os.path.join(BASE_DIR, "..", "bridge")
 STATE_FILE = os.path.join(BRIDGE_DIR, "game_state.json")
 ACTION_FILE = os.path.join(BRIDGE_DIR, "agent_action.json")
 #configs
-TRAINING_MODE = False
-FIXED_SEED = 42
-TOTAL_RUNS = 5
+TRAINING_MODE = True
+FIXED_SEED = 123
+TOTAL_RUNS = 2
 
 #Sim amount how many times MCTS will simulate futures before picking an action
-NUM_SIMULATIONS = 200
+NUM_SIMULATIONS = 10
 
 class MCTSNode:
     def __init__(self,game_state: dict, parent=None,action_taken: str = None):
@@ -162,6 +162,13 @@ def _apply_exploration_action(state:dict,action: str)-> dict:
 
         if len(recent) > 6:
             recent.pop(0)
+        facing_to_tile = {
+        0: state.get("tile_north", 1),
+        1: state.get("tile_east", 1),
+        2: state.get("tile_south", 1),
+        3: state.get("tile_west", 1),
+    }
+        state["current_tile"] = facing_to_tile.get(facing, 1)
         state = _check_tile_effects(state)
     elif action == "turn_right":
         state["facing"] = (facing + 1) % 4
@@ -171,9 +178,16 @@ def _apply_exploration_action(state:dict,action: str)-> dict:
     elif action == "interact":
         current_tile = state.get("current_tile",1)
 
-        if current_tile == 4: #chest
+        if current_tile == 4 or current_tile == 7: #chest
             player["gold"] = player.get("gold",0) +20
             state["current_tile"] = 1
+            state["chest_collected"] = True
+        elif current_tile == 3: #boss
+            pos = state.get("position", {})
+            print(f"💀 BOSS ENCOUNTERED at ({pos.get('x')}, {pos.get('y')})")
+            state["in_combat"] = True
+            state["is_boss"] = True
+            state["boss_encountered"] = True
         elif current_tile == 5: #heal
             max_hp = player.get("max_hp",100)
             max_mp = player.get("max_mp",50)
@@ -185,8 +199,10 @@ def _apply_exploration_action(state:dict,action: str)-> dict:
         recent_actions.pop(0)
     return state
 def _check_tile_effects(state:dict)-> dict:
-
+    
+    
     current_tile = state.get("current_tile",1)
+       
     player = state["player"]
 
     if current_tile == 6: #trap
@@ -200,8 +216,11 @@ def _check_tile_effects(state:dict)-> dict:
             state["game_over"] = True
             state["player_died"] = True
     elif current_tile == 3: #boss
+        pos = state.get("position", {})
+        print(f" BOSS ENCOUNTERED at ({pos.get('x')}, {pos.get('y')})")
         state["in_combat"] = True
         state["is_boss"] = True
+        state["boss_encountered"] = True
     return state
 
 def evaluate_terminal_state(state:dict)->float:
@@ -210,6 +229,13 @@ def evaluate_terminal_state(state:dict)->float:
     recent_positions = state.get("recent_positions", [])
     spin_penalty = 0.0
     recent_actions = state.get("recent_actions", [])
+    interaction_bonus = 0.0
+    boss_discovery_bonus = 0.0
+    if state.get("boss_encountered"):
+        boss_discovery_bonus = 100000.0
+    if state.get("chest_collected"):
+        interaction_bonus+= 15
+   
     if len(recent_actions) >= 4:
 
         turn_count = sum(
@@ -217,19 +243,19 @@ def evaluate_terminal_state(state:dict)->float:
             if a in ["turn_left", "turn_right"]
      )
 
-        if turn_count >= 4:
-            spin_penalty = -1.5
+        if turn_count >= 3:
+            spin_penalty = -40.0
     loop_penalty = 0.0
-
+    
     if len(recent_positions) >= 4:
 
         unique_recent = len(set(recent_positions))
 
         if unique_recent <= 2:
-            loop_penalty = -1.5
+            loop_penalty = -40.0
 
         elif unique_recent <= 3:
-            loop_penalty = -0.7
+            loop_penalty = -25.0
     player = state.get("player",{})
     hp_ratio = player.get("hp",0) / max(player.get("max_hp",1),1)
     gold = player.get("gold", 0)
@@ -237,7 +263,7 @@ def evaluate_terminal_state(state:dict)->float:
 
     if state.get("battle_won"):
         
-        boss_bonus = 10.0 if state.get("is_boss") else 3.0
+        boss_bonus = 5000.0 if state.get("is_boss") else 3.0
         return boss_bonus + (hp_ratio *1.5)
     
     elif state.get("player_died"):
@@ -269,7 +295,7 @@ def evaluate_terminal_state(state:dict)->float:
         heal_score =0.0
         chest_score=0.0
         trap_penalty=0.0
-       
+        boss_proximity_bonus = 0.0
         for tile_info in visible:
             tile = tile_info.get("tile")
             dist = tile_info.get("distance",3.0)
@@ -277,33 +303,81 @@ def evaluate_terminal_state(state:dict)->float:
             proximity = 1.0 / max(dist,0.5)
             
             if tile == 3:
-                boss_score = max(boss_score, 4.0 * proximity)
+                dist = tile_info.get("distance",10)
+                boss_proximity_bonus = 2000.0 / (dist +0.1)
+                
+                break
             elif tile == 5:
-                if hp_ratio < 0.7:
-                    heal_score =max(heal_score, 0.4 * proximity)
-            elif tile == 4:
-                chest_score = max(chest_score, 0.5 * proximity)
+                if hp_ratio < 0.75:
+                    heal_score =max(heal_score, 0.6 * proximity)
+            #elif tile == 4 or tile == 7:
+               # chest_score = max(chest_score, 0.7 * proximity)
             elif tile ==6:
-                trap_penalty += -0.5 *proximity
+                trap_penalty += -10.5 *proximity
+        boss_direction_bonus = 0.0
+        last_boss_dir = state.get("last_known_boss_direction")
+        if last_boss_dir:
+            facing = state.get("facing", 0)
+            pos = state.get("position", {"x": 0, "y": 0})
+            dx, dy = last_boss_dir.get("dx", 0), last_boss_dir.get("dy", 0)
+            if abs(dx) > abs(dy):
+                target_dir = 1 if dx > 0 else 3
+            else:
+                target_dir =0 if dy < 0 else 2
+            
+            diff = (target_dir - facing) % 4
+            if diff == 0:
+                boss_direction_bonus = 20.0
+            elif diff == 1 or diff == 3:
+                boss_direction_bonus = 10.0
+            else:
+                boss_direction_bonus = 5.0
 
-        revisit_penalty = sum((count - 1) * 0.5 for count in state.get("visited_tiles", {}).values() if count > 1)
+        revisit_penalty = sum((count - 1) * 50.0 for count in state.get("visited_tiles", {}).values() if count > 1)
         unique_tiles = len(visited)
+       
+        exploration_bonus  = unique_tiles * 100.0
+        current_pos = state.get("position",{"x":0,"y":0})
+        key = f"{current_pos['x']},{current_pos['y']}"
+        vist_density = visited.get(key,0)
+        density_penalty = -2.0 *max(0,vist_density-1)
+        phase = state.get("phase", "exploration")
+        seen_map = state.get("seen_map", {})
+        
+        new_tile_bonus = 0.0
+        current_tile_key = f"{current_pos['x']},{current_pos['y']}"
+        if visited.get(current_tile_key, 0) == 1:   # first visit in this rollout
+                new_tile_bonus = 200.0
+        
+        if current_tile_key not in seen_map:
+            frontier_bonus = 500.0
+        else:
+            frontier_bonus = 0.0
+        if phase == "combat":
+            return (
+            health_score + gold_score + danger_penalty + level_score +
+            boss_score + heal_score + chest_score + trap_penalty +
+            enemy_damage_score - revisit_penalty + loop_penalty +
+            exploration_bonus + spin_penalty +boss_discovery_bonus + density_penalty
+            )
 
-        exploration_bonus = exploration_bonus = min(unique_tiles * 0.015, 0.5)
-        return (
-    health_score
-    + gold_score
-    + danger_penalty
-    + level_score
-    + boss_score
-    + heal_score
-    + chest_score
-    + trap_penalty
-    + enemy_damage_score
+        elif phase == "exploration":
+            return(
+    +frontier_bonus
+    #+boss_direction_bonus
+    +heal_score
+    +chest_score
+    +trap_penalty
+    +boss_discovery_bonus
     - revisit_penalty
     +loop_penalty
     +exploration_bonus
     +spin_penalty
+     +health_score
+    +density_penalty
+    +interaction_bonus
+    +boss_proximity_bonus
+    +new_tile_bonus
 )
     
 
@@ -341,8 +415,32 @@ class MCTSAgent:
         if not root.children:
             actions = game_state.get("available_actions",["defend"])
             return random.choice(actions)
-        best_child = max(root.children, key=lambda child: child.visit_count)
-        return best_child.action_taken
+        recent_actions = game_state.get("recent_actions",[])
+
+        action_scores = []
+
+        for child in root.children:
+
+            score = child.visit_count
+
+            if recent_actions:
+
+                last = recent_actions[-1]
+
+                
+                if  (last == "turn_left" and child.action_taken == "turn_right"):
+                    score *=  0.35
+                elif (last == "turn_right" and child.action_taken =="turn_left"):
+                    score *=  0.35
+
+                elif (last == "move_forward" and  child.action_taken == "move_forward"):
+                    score *= 1.75
+            action_scores.append((score,child))
+       
+        best_child = max(action_scores, key=lambda x: x[0])[1]
+
+        return best_child.action_taken             
+                
         
     def _select(self, node: MCTSNode) -> MCTSNode:
         while not node.is_terminal() and node.is_fully_expanded():
@@ -364,8 +462,9 @@ class MCTSAgent:
     def _simulate(self, game_state: dict) ->float:
 
         simulated_state =copy.deepcopy(game_state)
-
-        max_steps = 50
+        if hasattr(self, "seen_map"):
+             simulated_state["seen_map"] = self.seen_map
+        max_steps = 600
         steps = 0
 
 
@@ -404,24 +503,92 @@ class MCTSAgent:
                     random_action = "magic"
                 else:
                     random_action = "attack"
-            else:
-
+            else:  # exploration
+                pos_data = simulated_state.get("position")
+                if pos_data is None:
+                    # fallback – should never happen
+                    return 0.0   # or some default reward
+                px = pos_data.get("x",0)
+                py = pos_data.get("y",0)
+                
+                dirs = [(0,-1), (1,0), (0,1), (-1,0)]
+                dir_names = ["tile_north", "tile_east", "tile_south", "tile_west"]
+                for i, (dx, dy) in enumerate(dirs):
+                    nx, ny = px + dx, py + dy
+                    nkey = f"{nx},{ny}"
+                    if hasattr(self, "seen_map") and nkey in self.seen_map:
+                        simulated_state[dir_names[i]] = self.seen_map[nkey]
+                    else:
+                        simulated_state[dir_names[i]] = 1   # unknown → walkable
+                facing = simulated_state.get("facing", 0)
+                tile_ahead = simulated_state.get(["tile_north","tile_east","tile_south","tile_west"][facing], 1)
+                avail = ["turn_left", "turn_right"]
+                if tile_ahead != 0:
+                    avail.append("move_forward")
+                if simulated_state.get("current_tile", 1) in (4,5,7):
+                    avail.append("interact")
+                simulated_state["available_actions"] = avail
+   
                 forward_bias = []
+                last_sim_action = simulated_state.get("recent_actions", [])
+                consecutive_forward = 0
+                for a in reversed(last_sim_action):
+                    if a == "move_forward":
+                        consecutive_forward += 1
+                    else:
+                        break
 
+                avaliable = simulated_state.get("available_actions", [])
                 if "move_forward" in avaliable:
-                    forward_bias += ["move_forward"] * 5
+                    momentum = min(consecutive_forward + 1, 4)
+                    forward_bias += ["move_forward"] * (20 * momentum)
 
-                if "turn_left" in avaliable:
-                    forward_bias += ["turn_left"] 
-
-                if "turn_right" in avaliable:
-                    forward_bias += ["turn_right"] 
+                turn_streak = 0
+                for a in reversed(last_sim_action):
+                    if a in ["turn_left", "turn_right"]:
+                        turn_streak += 1
+                    else:
+                        break
+                if turn_streak < 1:
+                    if "turn_left" in avaliable:
+                        forward_bias += ["turn_left"]
+                    if "turn_right" in avaliable:
+                        forward_bias += ["turn_right"]
 
                 if "interact" in avaliable:
                     forward_bias += ["interact"] * 3
 
+                if not forward_bias:
+                    forward_bias = avaliable
+
                 random_action = random.choice(forward_bias)
-            simulated_state = apply_action(simulated_state, random_action)
+            simulated_state = apply_action(simulated_state, random_action)                
+            
+            if hasattr(self, "seen_map"):
+                pos_data = simulated_state.get("position")
+                if pos_data is None:
+                    # fallback – should never happen
+                    return 0.0   # or some default reward
+                px = pos_data.get("x",0)
+                py = pos_data.get("y",0)
+                dirs = [(0,-1), (1,0), (0,1), (-1,0)]
+                dir_names = ["tile_north", "tile_east", "tile_south", "tile_west"]
+                for i, (dx, dy) in enumerate(dirs):
+                    nx, ny = px + dx, py + dy
+                    nkey = f"{nx},{ny}"
+                    if nkey in self.seen_map:
+                        simulated_state[dir_names[i]] = self.seen_map[nkey]
+                    else:
+            
+                        simulated_state[dir_names[i]] = 1
+                facing = simulated_state.get("facing", 0)
+                tile_ahead = simulated_state.get(["tile_north","tile_east","tile_south","tile_west"][facing], 1)
+                avail = ["turn_left", "turn_right"]
+                if tile_ahead != 0:
+                    avail.append("move_forward")
+                if simulated_state.get("current_tile", 1) in (4,5,7):
+                    avail.append("interact")
+                simulated_state["available_actions"] = avail
             steps +=1
 
         return evaluate_terminal_state(simulated_state)
@@ -460,6 +627,8 @@ def run():
     last_phase  = None
     real_visited = {}
     real_recent_positions = []
+    real_recent_actions = []
+    last_known_boss_pos = None
 
     while runs_completed < TOTAL_RUNS:
         try:
@@ -471,11 +640,20 @@ def run():
 
                     with open(STATE_FILE, "r") as f:
                         state = json.load(f)
-
+                    if "seen_map" in state:
+                        agent.seen_map = state["seen_map"]
                     phase = state.get("phase", "unknown")
                     actions = state.get("available_actions", [])
-                    
-
+                    visible = state.get("visible_special_tiles",[])
+                    for tile_info in visible:
+                        if tile_info.get("tile") == 3:
+                            last_known_boss_pos = {
+                            "dx": tile_info.get("dx", 0),
+                            "dy": tile_info.get("dy", 0)
+                                                        }
+                            break
+                    if last_known_boss_pos:
+                        state["last_known_boss_direction"] = last_known_boss_pos
                     # Only respond when Godot is waiting for an action
                     if not state.get("waiting_for_action", False):
                         continue
@@ -494,8 +672,11 @@ def run():
                         if runs_completed < TOTAL_RUNS:
                             new_seed = 0 if TRAINING_MODE else FIXED_SEED
                             logger = RunLogger(agent_type="mcts", seed=new_seed)
-                            last_phase    = None
+                            last_phase= None
                             last_modified = 0
+                            real_visited = {}
+                            real_recent_positions = []
+                            real_recent_actions = []
                             time.sleep(2.0)
                             write_action("replay", new_seed)
                         else:
@@ -514,23 +695,29 @@ def run():
                     if last_phase == "combat" and phase == "exploration":
                         logger.log_combat_end("won", state)
 
-                    if runs_completed < TOTAL_RUNS:
-                        real_visited = {}
-                        real_recent_positions = []
+                 
+                        
                     time.sleep(0.1)
                     decision_start = time.time()
                     if phase == "exploration":
-                        pos = state.get("position", {})
-                        key = f"{pos.get('x', 0)},{pos.get('y', 0)}"
-                        real_visited[key] = real_visited.get(key, 0) + 1
-                        real_recent_positions.append(key)
-                    if len(real_recent_positions) > 10:
-                        real_recent_positions.pop(0)
-                        state["visited_tiles"] = real_visited
-                        state["recent_positions"] = real_recent_positions
+                       pos = state.get("position",{})
+                       key = f"{pos.get('x',0)},{pos.get('y',0)}"
 
+                       real_visited[key] = real_visited.get(key,0) +1
+                       real_recent_positions.append(key)
 
+                       if len(real_recent_positions) > 10:
+                           real_recent_positions.pop(0)
+                       state["visited_tiles"] = real_visited 
+                       state["recent_positions"] = real_recent_positions
+
+                       state["recent_actions"] = real_recent_actions
                     action = agent.choose_action(state)
+                    if phase == "exploration":
+                        real_recent_actions.append(action)
+
+                        if len(real_recent_actions)>5:
+                            real_recent_actions.pop(0)
                     decision_time = (time.time() - decision_start) * 1000
                     print(f"Phase: {phase} | MCTS chose: {action} in {decision_time:.1f}ms")
                     logger.log_decision(state, action, decision_time)

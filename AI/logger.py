@@ -150,10 +150,10 @@ class RunLogger:
 
         }
 
-        filename = f"{self.agent_type}_{self.seed}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
-        filepath = os.path.join(LOG_DIR,filename)
-        with open(filepath,"w") as f:
+        timestamp = datetime.now().strftime("%H%M%S")
+        filename = f"run{self.seed}_{self.outcome}_{timestamp}.json"
+        filepath = os.path.join(LOG_DIR, filename)
+        with open(filepath, "w") as f:
             json.dump(log_entry, f, indent=2)
-
-            print(f"run log saved: {filename}")
-            print(f"Outcome:{self.outcome} || Turns: {self.turns_taken}")
+        print(f"Run log saved: {filename}")
+        

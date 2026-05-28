@@ -1,35 +1,19 @@
 {
 	"available_actions": [
-		"turn_left",
-		"turn_right",
-		"move_forward"
+		"replay",
+		"quit"
 	],
-	"current_tile": 1,
-	"facing": 2,
-	"floor": 1,
-	"phase": "exploration",
+	"game_over": true,
+	"kills": 38,
+	"outcome": "won",
+	"phase": "game_over",
 	"player": {
-		"attack": 19,
-		"class": "warrior",
-		"gold": 18,
-		"hp": 120,
-		"level": 2,
-		"magic_power": 5,
-		"max_hp": 120,
-		"max_mp": 30,
-		"mp": 30
+		"gold": 540,
+		"hp": 179,
+		"level": 7,
+		"max_hp": 220
 	},
-	"position": {
-		"x": 26,
-		"y": 43
-	},
-	"seed": 42,
-	"tile_ahead": 1,
-	"tile_east": 1,
-	"tile_north": 1,
-	"tile_south": 1,
-	"tile_west": 1,
-	"visible_special_tiles": [],
-	"visited_count": 69,
+	"score": 459,
+	"seed": 2617030510,
 	"waiting_for_action": true
 }
