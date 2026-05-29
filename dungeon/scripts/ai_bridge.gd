@@ -123,7 +123,7 @@ func write_exploration_state(map: Array,pos: Vector2i, facing: int,visited: Dict
 				},
 				"position": {"x": pos.x,"y": pos.y},
 				"facing": facing,
-				
+				"vision_radius": radius,
 				"seen_map": seen_map,
 				"visited_count": visited.size(),
 				"current_tile": map[pos.y][pos.x],
