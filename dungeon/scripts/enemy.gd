@@ -43,11 +43,10 @@ const ENEMY_DATA: Dictionary = {
 	},
 	EnemyType.DEMON: {
 		"name": "Demon Lord",
-		# Balanced for a fresh floor-1 player: killable if defend is used on strong/magic turns
-		"max_hp": 100, "attack": 11, "magic_attack": 11,
+		"max_hp": 300, "attack": 24, "magic_attack": 24,
 		"phys_defense": 6, "magic_defense": 6,
 		"gold": 150, "exp": 300, "is_boss": true
-	}
+	},
 }
 
 func _init(type: EnemyType) -> void:
@@ -84,7 +83,7 @@ func get_attack_action() -> Dictionary:
 		pattern_index += 1
 		var dmg: int = attack
 		match action:
-			"strong": dmg = int(attack * 1.8)
+			"strong": dmg = int(attack * 2.4)
 			"magic":  dmg = magic_attack
 		return {"type": action, "damage": dmg, "is_magic": action == "magic"}
 	# Normal enemies just do a physical attack

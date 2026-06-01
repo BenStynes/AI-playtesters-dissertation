@@ -519,7 +519,7 @@ func _do_enemy_turn() -> void:
 			continue
 		var action: Dictionary = enemy.get_attack_action()
 		var raw_dmg: int       = action["damage"]
-		if _defending: raw_dmg = int(raw_dmg * 0.5)
+		if _defending: raw_dmg = int(raw_dmg * 0.3)
 
 		var taken: int  = _player.take_damage(raw_dmg, action["is_magic"])
 		var line: String = "%s attacks for %d damage!" % [enemy.enemy_name, taken]
@@ -539,7 +539,10 @@ func _do_enemy_turn() -> void:
 			_log("You have been defeated…")
 			_lbl_phaser.text = "DEFEAT"
 			_lbl_phaser.add_theme_color_override("font_color", Color(0.8, 0.2, 0.2))
-			AiBridge.write_game_over_state("died")
+			var death_outcome: String = "died_at_boss" if GameManager.is_boss_fight else "died"
+			AiBridge.write_game_over_state(death_outcome)
+			
+			
 			await get_tree().create_timer(0.25).timeout
 			get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 			return

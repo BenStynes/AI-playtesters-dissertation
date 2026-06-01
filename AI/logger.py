@@ -67,6 +67,8 @@ class RunLogger:
             "action": action,
             "player_hp": hp,
             "player_hp_percent": hp / max_hp,
+            "player_level": player.get("level", 1),
+            "current_tile": state.get("current_tile"),
             "decision_time_ms": decision_time_ms,
         })
 
@@ -93,7 +95,9 @@ class RunLogger:
         self.final_hp = player.get("hp", 0)
         self.final_hp_percent = self.final_hp / max(player.get("max_hp", 1), 1)
         self.gold_collected = player.get("gold", 0)
-        self.boss_reached = outcome == "won"
+        self.final_level = player.get("level", 1)
+        self.boss_reached = outcome in ("won", "died_at_boss")
+
         self.run_completed = outcome == "won"
         self._save()
 
@@ -105,7 +109,18 @@ class RunLogger:
         all_action_counts = {}
         combat_actions = []
         exploration_actions = []
-
+        heals_used = 0
+        chests_opened = 0
+        secrets_found = 0
+        for entry in self.actions_taken:
+            if entry["action"] == "interact":
+                tile = entry.get("current_tile")
+                if tile == 5:        # heal
+                    heals_used += 1
+                elif tile == 4:      # chest
+                    chests_opened += 1
+                elif tile == 7:      # secret door
+                    secrets_found += 1
         for entry in self.actions_taken:
             action = entry["action"]
             all_action_counts[action] = all_action_counts.get(action, 0) + 1
@@ -163,6 +178,9 @@ class RunLogger:
             "avg_decision_time_ms": round(avg_decision_time, 2),
             "avg_combat_decision_time_ms": round(avg_combat_decision_time, 2),
             "avg_exploration_decision_time_ms": round(avg_exploration_decision_time, 2),
+            "heals_used": heals_used,
+            "chests_opened": chests_opened,
+            "secrets_found": secrets_found,
         }
 
     @staticmethod
@@ -194,6 +212,7 @@ class RunLogger:
             "combat_win_count": self.combat_win_count,
             "boss_reached": self.boss_reached,
             "run_completed": self.run_completed,
+            "final_level": self.final_level,
             "final_hp": self.final_hp,
             "final_hp_percent": round(self.final_hp_percent, 4),
             "gold_collected": self.gold_collected,

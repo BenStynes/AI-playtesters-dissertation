@@ -4,16 +4,16 @@
 		"quit"
 	],
 	"game_over": true,
-	"kills": 21,
-	"outcome": "won",
+	"kills": 28,
+	"outcome": "died_at_boss",
 	"phase": "game_over",
 	"player": {
-		"gold": 366,
-		"hp": 200,
+		"gold": 372,
+		"hp": 0,
 		"level": 6,
 		"max_hp": 200
 	},
-	"score": 486,
-	"seed": 3193348290,
+	"score": 54,
+	"seed": 3282727273,
 	"waiting_for_action": true
 }

@@ -159,6 +159,11 @@ func write_combat_state(enemies: Array, player_turn: bool, defending: bool) -> v
 					"type": e.enemy_type,
 					"is_boss": e.is_boss
 			})
+		var boss_next_action: String = ""
+		for e: EnemyData in enemies:
+			if e.is_boss and not e.is_dead():
+				boss_next_action = e.BOSS_PATTERN[e.pattern_index % e.BOSS_PATTERN.size()]
+				break
 		var actions: Array = ["attack","defend"]
 		#only let the ai chose magic if has mp to avoid errors
 		if p.mp>=10:
@@ -183,6 +188,7 @@ func write_combat_state(enemies: Array, player_turn: bool, defending: bool) -> v
 				},
 				"enemies": enemy_list,
 				"is_boss":  GameManager.is_boss_fight,
+				"boss_next_action": boss_next_action,
 				"player_turn": player_turn,
 				"available_actions": actions, 
 		}

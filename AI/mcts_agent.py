@@ -113,10 +113,19 @@ def _apply_combat_action(state: dict, action: str) -> dict:
         if random.random() < stun_chance:
             state["enemy_stunned"] = True
 
-    #  Enemy retaliates 
+    
+   #  Enemy retaliates 
     enemy_attack = target.get("attack", 8)
+
+    # If this is the boss  know its telegraphed move, use the real damage.
+    boss_next = state.get("boss_next_action", "")
+    if boss_next == "strong":
+        enemy_attack = int(enemy_attack * 2.4)
+    elif boss_next == "magic":
+        enemy_attack = target.get("magic_attack", enemy_attack)
+    state["boss_next_action"] = "" # reset the telegraph after it's acted on
     if action == "defend":
-        enemy_attack = int(enemy_attack * 0.5)
+        enemy_attack = int(enemy_attack * 0.3)          # defend now takes 30% of the damage instead of 50%
     if state.get("enemy_stunned"):
         enemy_attack = 0
         state["enemy_stunned"] = False
@@ -251,14 +260,23 @@ def evaluate_terminal_state(state: dict) -> float:
     if state.get("boss_encountered"):
         boss_discovery_bonus = 100000.0
     if state.get("chest_collected"):
-        interaction_bonus += 15
+        interaction_bonus += 1000
 
-    #  Spin penalty: too many turns in a row 
+   #  Spin penalty: turning dominates recent actions, or reversing in place 
     spin_penalty = 0.0
     if len(recent_actions) >= 4:
         turn_count = sum(1 for a in recent_actions if a in ["turn_left", "turn_right"])
         if turn_count >= 3:
-            spin_penalty = -40.0
+            # Scale with how much we've explored so it stays meaningful late-game,
+            spin_penalty = -turn_count * 150.0
+
+        # Extra hit for direct reversals (left then right, or right then left).
+        reversals = 0
+        for i in range(1, len(recent_actions)):
+            a, b = recent_actions[i - 1], recent_actions[i]
+            if (a == "turn_left" and b == "turn_right") or (a == "turn_right" and b == "turn_left"):
+                reversals += 1
+        spin_penalty += -reversals * 200.0
 
     #  Loop penalty: stuck cycling a few tiles 
     loop_penalty = 0.0
@@ -468,7 +486,7 @@ class MCTSAgent:
         simulated_state = copy.deepcopy(game_state)
         simulated_state.pop("seen_map", None)
 
-        # Safety ceiling only — the frontier-break below is the real limiter.
+        # Safety ceiling only the frontier-break below is the real limiter.
      
        
         known_tiles = len(self.seen_map) if hasattr(self, "seen_map") else 0
@@ -511,6 +529,9 @@ class MCTSAgent:
         target = next((e for e in enemies if e.get("hp", 0) > 0), None)
         hp_ratio = player.get("hp", 1) / max(player.get("max_hp", 1), 1)
 
+
+        mag_dmg = 0
+        actual_atk = 0
         can_kill_with_attack = False
         can_kill_with_magic = False
         if target:
@@ -524,13 +545,18 @@ class MCTSAgent:
             can_kill_with_attack = actual_atk >= enemy_hp
             can_kill_with_magic = mag_dmg >= enemy_hp and player.get("mp", 0) >= 10
 
+        boss_next = state.get("boss_next_action", "")
+
         if can_kill_with_attack:
             return "attack"
         elif can_kill_with_magic:
             return "magic"
+        elif boss_next == "strong" and "defend" in available:
+            return "defend"                              # block the telegraphed big hit
         elif hp_ratio < 0.5 and "defend" in available:
             return "defend"
-        elif player.get("mp", 0) >= 10 and "magic" in available:
+        elif (player.get("mp", 0) >= 10 and "magic" in available
+              and mag_dmg > actual_atk):
             return "magic"
         else:
             return "attack"
@@ -555,18 +581,14 @@ class MCTSAgent:
             momentum = min(consecutive_forward + 1, 4)
             forward_bias += ["move_forward"] * (20 * momentum)
 
-        # Only allow a turn if we didn't just turn (avoids spinning).
-        turn_streak = 0
-        for a in reversed(last_actions):
-            if a in ["turn_left", "turn_right"]:
-                turn_streak += 1
-            else:
-                break
-        if turn_streak < 1:
-            if "turn_left" in available:
-                forward_bias += ["turn_left"]
-            if "turn_right" in available:
-                forward_bias += ["turn_right"]
+      
+        # Allow a turn, but never the reversal of the turn we just made
+        # turn_left then turn_right is pure spinning in place.
+        last_action = last_actions[-1] if last_actions else None
+        if "turn_left" in available and last_action != "turn_right":
+            forward_bias += ["turn_left"]
+        if "turn_right" in available and last_action != "turn_left":
+            forward_bias += ["turn_right"]
 
         if "interact" in available:
             forward_bias += ["interact"] * 3
@@ -671,7 +693,7 @@ def run():
                         "dx": tile_info.get("dx", 0),
                         "dy": tile_info.get("dy", 0),
                     }
-                elif tile_info.get("tile") == 6:           # trap — remember it forever
+                elif tile_info.get("tile") == 6:           # trap  remember it forever
                     tx = px + tile_info.get("dx", 0)
                     ty = py + tile_info.get("dy", 0)
                     known_traps.add(f"{tx},{ty}")
