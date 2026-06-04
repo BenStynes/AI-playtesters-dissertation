@@ -95,7 +95,7 @@ ACTION_FILE = os.path.join(BRIDGE_DIR, "agent_action.json")
 
 #  Training config 
 TRAINING_MODE = True
-TOTAL_EPISODES = 5,000         # how many games to train across
+TOTAL_EPISODES = 5000         # how many games to train across
 
 def write_action(action: str, seed: int = 0):
     with open(ACTION_FILE, "w") as f:
