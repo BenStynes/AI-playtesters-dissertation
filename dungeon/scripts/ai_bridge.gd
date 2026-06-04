@@ -30,7 +30,8 @@ func _get_tile_(map: Array, pos: Vector2i) ->int:
 	if pos.y < 0 or pos.y >= DungeonGenerator.GRID_H: return DungeonGenerator.Tile.WALL
 	return map[pos.y][pos.x]
 
-
+func delay(normal: float) -> float:
+	return 0.0 if ai_training else normal
 
 func _get_exploration_Actions(map: Array,pos: Vector2i, facing: int) -> Array:
 		var dirs: Array =[Vector2i(0,-1), Vector2i(1,0), Vector2i(0,1), Vector2i(-1,0)]
@@ -201,11 +202,11 @@ func read_action() -> String:
 	
 	var timeout: float = 15.0
 	var elapsed: float =0.0
-	var wait: float =0.1
+	var wait: float =0.01
 	
 	while elapsed< timeout:
 		if FileAccess.file_exists(ACTION_FILE):
-			OS.delay_msec(100)
+			OS.delay_msec(10)
 			var file := FileAccess.open(ACTION_FILE, FileAccess.READ)
 			if file:
 				var text: String = file.get_as_text()
@@ -219,7 +220,7 @@ func read_action() -> String:
 					_clear_waiting_flag()
 					return action
 				
-		OS.delay_msec(100)
+		OS.delay_msec(10)
 		elapsed += wait
 		
 	push_warning("AI BRIDGE: Timedout defaulting action")

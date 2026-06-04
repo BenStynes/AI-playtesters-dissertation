@@ -494,12 +494,12 @@ func _begin_victory() -> void:
 	_log(result)
 	_lbl_phaser.text = "VICTORY!"
 	_lbl_phaser.add_theme_color_override("font_color", Color(1, 0.9, 0.2))
-
-	await get_tree().create_timer(2.0).timeout
+	
+	await get_tree().create_timer(AiBridge.delay(1.0)).timeout
 
 	if GameManager.is_boss_fight:
 		AiBridge.write_game_over_state("won")
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(AiBridge.delay(1.0)).timeout
 		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 		return
 		
@@ -543,7 +543,7 @@ func _do_enemy_turn() -> void:
 			AiBridge.write_game_over_state(death_outcome)
 			
 			
-			await get_tree().create_timer(0.25).timeout
+			await get_tree().create_timer(AiBridge.delay(0.25)).timeout
 			get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 			return
 	_enemy_stunned = false

@@ -33,4 +33,4 @@ def select_action(network,state_vector, available_actions,all_actions,temperatur
     chosen  = all_actions[action_index.item()]
     log_prob = dist.log_prob(action_index)
 
-    return chosen , log_prob
+    return chosen , log_prob,probs

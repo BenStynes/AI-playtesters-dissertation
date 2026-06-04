@@ -94,9 +94,9 @@ func _ready() -> void:
 	_update_hud()
 	
 	if  AiBridge.ai_enabled:
-		await  get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(AiBridge.delay(1.0)).timeout
 		_ai_timer = Timer.new()
-		_ai_timer.wait_time = 0.3
+		_ai_timer.wait_time = 0.02 if AiBridge.ai_training else 0.3
 		_ai_timer.one_shot = false
 		_ai_timer.timeout.connect(_do_ai_turn)
 		add_child(_ai_timer)
@@ -724,7 +724,7 @@ func _leave_dungeon() -> void:
 	_blocked = true
 	_flash("Leaving the dungeon…")
 	AiBridge.write_game_over_state("fled")
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(AiBridge.delay(0.2)).timeout
 	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 
 func _game_over() -> void:
@@ -732,7 +732,7 @@ func _game_over() -> void:
 	_stop_ai()
 	_flash("You have fallen…")
 	AiBridge.write_game_over_state("died")
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(AiBridge.delay(0.2)).timeout
 	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 
 func _mark_visited(pos: Vector2i) -> void:
