@@ -39,7 +39,7 @@ func start_new_game(p_class: String, seed_value: int = 0) -> void:
 	score = 0
 	kills = 0
 	floors_cleared = 0
-	
+	AiBridge.reset_turn_count()
 	current_seed = seed_value if seed_value != 0 else randi()
 	rng.seed = current_seed
 

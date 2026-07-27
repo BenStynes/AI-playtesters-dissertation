@@ -7,6 +7,8 @@ var ACTION_FILE: String
 var ai_enabled: bool = true
 var ai_training: bool = true
 var start_seed:  int  = 123
+var ai_turn_count: int = 0
+const MAX_AI_TURNS: int =3000
 func _ready() -> void:
 	
 	var exe_dir: String = OS.get_executable_path().get_base_dir()
@@ -29,7 +31,8 @@ func _get_tile_(map: Array, pos: Vector2i) ->int:
 	if pos.x < 0 or pos.x >= DungeonGenerator.GRID_W: return DungeonGenerator.Tile.WALL
 	if pos.y < 0 or pos.y >= DungeonGenerator.GRID_H: return DungeonGenerator.Tile.WALL
 	return map[pos.y][pos.x]
-
+func reset_turn_count()->void:
+	ai_turn_count = 0
 func delay(normal: float) -> float:
 	return 0.0 if ai_training else normal
 
@@ -212,7 +215,7 @@ func read_action() -> String:
 				var text: String = file.get_as_text()
 				file.close()
 				var parsed = JSON.parse_string(text)
-				
+				ai_turn_count +=1
 				if parsed and parsed.get("ready") == true:
 					var action: String =parsed.get("action","defend")
 					
@@ -266,3 +269,5 @@ func _clear_waiting_flag() -> void:
 				if out:
 					out.store_string(JSON.stringify(parsed,"\t"))
 					out.close()
+func turn_cap_reached() -> bool:
+	return ai_training and ai_turn_count >= MAX_AI_TURNS

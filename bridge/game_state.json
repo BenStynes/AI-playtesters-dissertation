@@ -1,0 +1,19 @@
+{
+	"available_actions": [
+		"replay",
+		"quit"
+	],
+	"game_over": true,
+	"kills": 238,
+	"outcome": "timeout",
+	"phase": "game_over",
+	"player": {
+		"gold": 2508,
+		"hp": 300,
+		"level": 11,
+		"max_hp": 300
+	},
+	"score": 8764,
+	"seed": 1010001237,
+	"waiting_for_action": true
+}

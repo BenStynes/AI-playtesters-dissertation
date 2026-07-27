@@ -43,7 +43,9 @@ def compute_reward(prev_state,new_state,phase):
         elif outcome == "died_at_boss":
             return 40.0 #partial credit for making it to the boss
         elif outcome == "died":
-            return -50.0 
+            return -50.0
+        elif outcome == "timeout":
+            return -70.0
         return 0.0
     prev_hp = prev_state.get("player",{}).get("hp", 0)
     new_hp = new_state.get("player",{}).get("hp", 0)
@@ -119,8 +121,7 @@ def train():
     reward_history = []
     outcome_history = []
     LOG_EVERY = 50   # will set to 50 for the real run; 1 for this small smoke test
-    turns_this_episode = 0
-    MAX_TURNS = 3000
+    
     decision_log = []
     log_this_episode = (episodes_done % LOG_EVERY == 0)
     while episodes_done < TOTAL_EPISODES:
@@ -197,29 +198,9 @@ def train():
                 continue
 
             prev_state, prev_phase = handle_turn(state, memory, prev_state, prev_phase, log_this_episode, decision_log)
-            turns_this_episode += 1
+          
 
-            # Hard cap  kill runaway episodes so they don't eat time or teach bad thoughts
-            if turns_this_episode >= MAX_TURNS:
-                # treat as a death: penalise and end the episode when its unrealistic 
-                if prev_phase == "combat":
-                    memory["combat_rewards"].append(-50.0)
-                else:
-                    memory["exploration_rewards"].append(-50.0)
-                learn_from_episode(memory)
-                episodes_done += 1
-                print(f"Episode {episodes_done}/{TOTAL_EPISODES} — TIMEOUT (capped)")
-                # reset
-                memory = new_episode_memory()
-                prev_state = None
-                prev_phase = None
-                turns_this_episode = 0
-                last_modified = 0
-                decision_log = []
-                log_this_episode = (episodes_done % LOG_EVERY == 0)
-                write_action("replay", 0 if TRAINING_MODE else 123)
-                continue
-
+            
         except (json.JSONDecodeError,PermissionError,FileNotFoundError):
             pass
         except Exception as e:

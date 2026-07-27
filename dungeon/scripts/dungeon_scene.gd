@@ -592,6 +592,12 @@ func _input(event: InputEvent) -> void:
 				KEY_E:            _interact()
 
 func _do_ai_turn() -> void:
+	if AiBridge.turn_cap_reached():
+		_stop_ai()
+		AiBridge.write_game_over_state("timeout")
+		await get_tree().create_timer(AiBridge.delay(0.2)).timeout
+		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+		return
 	if _blocked:
 		_stop_ai()
 		return
