@@ -270,10 +270,12 @@ class RunLogger:
             "metrics": metrics,
             "actions_taken": self.actions_taken,
             "decision_times": self.decision_times,
+            "prompt_samples": getattr(self, "prompt_samples", None),
         }
 
         timestamp = datetime.now().strftime("%H%M%S")
-        filename = f"{self.agent_type}_{self.seed}_{self.outcome}_{timestamp}.json"
+        tag = f"_{self.personality}" if self.personality else ""
+        filename = f"{self.agent_type}{tag}_{self.seed}_{self.outcome}_{timestamp}.json"
         filepath = os.path.join(LOG_DIR, filename)
         with open(filepath, "w") as f:
             json.dump(log_entry, f, indent=2)

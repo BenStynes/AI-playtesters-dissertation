@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Dungeon Delve"
 run/main_scene="uid://d4j56o3juuuol"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 config/main_scene="res://Main.tscn"
 
