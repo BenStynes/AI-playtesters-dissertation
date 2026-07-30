@@ -76,7 +76,7 @@ var _tex_ceil:  ImageTexture   # rough ceiling stone
 func _ready() -> void:
 	if AiBridge.ai_enabled:
 		AiBridge.clear_state_file()
-	print("Generating with seed: ", GameManager.rng.seed)
+	#print("Generating with seed: ", GameManager.rng.seed)
 	if GameManager.dungeon_map.size() > 0:
 		_map     = GameManager.dungeon_map
 		_pos     = GameManager.player_grid_pos
