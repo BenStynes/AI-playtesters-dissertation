@@ -25,11 +25,11 @@ var game_start_time: float = 0.0
 
 #------seed stuff
 
-var current_seed: int = 0
+var current_seed: int = 1
 var rng := RandomNumberGenerator.new()
 #ai class
 var ai_class: String = "warrior"
-func start_new_game(p_class: String, seed_value: int = 0) -> void:
+func start_new_game(p_class: String, seed_value: int = 1) -> void:
 	player = PlayerData.new(p_class)
 	current_floor = 1
 	floor_start_time = Time.get_ticks_msec() / 1000.0
