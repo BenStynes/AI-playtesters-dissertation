@@ -13,9 +13,9 @@ STATE_FILE = os.path.join(BRIDGE_DIR, "game_state.json")
 ACTION_FILE = os.path.join(BRIDGE_DIR, "agent_action.json")
 
 #  Config 
-TRAINING_MODE = True
+TRAINING_MODE = False
 FIXED_SEED = 123
-TOTAL_RUNS = 2
+TOTAL_RUNS = 1
 NUM_SIMULATIONS = 10# how many futures MCTS simulates before picking an action
 
 

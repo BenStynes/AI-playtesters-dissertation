@@ -35,13 +35,19 @@ class RunLogger:
         self.combat_entry_hp = 0 # HP when the current fight began
         self.post_combat_hp_ratios = [] # HP ratio remaining after each won fight
 
+        #new metrics
+        self.visited_count = 0
+        self.total_walkable = 1
+        self.chests_seen = set()
+        self.turns_to_boss = None
+
         # End of run snapshot 
         self.final_hp = 0
         self.final_hp_percent = 0.0
         self.gold_collected = 0
         self.boss_reached = False
         self.run_completed = False # True only if the boss was defeated
-
+        
   
     # Per turn logging
   
@@ -60,11 +66,18 @@ class RunLogger:
         player = state.get("player", {})
         hp = player.get("hp", 0)
         max_hp = max(player.get("max_hp", 1), 1)
-
+        self.visited_count = state.get("visited_count", self.visited_count)
+        self.total_walkable = max(state.get("total_walkable_tiles", self.total_walkable), 1)
+        pos = state.get("position", {})
+        for t in state.get("visible_special_tiles", []):
+            if t.get("tile") in (4,7):
+                key = f"{pos.get('x',0)+t.get('dx',0)},{pos.get('y',0)+t.get('dy',0)}"
+                self.chests_seen.add(key)
         self.actions_taken.append({
             "turn": self.turns_taken,
             "phase": phase,
             "action": action,
+            "position": state.get("position"),
             "player_hp": hp,
             "player_hp_percent": hp / max_hp,
             "player_level": player.get("level", 1),
@@ -78,6 +91,8 @@ class RunLogger:
     def log_combat_start(self, state: dict):
         self.combat_encounters += 1
         self.combat_entry_hp = state.get("player", {}).get("hp", 0)
+        if state.get("is_boss") and self.turns_to_boss is None:
+            self.turns_to_boss = self.turns_taken
 
     def log_combat_end(self, outcome: str, state: dict):
         if outcome == "won":
@@ -165,6 +180,36 @@ class RunLogger:
         avg_exploration_decision_time = (
             sum(self.exploration_decision_times) / max(len(self.exploration_decision_times), 1)
         )
+        exploration_coverage = min(self.visited_count / max(self.total_walkable, 1), 1.0)
+        tiles_stood = set()
+        revisits = 0
+        arrivals =0
+        explore_steps = 0
+        prev_key = None
+        for e in self.actions_taken:
+            if e["phase"] != "exploration":
+                continue
+            p = e.get("position") or {}
+            if not p:
+                continue
+            key =f"{p.get('x')},{p.get('y')}"
+            explore_steps += 1
+            if key != prev_key:
+                arrivals += 1
+                if key  in tiles_stood:
+                    revisits +=1
+                tiles_stood.add(key)
+            prev_key = key
+
+        backtrack_rate = revisits / max(arrivals, 1)
+        tiles_walked_coverage = len(tiles_stood) / max(self.total_walkable, 1)
+        curiosity_rate = (chests_opened + secrets_found) / max(len(self.chests_seen), 1)
+
+        LOW_HP = 0.3
+        low_hp_combat = [e for e in self.actions_taken if e["phase"] == "combat" and e["player_hp_percent"] < LOW_HP]
+        
+        low_hp_aggression = sum(1 for e in low_hp_combat if e["action"] in ("attack", "magic"))/max(len(low_hp_combat), 1)
+
 
         return {
             "action_distribution": action_distribution,
@@ -181,6 +226,12 @@ class RunLogger:
             "heals_used": heals_used,
             "chests_opened": chests_opened,
             "secrets_found": secrets_found,
+            "exploration_coverage": round(exploration_coverage, 4),
+            "tiles_walked_coverage": round(tiles_walked_coverage, 4),
+            "backtrack_rate": round(backtrack_rate, 4),
+            "curiosity_rate": round(curiosity_rate, 4),
+            "low_hp_aggression": round(low_hp_aggression, 4),
+            "turns_to_boss": self.turns_to_boss,
         }
 
     @staticmethod
