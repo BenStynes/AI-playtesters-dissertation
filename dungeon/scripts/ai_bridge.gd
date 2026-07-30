@@ -6,7 +6,7 @@ var ACTION_FILE: String
 # AI mode active or nor
 var ai_enabled: bool = true
 var ai_training: bool = true
-var start_seed:  int  = 123
+var start_seed:  int  = 1
 var ai_turn_count: int = 0
 const MAX_AI_TURNS: int =3000
 func _ready() -> void:

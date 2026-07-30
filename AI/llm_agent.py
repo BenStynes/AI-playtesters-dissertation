@@ -5,11 +5,11 @@ from personas import PERSONAS
 from llm_prompt import build_prompt
 
 MODEL = "llama3.2:3b"
-PERSONA = "cautious"     
-SEEDS = list(range(1, 3))      
-TOTAL_RUNS = len(SEEDS)
-
-persona_prompt = PERSONAS[PERSONA]["prompt"]
+PERSONA_LIST = ["aggressive", "cautious", "explorer", "speedrunner", "over_leveler"]
+SEEDS = [1]#list(range(1, 11))
+JOBS = [(p, s) for p in PERSONA_LIST for s in SEEDS]
+TOTAL_RUNS = len(JOBS)
+current_persona = JOBS[0][0]
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -29,7 +29,8 @@ def write_action(action: str, seed: int = 0):
 def choose_action(state):
     
     global parse_failures, turn_number
-    prompt = build_prompt(state, persona_prompt, walked, recent_actions, turn_number)
+    prompt = build_prompt(state, PERSONAS[current_persona]["prompt"],
+                          walked, recent_actions, turn_number)
     
     if not recent_actions:          # first decision of the run
         print("\n--- PROMPT ---\n" + prompt + "\n--------------\n")
@@ -57,19 +58,18 @@ def choose_action(state):
 
 
 def run():
-    global  parse_failures, walked, recent_actions, turn_number
+    global parse_failures, turn_number, walked, recent_actions, current_persona
     if os.path.exists(ACTION_FILE):
         os.remove(ACTION_FILE)
     if os.path.exists(STATE_FILE):
         os.remove(STATE_FILE)
 
-    print(f"LLM agent ({PERSONA}) started:  {TOTAL_RUNS} runs")
+    print(f"LLM agent started — {TOTAL_RUNS} runs across {len(PERSONA_LIST)} personas")
 
     runs_completed = 0
     last_modified = 0
     last_phase = None
-    logger = RunLogger(agent_type="llm", seed=SEEDS[runs_completed],
-                       personality=PERSONA)
+    logger = RunLogger(agent_type="llm", seed=JOBS[0][1], personality=current_persona)
 
     while runs_completed < TOTAL_RUNS:
         try:
@@ -96,13 +96,14 @@ def run():
                 logger.prompt_samples = list(prompt_samples)
                 logger.log_run_end(outcome, state)
                 runs_completed += 1
-                print(f"run {runs_completed}/{TOTAL_RUNS} — {outcome} "
-                      f"| parse failures: {parse_failures}")
+                print(f"run {runs_completed}/{TOTAL_RUNS} [{logger.personality}] "
+                      f"seed {logger.seed} — {outcome} | parse failures: {parse_failures}")
 
                 if runs_completed < TOTAL_RUNS:
-                    next_seed = SEEDS[runs_completed]
+                    current_persona, next_seed = JOBS[runs_completed]
                     logger = RunLogger(agent_type="llm", seed=next_seed,
-                                       personality=PERSONA)
+                                       personality=current_persona)
+                    
                     parse_failures = 0
                     turn_number = 0
                     walked.clear()
