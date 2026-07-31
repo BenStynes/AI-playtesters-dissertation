@@ -6,7 +6,7 @@ from llm_prompt import build_prompt
 
 MODEL = "llama3.2:3b"
 PERSONA_LIST = ["aggressive", "cautious", "explorer", "speedrunner", "over_leveler"]
-SEEDS = [1]#list(range(1, 11))
+SEEDS = list(range(1, 11))
 JOBS = [(p, s) for p in PERSONA_LIST for s in SEEDS]
 TOTAL_RUNS = len(JOBS)
 current_persona = JOBS[0][0]
