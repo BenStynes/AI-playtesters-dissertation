@@ -1,0 +1,311 @@
+{
+  "agent_type": "mcts",
+  "seed": 42,
+  "personality": null,
+  "timestamp": "2026-05-26T00:58:34.335328",
+  "duration_seconds": 24.48,
+  "outcome": "died",
+  "turns_taken": 31,
+  "combat_encounters": 2,
+  "combats_won": 1,
+  "final_hp": 0,
+  "final_hp_percent": 0.0,
+  "gold_collected": 6,
+  "metrics": {
+    "action_distribution": {
+      "move_forward": 0.45161290322580644,
+      "attack": 0.1935483870967742,
+      "turn_right": 0.0967741935483871,
+      "magic": 0.0967741935483871,
+      "defend": 0.16129032258064516
+    },
+    "action_diversity_entropy": 2.0532,
+    "strategy_switching_frequency": 0.4333,
+    "risk_taking_index": 0.6429,
+    "avg_decision_time_ms": 106.23,
+    "avg_health_efficiency": 0.97
+  },
+  "actions_taken": [
+    {
+      "turn": 1,
+      "phase": "exploration",
+      "action": "move_forward",
+      "player_hp": 100,
+      "player_hp_percent": 1.0,
+      "decision_time_ms": 213.16909790039062
+    },
+    {
+      "turn": 2,
+      "phase": "exploration",
+      "action": "move_forward",
+      "player_hp": 100,
+      "player_hp_percent": 1.0,
+      "decision_time_ms": 172.67537117004395
+    },
+    {
+      "turn": 3,
+      "phase": "exploration",
+      "action": "move_forward",
+      "player_hp": 100,
+      "player_hp_percent": 1.0,
+      "decision_time_ms": 189.04781341552734
+    },
+    {
+      "turn": 4,
+      "phase": "exploration",
+      "action": "move_forward",
+      "player_hp": 100,
+      "player_hp_percent": 1.0,
+      "decision_time_ms": 178.57623100280762
+    },
+    {
+      "turn": 5,
+      "phase": "combat",
+      "action": "attack",
+      "player_hp": 100,
+      "player_hp_percent": 1.0,
+      "decision_time_ms": 10.515689849853516
+    },
+    {
+      "turn": 6,
+      "phase": "combat",
+      "action": "attack",
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "decision_time_ms": 5.918264389038086
+    },
+    {
+      "turn": 7,
+      "phase": "exploration",
+      "action": "turn_right",
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "decision_time_ms": 186.69652938842773
+    },
+    {
+      "turn": 8,
+      "phase": "exploration",
+      "action": "move_forward",
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "decision_time_ms": 177.06680297851562
+    },
+    {
+      "turn": 9,
+      "phase": "exploration",
+      "action": "move_forward",
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "decision_time_ms": 190.1109218597412
+    },
+    {
+      "turn": 10,
+      "phase": "exploration",
+      "action": "move_forward",
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "decision_time_ms": 175.08912086486816
+    },
+    {
+      "turn": 11,
+      "phase": "exploration",
+      "action": "move_forward",
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "decision_time_ms": 181.10418319702148
+    },
+    {
+      "turn": 12,
+      "phase": "exploration",
+      "action": "move_forward",
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "decision_time_ms": 178.8496971130371
+    },
+    {
+      "turn": 13,
+      "phase": "exploration",
+      "action": "move_forward",
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "decision_time_ms": 174.0572452545166
+    },
+    {
+      "turn": 14,
+      "phase": "exploration",
+      "action": "move_forward",
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "decision_time_ms": 178.72905731201172
+    },
+    {
+      "turn": 15,
+      "phase": "exploration",
+      "action": "move_forward",
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "decision_time_ms": 172.60241508483887
+    },
+    {
+      "turn": 16,
+      "phase": "exploration",
+      "action": "turn_right",
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "decision_time_ms": 179.03780937194824
+    },
+    {
+      "turn": 17,
+      "phase": "exploration",
+      "action": "move_forward",
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "decision_time_ms": 193.01986694335938
+    },
+    {
+      "turn": 18,
+      "phase": "exploration",
+      "action": "turn_right",
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "decision_time_ms": 171.80156707763672
+    },
+    {
+      "turn": 19,
+      "phase": "exploration",
+      "action": "move_forward",
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "decision_time_ms": 183.030366897583
+    },
+    {
+      "turn": 20,
+      "phase": "combat",
+      "action": "magic",
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "decision_time_ms": 42.05799102783203
+    },
+    {
+      "turn": 21,
+      "phase": "combat",
+      "action": "attack",
+      "player_hp": 80,
+      "player_hp_percent": 0.8,
+      "decision_time_ms": 20.957231521606445
+    },
+    {
+      "turn": 22,
+      "phase": "combat",
+      "action": "attack",
+      "player_hp": 63,
+      "player_hp_percent": 0.63,
+      "decision_time_ms": 28.10955047607422
+    },
+    {
+      "turn": 23,
+      "phase": "combat",
+      "action": "defend",
+      "player_hp": 46,
+      "player_hp_percent": 0.46,
+      "decision_time_ms": 23.29421043395996
+    },
+    {
+      "turn": 24,
+      "phase": "combat",
+      "action": "attack",
+      "player_hp": 46,
+      "player_hp_percent": 0.46,
+      "decision_time_ms": 16.176462173461914
+    },
+    {
+      "turn": 25,
+      "phase": "combat",
+      "action": "attack",
+      "player_hp": 37,
+      "player_hp_percent": 0.37,
+      "decision_time_ms": 10.556459426879883
+    },
+    {
+      "turn": 26,
+      "phase": "combat",
+      "action": "magic",
+      "player_hp": 28,
+      "player_hp_percent": 0.28,
+      "decision_time_ms": 8.673906326293945
+    },
+    {
+      "turn": 27,
+      "phase": "combat",
+      "action": "magic",
+      "player_hp": 19,
+      "player_hp_percent": 0.19,
+      "decision_time_ms": 9.790658950805664
+    },
+    {
+      "turn": 28,
+      "phase": "combat",
+      "action": "defend",
+      "player_hp": 10,
+      "player_hp_percent": 0.1,
+      "decision_time_ms": 7.925987243652344
+    },
+    {
+      "turn": 29,
+      "phase": "combat",
+      "action": "defend",
+      "player_hp": 6,
+      "player_hp_percent": 0.06,
+      "decision_time_ms": 6.850004196166992
+    },
+    {
+      "turn": 30,
+      "phase": "combat",
+      "action": "defend",
+      "player_hp": 2,
+      "player_hp_percent": 0.02,
+      "decision_time_ms": 3.355264663696289
+    },
+    {
+      "turn": 31,
+      "phase": "combat",
+      "action": "defend",
+      "player_hp": 2,
+      "player_hp_percent": 0.02,
+      "decision_time_ms": 4.168987274169922
+    }
+  ],
+  "decision_time": [
+    213.16909790039062,
+    172.67537117004395,
+    189.04781341552734,
+    178.57623100280762,
+    10.515689849853516,
+    5.918264389038086,
+    186.69652938842773,
+    177.06680297851562,
+    190.1109218597412,
+    175.08912086486816,
+    181.10418319702148,
+    178.8496971130371,
+    174.0572452545166,
+    178.72905731201172,
+    172.60241508483887,
+    179.03780937194824,
+    193.01986694335938,
+    171.80156707763672,
+    183.030366897583,
+    42.05799102783203,
+    20.957231521606445,
+    28.10955047607422,
+    23.29421043395996,
+    16.176462173461914,
+    10.556459426879883,
+    8.673906326293945,
+    9.790658950805664,
+    7.925987243652344,
+    6.850004196166992,
+    3.355264663696289,
+    4.168987274169922
+  ]
+}

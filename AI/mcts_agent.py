@@ -14,11 +14,14 @@ ACTION_FILE = os.path.join(BRIDGE_DIR, "agent_action.json")
 
 #  Config 
 TRAINING_MODE = False
-FIXED_SEED = 123
-TOTAL_RUNS = 1
+
 NUM_SIMULATIONS = 10# how many futures MCTS simulates before picking an action
 
-
+PERSONA_LIST = ["aggressive", "cautious", "explorer", "speedrunner", "over_leveler"]
+SEEDS = list(range(1, 11))
+JOBS = [(p, s) for p in PERSONA_LIST for s in SEEDS]
+TOTAL_RUNS = len(JOBS)
+current_persona = JOBS[0][0]
 
 # MCTS tree node
 
@@ -203,7 +206,7 @@ def _apply_exploration_action(state: dict, action: str) -> dict:
 
         elif current_tile == 3: # boss
             pos = state.get("position", {})
-            print(f"BOSS ENCOUNTERED at ({pos.get('x')}, {pos.get('y')})")
+          
             state["in_combat"] = True
             state["is_boss"] = True
             state["boss_encountered"] = True
@@ -238,7 +241,7 @@ def _check_tile_effects(state: dict) -> dict:
 
     elif current_tile == 3: # boss
         pos = state.get("position", {})
-        print(f"BOSS ENCOUNTERED at ({pos.get('x')}, {pos.get('y')})")
+        
         state["in_combat"] = True
         state["is_boss"] = True
         state["boss_encountered"] = True
@@ -246,7 +249,27 @@ def _check_tile_effects(state: dict) -> dict:
     return state
 
 
+PERSONA_WEIGHTS = {
+    "default":      {"health": 1.0, "damage": 1.0, "danger": 1.0, "heal": 1.0,
+                     "explore": 1.0, "boss": 1.0, "loot": 1.0, "level": 1.0},
+    "aggressive":   {"health": 0.2, "damage": 4.0, "danger": 0.1, "heal": 0.2,
+                     "explore": 1.0, "boss": 2.0, "loot": 0.5, "level": 1.0},
+    "cautious":     {"health": 4.0, "damage": 0.4, "danger": 8.0, "heal": 5.0,
+                     "explore": 1.0, "boss": 0.5, "loot": 1.0, "level": 1.0},
+    "explorer":     {"health": 1.0, "damage": 1.0, "danger": 1.0, "heal": 1.0,
+                     "explore": 2.5, "boss": 0.1, "loot": 8.0, "level": 1.0},
+    "speedrunner":  {"health": 1.0, "damage": 1.0, "danger": 1.0, "heal": 1.0,
+                     "explore": 0.3, "boss": 4.0, "loot": 0.0, "level": 1.0},
+    "over_leveler": {"health": 2.0, "damage": 1.5, "danger": 2.0, "heal": 3.0,
+                     "explore": 1.5, "boss": 0.3, "loot": 2.0, "level": 20.0},
+}
 
+W = PERSONA_WEIGHTS["default"]
+
+
+def set_persona(name):
+    global W
+    W = PERSONA_WEIGHTS[name]
 # Reward function
 
 def evaluate_terminal_state(state: dict) -> float:
@@ -260,7 +283,7 @@ def evaluate_terminal_state(state: dict) -> float:
     if state.get("boss_encountered"):
         boss_discovery_bonus = 100000.0
     if state.get("chest_collected"):
-        interaction_bonus += 1000
+        interaction_bonus += 1000 * W["loot"]
 
    #  Spin penalty: turning dominates recent actions, or reversing in place 
     spin_penalty = 0.0
@@ -296,14 +319,14 @@ def evaluate_terminal_state(state: dict) -> float:
     # Terminal outcomes 
     if state.get("battle_won"):
         boss_bonus = 5000.0 if state.get("is_boss") else 3.0
-        return boss_bonus + (hp_ratio * 1.5)
+        return boss_bonus + (hp_ratio * 1.5 * W["health"])
     elif state.get("player_died"):
-        return -10000.0
+        return -10000.0 * W["danger"]
     elif state.get("game_over"):
         return -0.5
 
     #  Non-terminal scoring 
-    health_score = hp_ratio * 1.5
+    health_score = hp_ratio * 1.5 * W["health"]
 
     enemies = state.get("enemies", [])
     living_enemies = [e for e in enemies if e.get("hp", 0) > 0]
@@ -311,14 +334,13 @@ def evaluate_terminal_state(state: dict) -> float:
     enemy_max_total = sum(e.get("max_hp", 1) for e in enemies)
     enemy_damage_score = 0.0
     if enemy_max_total > 0:
-        enemy_damage_score = (1.0 - (enemy_hp_total / enemy_max_total)) * 1.5
+        enemy_damage_score = (1.0 - (enemy_hp_total / enemy_max_total)) * 1.5 * W["damage"]
 
     danger_penalty = 0.0
     if living_enemies and hp_ratio < 0.4:
-        danger_penalty = -0.5 * (0.4 - hp_ratio)
-
-    gold_score = min(gold / 300, 0.3)
-    level_score = (level - 1) * 0.1
+        danger_penalty = -0.5 * (0.4 - hp_ratio) * W["danger"]
+    gold_score = min(gold / 300, 0.3) * W["loot"]
+    level_score = (level - 1) * 0.1 * W["level"]
 
     #  Visible special tiles 
     boss_score = 0.0
@@ -334,11 +356,11 @@ def evaluate_terminal_state(state: dict) -> float:
 
         if tile == 3:                                  # boss
            
-            boss_proximity_bonus = 2000.0 / (dist + 0.1)
+            boss_proximity_bonus = (2000.0 / (dist + 0.1)) * W["boss"]
             continue
         elif tile == 5:                                # heal
             if hp_ratio < 0.75:
-                heal_score = max(heal_score, 0.6 * proximity)
+                heal_score = max(heal_score, 0.6 * proximity * W["heal"])
         elif tile == 6:                                # trap
             trap_penalty += -100.5 * proximity
 
@@ -366,7 +388,7 @@ def evaluate_terminal_state(state: dict) -> float:
         (count - 1) * 50.0 for count in visited.values() if count > 1
     )
     unique_tiles = len(visited)
-    exploration_bonus = unique_tiles * 100.0
+    exploration_bonus = unique_tiles * 100.0 * W["explore"]
 
     current_pos = state.get("position", {"x": 0, "y": 0})
     current_tile_key = f"{current_pos['x']},{current_pos['y']}"
@@ -376,12 +398,12 @@ def evaluate_terminal_state(state: dict) -> float:
 
     new_tile_bonus = 0.0
     if visited.get(current_tile_key, 0) == 1:# first visit this rollout
-        new_tile_bonus = 200.0
+        new_tile_bonus = 200.0 * W["explore"]
     known_trap_penalty = 0.0
     if current_tile_key in state.get("known_traps", set()):
         known_trap_penalty = -40.0
     seen_map = state.get("seen_map", {})
-    frontier_bonus = 500.0 if current_tile_key not in seen_map else 0.0
+    frontier_bonus = (500.0 if current_tile_key not in seen_map else 0.0) * W["explore"]
 
     #  Final score by phase 
     phase = state.get("phase", "exploration")
@@ -547,13 +569,14 @@ class MCTSAgent:
 
         boss_next = state.get("boss_next_action", "")
 
+        defend_threshold = 0.5 * W["danger"] / max(W["damage"], 0.1)
         if can_kill_with_attack:
             return "attack"
         elif can_kill_with_magic:
             return "magic"
-        elif boss_next == "strong" and "defend" in available:
-            return "defend"                              # block the telegraphed big hit
-        elif hp_ratio < 0.5 and "defend" in available:
+        elif boss_next == "strong" and "defend" in available and W["danger"] > 0.5:
+            return "defend"
+        elif hp_ratio < min(defend_threshold, 0.9) and "defend" in available:
             return "defend"
         elif (player.get("mp", 0) >= 10 and "magic" in available
               and mag_dmg > actual_atk):
@@ -637,7 +660,7 @@ class MCTSAgent:
 def write_action(action: str, seed: int = 0):
     with open(ACTION_FILE, "w") as f:
         json.dump({"action": action, "ready": True, "seed": seed}, f)
-    print(f"  == Wrote action: {action}")
+   
 
 
 def run():
@@ -651,9 +674,10 @@ def run():
     print(f"Watching: {STATE_FILE}")
 
     agent = MCTSAgent(num_simulations=NUM_SIMULATIONS)
-
-    logger = RunLogger(agent_type="mcts", seed=FIXED_SEED)
     runs_completed = 0
+    current_persona, next_seed = JOBS[runs_completed]
+    set_persona(current_persona)
+    logger = RunLogger(agent_type="mcts", seed=next_seed,personality=current_persona)
     last_modified = 0
     last_phase = None
     real_visited = {}
@@ -716,8 +740,9 @@ def run():
                 print(f"Run {runs_completed}/{TOTAL_RUNS} complete — outcome: {outcome}")
 
                 if runs_completed < TOTAL_RUNS:
-                    request_seed = 0 if TRAINING_MODE else FIXED_SEED
-                    logger = RunLogger(agent_type="mcts", seed=request_seed)
+                    current_persona, next_seed = JOBS[runs_completed]
+                    set_persona(current_persona)
+                    logger = RunLogger(agent_type="mcts", seed=next_seed,personality=current_persona)
                     last_phase = None
                     last_modified = 0
                     real_visited = {}
@@ -726,8 +751,8 @@ def run():
                     last_known_boss_pos = None
                     known_traps = set()
                     agent.seen_map = {}
-                    time.sleep(2.0)
-                    write_action("replay", request_seed)
+                    time.sleep(0.5)
+                    write_action("replay", next_seed)
                 else:
                     print("All runs complete — stopping.")
                     write_action("quit", 0)
@@ -743,7 +768,7 @@ def run():
             if last_phase == "combat" and phase == "exploration":
                 logger.log_combat_end("won", state)
 
-            time.sleep(0.1)
+            
             decision_start = time.time()
 
             # Inject the agent's real memory before it decides.
@@ -766,7 +791,7 @@ def run():
                     real_recent_actions.pop(0)
 
             decision_time = (time.time() - decision_start) * 1000
-            print(f"Phase: {phase} | MCTS chose: {action} in {decision_time:.1f}ms")
+           
             logger.log_decision(state, action, decision_time)
             last_phase = phase
             write_action(action)
