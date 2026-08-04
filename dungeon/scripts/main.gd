@@ -67,7 +67,7 @@ func _ready() -> void:
 func _start_ai_game() -> void:
 	
 	GameManager.start_new_game(GameManager.ai_class,AiBridge.start_seed)
-	print("start_seed is: ", AiBridge.start_seed)
+	#print("start_seed is: ", AiBridge.start_seed)
 	get_tree().change_scene_to_file("res://scenes/dungeon.tscn")
 func _process(delta: float) -> void:
 	if _lbl_prompt == null: return

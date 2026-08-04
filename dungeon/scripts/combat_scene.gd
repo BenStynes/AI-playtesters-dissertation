@@ -570,7 +570,6 @@ func _refresh_enemies() -> void:
 			info["panel"].modulate = Color(0.35, 0.35, 0.35, 0.7)
 
 func _set_buttons(enabled: bool) -> void:
-	print("_set_buttons called — enabled: ", enabled, " combat_over: ", _combat_over, " ai_thinking: ", _ai_thinking)
 	_btn_attack.disabled = not enabled
 	_btn_attack.disabled = not enabled
 	_btn_magic.disabled  = not enabled

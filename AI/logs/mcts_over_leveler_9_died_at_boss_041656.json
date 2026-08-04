@@ -1,0 +1,8044 @@
+{
+  "agent_type": "mcts",
+  "seed": 9,
+  "personality": "over_leveler",
+  "timestamp": "2026-08-04T04:16:56.605137",
+  "duration_seconds": 52.62,
+  "outcome": "died_at_boss",
+  "turns_taken": 545,
+  "exploration_turns": 481,
+  "combat_turns": 64,
+  "combat_encounters": 26,
+  "combat_win_count": 25,
+  "boss_reached": true,
+  "run_completed": false,
+  "final_level": 6,
+  "final_hp": 0,
+  "final_hp_percent": 0.0,
+  "gold_collected": 276,
+  "metrics": {
+    "action_distribution": {
+      "turn_right": 0.25688073394495414,
+      "move_forward": 0.3834862385321101,
+      "turn_left": 0.24220183486238533,
+      "attack": 0.09174311926605505,
+      "defend": 0.012844036697247707,
+      "magic": 0.012844036697247707
+    },
+    "combat_action_distribution": {
+      "attack": 0.78125,
+      "defend": 0.109375,
+      "magic": 0.109375
+    },
+    "exploration_action_distribution": {
+      "turn_right": 0.2910602910602911,
+      "move_forward": 0.43451143451143454,
+      "turn_left": 0.27442827442827444
+    },
+    "action_diversity_entropy": 2.007,
+    "strategy_switching_frequency": 0.6324,
+    "risk_taking_index": 0.8906,
+    "combat_win_rate": 0.9615,
+    "avg_health_efficiency": 0.9193,
+    "avg_decision_time_ms": 15.26,
+    "avg_combat_decision_time_ms": 0.79,
+    "avg_exploration_decision_time_ms": 17.18,
+    "heals_used": 0,
+    "chests_opened": 0,
+    "secrets_found": 0,
+    "exploration_coverage": 0.7378,
+    "tiles_walked_coverage": 0.2133,
+    "backtrack_rate": 0.2488,
+    "curiosity_rate": 0.0,
+    "low_hp_aggression": 0.5,
+    "turns_to_boss": 533
+  },
+  "actions_taken": [
+    {
+      "turn": 1,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 43,
+        "y": 44
+      },
+      "player_hp": 100,
+      "player_hp_percent": 1.0,
+      "player_level": 1,
+      "current_tile": 2,
+      "decision_time_ms": 3.609180450439453
+    },
+    {
+      "turn": 2,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 43,
+        "y": 44
+      },
+      "player_hp": 100,
+      "player_hp_percent": 1.0,
+      "player_level": 1,
+      "current_tile": 2,
+      "decision_time_ms": 2.767801284790039
+    },
+    {
+      "turn": 3,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 43,
+        "y": 44
+      },
+      "player_hp": 100,
+      "player_hp_percent": 1.0,
+      "player_level": 1,
+      "current_tile": 2,
+      "decision_time_ms": 2.5205612182617188
+    },
+    {
+      "turn": 4,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 43,
+        "y": 45
+      },
+      "player_hp": 100,
+      "player_hp_percent": 1.0,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 3.259420394897461
+    },
+    {
+      "turn": 5,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 43,
+        "y": 45
+      },
+      "player_hp": 100,
+      "player_hp_percent": 1.0,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 2.618074417114258
+    },
+    {
+      "turn": 6,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 43,
+        "y": 45
+      },
+      "player_hp": 100,
+      "player_hp_percent": 1.0,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 3.5331249237060547
+    },
+    {
+      "turn": 7,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 43,
+        "y": 46
+      },
+      "player_hp": 100,
+      "player_hp_percent": 1.0,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 3.0188560485839844
+    },
+    {
+      "turn": 8,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 43,
+        "y": 46
+      },
+      "player_hp": 100,
+      "player_hp_percent": 1.0,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 3.692150115966797
+    },
+    {
+      "turn": 9,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 43,
+        "y": 46
+      },
+      "player_hp": 100,
+      "player_hp_percent": 1.0,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 2.5141239166259766
+    },
+    {
+      "turn": 10,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 43,
+        "y": 46
+      },
+      "player_hp": 100,
+      "player_hp_percent": 1.0,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 4.389286041259766
+    },
+    {
+      "turn": 11,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 42,
+        "y": 46
+      },
+      "player_hp": 100,
+      "player_hp_percent": 1.0,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 4.602193832397461
+    },
+    {
+      "turn": 12,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 42,
+        "y": 46
+      },
+      "player_hp": 100,
+      "player_hp_percent": 1.0,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 3.660440444946289
+    },
+    {
+      "turn": 13,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 42,
+        "y": 46
+      },
+      "player_hp": 100,
+      "player_hp_percent": 1.0,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 4.172086715698242
+    },
+    {
+      "turn": 14,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 42,
+        "y": 46
+      },
+      "player_hp": 100,
+      "player_hp_percent": 1.0,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 3.3876895904541016
+    },
+    {
+      "turn": 15,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 100,
+      "player_hp_percent": 1.0,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.354766845703125
+    },
+    {
+      "turn": 16,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.46825408935546875
+    },
+    {
+      "turn": 17,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 42,
+        "y": 45
+      },
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 4.640817642211914
+    },
+    {
+      "turn": 18,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 42,
+        "y": 44
+      },
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 7.837533950805664
+    },
+    {
+      "turn": 19,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 42,
+        "y": 43
+      },
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 5.140542984008789
+    },
+    {
+      "turn": 20,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 42,
+        "y": 42
+      },
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 4.780292510986328
+    },
+    {
+      "turn": 21,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 42,
+        "y": 41
+      },
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 3.7207603454589844
+    },
+    {
+      "turn": 22,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 42,
+        "y": 40
+      },
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 5.154848098754883
+    },
+    {
+      "turn": 23,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 42,
+        "y": 40
+      },
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 4.419565200805664
+    },
+    {
+      "turn": 24,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 43,
+        "y": 40
+      },
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 3.7920475006103516
+    },
+    {
+      "turn": 25,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 44,
+        "y": 40
+      },
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 5.771875381469727
+    },
+    {
+      "turn": 26,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 44,
+        "y": 40
+      },
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 6.157398223876953
+    },
+    {
+      "turn": 27,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 44,
+        "y": 41
+      },
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 5.111455917358398
+    },
+    {
+      "turn": 28,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 44,
+        "y": 41
+      },
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 6.777763366699219
+    },
+    {
+      "turn": 29,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 44,
+        "y": 41
+      },
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 4.43720817565918
+    },
+    {
+      "turn": 30,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 44,
+        "y": 40
+      },
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 6.634235382080078
+    },
+    {
+      "turn": 31,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 44,
+        "y": 40
+      },
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 6.914854049682617
+    },
+    {
+      "turn": 32,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 44,
+        "y": 40
+      },
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 4.419088363647461
+    },
+    {
+      "turn": 33,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 97,
+      "player_hp_percent": 0.97,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.7777214050292969
+    },
+    {
+      "turn": 34,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.2884864807128906
+    },
+    {
+      "turn": 35,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 44,
+        "y": 41
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 4.978656768798828
+    },
+    {
+      "turn": 36,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 44,
+        "y": 41
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 5.08570671081543
+    },
+    {
+      "turn": 37,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 44,
+        "y": 41
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 5.592107772827148
+    },
+    {
+      "turn": 38,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 44,
+        "y": 42
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 4.651784896850586
+    },
+    {
+      "turn": 39,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 44,
+        "y": 42
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 4.765033721923828
+    },
+    {
+      "turn": 40,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 44,
+        "y": 42
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 10.524749755859375
+    },
+    {
+      "turn": 41,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 44,
+        "y": 42
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 4.912853240966797
+    },
+    {
+      "turn": 42,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 44,
+        "y": 42
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 4.23121452331543
+    },
+    {
+      "turn": 43,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 44,
+        "y": 43
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 5.709171295166016
+    },
+    {
+      "turn": 44,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 44,
+        "y": 43
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 4.466533660888672
+    },
+    {
+      "turn": 45,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 43,
+        "y": 43
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 7.509946823120117
+    },
+    {
+      "turn": 46,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 43,
+        "y": 43
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 5.644321441650391
+    },
+    {
+      "turn": 47,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 43,
+        "y": 43
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 4.902839660644531
+    },
+    {
+      "turn": 48,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 43,
+        "y": 43
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 6.484746932983398
+    },
+    {
+      "turn": 49,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 43,
+        "y": 42
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 5.420923233032227
+    },
+    {
+      "turn": 50,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 43,
+        "y": 41
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 5.576133728027344
+    },
+    {
+      "turn": 51,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 43,
+        "y": 40
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 5.853176116943359
+    },
+    {
+      "turn": 52,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 43,
+        "y": 40
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 5.462169647216797
+    },
+    {
+      "turn": 53,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 44,
+        "y": 40
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 5.4645538330078125
+    },
+    {
+      "turn": 54,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 44,
+        "y": 40
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 6.249904632568359
+    },
+    {
+      "turn": 55,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 44,
+        "y": 40
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 6.903648376464844
+    },
+    {
+      "turn": 56,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 43,
+        "y": 40
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 4.955291748046875
+    },
+    {
+      "turn": 57,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 42,
+        "y": 40
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 4.540920257568359
+    },
+    {
+      "turn": 58,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 41,
+        "y": 40
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 4.813432693481445
+    },
+    {
+      "turn": 59,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 41,
+        "y": 40
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 7.306575775146484
+    },
+    {
+      "turn": 60,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 41,
+        "y": 41
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 5.707263946533203
+    },
+    {
+      "turn": 61,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 41,
+        "y": 42
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 7.125139236450195
+    },
+    {
+      "turn": 62,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 41,
+        "y": 43
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 4.73785400390625
+    },
+    {
+      "turn": 63,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 41,
+        "y": 44
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 6.098031997680664
+    },
+    {
+      "turn": 64,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 41,
+        "y": 45
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 4.838705062866211
+    },
+    {
+      "turn": 65,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 41,
+        "y": 45
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 5.570888519287109
+    },
+    {
+      "turn": 66,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 42,
+        "y": 45
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 6.2541961669921875
+    },
+    {
+      "turn": 67,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 42,
+        "y": 45
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 4.969358444213867
+    },
+    {
+      "turn": 68,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 42,
+        "y": 45
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 6.087541580200195
+    },
+    {
+      "turn": 69,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 42,
+        "y": 45
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 4.342794418334961
+    },
+    {
+      "turn": 70,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 42,
+        "y": 45
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 5.391836166381836
+    },
+    {
+      "turn": 71,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 41,
+        "y": 45
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 4.971027374267578
+    },
+    {
+      "turn": 72,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 41,
+        "y": 45
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 5.22160530090332
+    },
+    {
+      "turn": 73,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 41,
+        "y": 45
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 6.536006927490234
+    },
+    {
+      "turn": 74,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 41,
+        "y": 45
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 3.9751529693603516
+    },
+    {
+      "turn": 75,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 41,
+        "y": 46
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 4.611730575561523
+    },
+    {
+      "turn": 76,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 41,
+        "y": 46
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 4.805803298950195
+    },
+    {
+      "turn": 77,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 42,
+        "y": 46
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 23.47278594970703
+    },
+    {
+      "turn": 78,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 42,
+        "y": 46
+      },
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": 1,
+      "decision_time_ms": 3.653287887573242
+    },
+    {
+      "turn": 79,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 94,
+      "player_hp_percent": 0.94,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.48351287841796875
+    },
+    {
+      "turn": 80,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 86,
+      "player_hp_percent": 0.86,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.3528594970703125
+    },
+    {
+      "turn": 81,
+      "phase": "combat",
+      "action": "defend",
+      "position": null,
+      "player_hp": 78,
+      "player_hp_percent": 0.78,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.34332275390625
+    },
+    {
+      "turn": 82,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 77,
+      "player_hp_percent": 0.77,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.3170967102050781
+    },
+    {
+      "turn": 83,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 69,
+      "player_hp_percent": 0.69,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.396728515625
+    },
+    {
+      "turn": 84,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 42,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.985166549682617
+    },
+    {
+      "turn": 85,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 42,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.073143005371094
+    },
+    {
+      "turn": 86,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 42,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.802776336669922
+    },
+    {
+      "turn": 87,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 42,
+        "y": 48
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.967927932739258
+    },
+    {
+      "turn": 88,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 42,
+        "y": 48
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.113912582397461
+    },
+    {
+      "turn": 89,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 41,
+        "y": 48
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 2.959728240966797
+    },
+    {
+      "turn": 90,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 40,
+        "y": 48
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.553152084350586
+    },
+    {
+      "turn": 91,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 40,
+        "y": 48
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.850698471069336
+    },
+    {
+      "turn": 92,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 40,
+        "y": 48
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 2.9456615447998047
+    },
+    {
+      "turn": 93,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 40,
+        "y": 48
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.6427974700927734
+    },
+    {
+      "turn": 94,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 40,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 2.8128623962402344
+    },
+    {
+      "turn": 95,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 40,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.117084503173828
+    },
+    {
+      "turn": 96,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 40,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.4825801849365234
+    },
+    {
+      "turn": 97,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 40,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.9844512939453125
+    },
+    {
+      "turn": 98,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 40,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.6504268646240234
+    },
+    {
+      "turn": 99,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 40,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.563570022583008
+    },
+    {
+      "turn": 100,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 39,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.2927989959716797
+    },
+    {
+      "turn": 101,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 39,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 2.972126007080078
+    },
+    {
+      "turn": 102,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 39,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.201650619506836
+    },
+    {
+      "turn": 103,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 39,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.030942916870117
+    },
+    {
+      "turn": 104,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 39,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.1576156616210938
+    },
+    {
+      "turn": 105,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 39,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.306554794311523
+    },
+    {
+      "turn": 106,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 39,
+        "y": 48
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.5817623138427734
+    },
+    {
+      "turn": 107,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 39,
+        "y": 48
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.0670166015625
+    },
+    {
+      "turn": 108,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 38,
+        "y": 48
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.2444000244140625
+    },
+    {
+      "turn": 109,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 38,
+        "y": 48
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.179477691650391
+    },
+    {
+      "turn": 110,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 38,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 5.843639373779297
+    },
+    {
+      "turn": 111,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 38,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.162860870361328
+    },
+    {
+      "turn": 112,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 37,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.420995712280273
+    },
+    {
+      "turn": 113,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 37,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.554821014404297
+    },
+    {
+      "turn": 114,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 37,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.3698081970214844
+    },
+    {
+      "turn": 115,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 37,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.197120666503906
+    },
+    {
+      "turn": 116,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 37,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.4558773040771484
+    },
+    {
+      "turn": 117,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 37,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.8797855377197266
+    },
+    {
+      "turn": 118,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 37,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.771543502807617
+    },
+    {
+      "turn": 119,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 37,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.4227371215820312
+    },
+    {
+      "turn": 120,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 37,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.5097599029541016
+    },
+    {
+      "turn": 121,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 36,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.2885074615478516
+    },
+    {
+      "turn": 122,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 36,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.689931869506836
+    },
+    {
+      "turn": 123,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 36,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 2.963542938232422
+    },
+    {
+      "turn": 124,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 36,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.3020973205566406
+    },
+    {
+      "turn": 125,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 36,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.202127456665039
+    },
+    {
+      "turn": 126,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 36,
+        "y": 47
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.6466121673583984
+    },
+    {
+      "turn": 127,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 36,
+        "y": 48
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.549337387084961
+    },
+    {
+      "turn": 128,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 36,
+        "y": 48
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.1104087829589844
+    },
+    {
+      "turn": 129,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 35,
+        "y": 48
+      },
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.912376403808594
+    },
+    {
+      "turn": 130,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 120,
+      "player_hp_percent": 1.0,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.5044937133789062
+    },
+    {
+      "turn": 131,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.31638145446777344
+    },
+    {
+      "turn": 132,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 34,
+        "y": 48
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.5293102264404297
+    },
+    {
+      "turn": 133,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 34,
+        "y": 48
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.7202835083007812
+    },
+    {
+      "turn": 134,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 34,
+        "y": 47
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.3965110778808594
+    },
+    {
+      "turn": 135,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 34,
+        "y": 47
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.050970077514648
+    },
+    {
+      "turn": 136,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 33,
+        "y": 47
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.518270492553711
+    },
+    {
+      "turn": 137,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 33,
+        "y": 47
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.766702651977539
+    },
+    {
+      "turn": 138,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 33,
+        "y": 47
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.820108413696289
+    },
+    {
+      "turn": 139,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 32,
+        "y": 47
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 5.909919738769531
+    },
+    {
+      "turn": 140,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 31,
+        "y": 47
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.145145416259766
+    },
+    {
+      "turn": 141,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 31,
+        "y": 47
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.086494445800781
+    },
+    {
+      "turn": 142,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 31,
+        "y": 48
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 5.77855110168457
+    },
+    {
+      "turn": 143,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 31,
+        "y": 48
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.3922195434570312
+    },
+    {
+      "turn": 144,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 30,
+        "y": 48
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 5.496501922607422
+    },
+    {
+      "turn": 145,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 30,
+        "y": 48
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 6.853818893432617
+    },
+    {
+      "turn": 146,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 30,
+        "y": 48
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 5.193948745727539
+    },
+    {
+      "turn": 147,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 31,
+        "y": 48
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.743337631225586
+    },
+    {
+      "turn": 148,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 31,
+        "y": 48
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.849910736083984
+    },
+    {
+      "turn": 149,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 31,
+        "y": 48
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 3.847360610961914
+    },
+    {
+      "turn": 150,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 31,
+        "y": 48
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.516839981079102
+    },
+    {
+      "turn": 151,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 31,
+        "y": 47
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 5.184412002563477
+    },
+    {
+      "turn": 152,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 31,
+        "y": 47
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.196882247924805
+    },
+    {
+      "turn": 153,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 30,
+        "y": 47
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.360675811767578
+    },
+    {
+      "turn": 154,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 29,
+        "y": 47
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 5.248546600341797
+    },
+    {
+      "turn": 155,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 28,
+        "y": 47
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 6.476163864135742
+    },
+    {
+      "turn": 156,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 28,
+        "y": 47
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 6.016731262207031
+    },
+    {
+      "turn": 157,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 28,
+        "y": 47
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 5.547285079956055
+    },
+    {
+      "turn": 158,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 28,
+        "y": 47
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 6.12187385559082
+    },
+    {
+      "turn": 159,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 28,
+        "y": 47
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.552125930786133
+    },
+    {
+      "turn": 160,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 27,
+        "y": 47
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 5.620002746582031
+    },
+    {
+      "turn": 161,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 27,
+        "y": 47
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.192352294921875
+    },
+    {
+      "turn": 162,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 27,
+        "y": 48
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 5.535602569580078
+    },
+    {
+      "turn": 163,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 27,
+        "y": 48
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.63414192199707
+    },
+    {
+      "turn": 164,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 28,
+        "y": 48
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.35328483581543
+    },
+    {
+      "turn": 165,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 29,
+        "y": 48
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 6.066560745239258
+    },
+    {
+      "turn": 166,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 30,
+        "y": 48
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.572391510009766
+    },
+    {
+      "turn": 167,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 31,
+        "y": 48
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 7.004022598266602
+    },
+    {
+      "turn": 168,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 31,
+        "y": 48
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.738569259643555
+    },
+    {
+      "turn": 169,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 31,
+        "y": 48
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 5.138874053955078
+    },
+    {
+      "turn": 170,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 32,
+        "y": 48
+      },
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.423856735229492
+    },
+    {
+      "turn": 171,
+      "phase": "combat",
+      "action": "defend",
+      "position": null,
+      "player_hp": 117,
+      "player_hp_percent": 0.975,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.36597251892089844
+    },
+    {
+      "turn": 172,
+      "phase": "combat",
+      "action": "magic",
+      "position": null,
+      "player_hp": 116,
+      "player_hp_percent": 0.9666666666666667,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.3669261932373047
+    },
+    {
+      "turn": 173,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 113,
+      "player_hp_percent": 0.9416666666666667,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.66375732421875
+    },
+    {
+      "turn": 174,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 33,
+        "y": 48
+      },
+      "player_hp": 113,
+      "player_hp_percent": 0.9416666666666667,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.7168731689453125
+    },
+    {
+      "turn": 175,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 34,
+        "y": 48
+      },
+      "player_hp": 113,
+      "player_hp_percent": 0.9416666666666667,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 5.453348159790039
+    },
+    {
+      "turn": 176,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 35,
+        "y": 48
+      },
+      "player_hp": 113,
+      "player_hp_percent": 0.9416666666666667,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 5.6514739990234375
+    },
+    {
+      "turn": 177,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 36,
+        "y": 48
+      },
+      "player_hp": 113,
+      "player_hp_percent": 0.9416666666666667,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 5.274057388305664
+    },
+    {
+      "turn": 178,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 37,
+        "y": 48
+      },
+      "player_hp": 113,
+      "player_hp_percent": 0.9416666666666667,
+      "player_level": 2,
+      "current_tile": 1,
+      "decision_time_ms": 4.644155502319336
+    },
+    {
+      "turn": 179,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 113,
+      "player_hp_percent": 0.9416666666666667,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.6132125854492188
+    },
+    {
+      "turn": 180,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 103,
+      "player_hp_percent": 0.8583333333333333,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.5481243133544922
+    },
+    {
+      "turn": 181,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 93,
+      "player_hp_percent": 0.775,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.5578994750976562
+    },
+    {
+      "turn": 182,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 90,
+      "player_hp_percent": 0.75,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.4425048828125
+    },
+    {
+      "turn": 183,
+      "phase": "combat",
+      "action": "magic",
+      "position": null,
+      "player_hp": 87,
+      "player_hp_percent": 0.725,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.4475116729736328
+    },
+    {
+      "turn": 184,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 38,
+        "y": 48
+      },
+      "player_hp": 140,
+      "player_hp_percent": 1.0,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 8.39090347290039
+    },
+    {
+      "turn": 185,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 38,
+        "y": 48
+      },
+      "player_hp": 140,
+      "player_hp_percent": 1.0,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 6.651878356933594
+    },
+    {
+      "turn": 186,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 38,
+        "y": 48
+      },
+      "player_hp": 140,
+      "player_hp_percent": 1.0,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 7.079839706420898
+    },
+    {
+      "turn": 187,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 39,
+        "y": 48
+      },
+      "player_hp": 140,
+      "player_hp_percent": 1.0,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 6.211280822753906
+    },
+    {
+      "turn": 188,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 40,
+        "y": 48
+      },
+      "player_hp": 140,
+      "player_hp_percent": 1.0,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 6.352663040161133
+    },
+    {
+      "turn": 189,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 40,
+        "y": 48
+      },
+      "player_hp": 140,
+      "player_hp_percent": 1.0,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 6.576299667358398
+    },
+    {
+      "turn": 190,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 40,
+        "y": 48
+      },
+      "player_hp": 140,
+      "player_hp_percent": 1.0,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 5.354166030883789
+    },
+    {
+      "turn": 191,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 40,
+        "y": 48
+      },
+      "player_hp": 140,
+      "player_hp_percent": 1.0,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 6.229162216186523
+    },
+    {
+      "turn": 192,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 40,
+        "y": 48
+      },
+      "player_hp": 140,
+      "player_hp_percent": 1.0,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 7.297039031982422
+    },
+    {
+      "turn": 193,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 40,
+        "y": 48
+      },
+      "player_hp": 140,
+      "player_hp_percent": 1.0,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 5.976200103759766
+    },
+    {
+      "turn": 194,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 40,
+        "y": 48
+      },
+      "player_hp": 140,
+      "player_hp_percent": 1.0,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 5.939960479736328
+    },
+    {
+      "turn": 195,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 41,
+        "y": 48
+      },
+      "player_hp": 140,
+      "player_hp_percent": 1.0,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 6.16908073425293
+    },
+    {
+      "turn": 196,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 140,
+      "player_hp_percent": 1.0,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.7300376892089844
+    },
+    {
+      "turn": 197,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 133,
+      "player_hp_percent": 0.95,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.2911090850830078
+    },
+    {
+      "turn": 198,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 42,
+        "y": 48
+      },
+      "player_hp": 133,
+      "player_hp_percent": 0.95,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 7.445096969604492
+    },
+    {
+      "turn": 199,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 42,
+        "y": 48
+      },
+      "player_hp": 133,
+      "player_hp_percent": 0.95,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 7.325410842895508
+    },
+    {
+      "turn": 200,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 42,
+        "y": 48
+      },
+      "player_hp": 133,
+      "player_hp_percent": 0.95,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 6.8111419677734375
+    },
+    {
+      "turn": 201,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 42,
+        "y": 48
+      },
+      "player_hp": 133,
+      "player_hp_percent": 0.95,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 7.497072219848633
+    },
+    {
+      "turn": 202,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 42,
+        "y": 48
+      },
+      "player_hp": 133,
+      "player_hp_percent": 0.95,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 7.09986686706543
+    },
+    {
+      "turn": 203,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 43,
+        "y": 48
+      },
+      "player_hp": 133,
+      "player_hp_percent": 0.95,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 14.662981033325195
+    },
+    {
+      "turn": 204,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 44,
+        "y": 48
+      },
+      "player_hp": 133,
+      "player_hp_percent": 0.95,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 5.242586135864258
+    },
+    {
+      "turn": 205,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 45,
+        "y": 48
+      },
+      "player_hp": 133,
+      "player_hp_percent": 0.95,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 5.835056304931641
+    },
+    {
+      "turn": 206,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 45,
+        "y": 48
+      },
+      "player_hp": 133,
+      "player_hp_percent": 0.95,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 5.519390106201172
+    },
+    {
+      "turn": 207,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 133,
+      "player_hp_percent": 0.95,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.4086494445800781
+    },
+    {
+      "turn": 208,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 126,
+      "player_hp_percent": 0.9,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.3006458282470703
+    },
+    {
+      "turn": 209,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 45,
+        "y": 47
+      },
+      "player_hp": 126,
+      "player_hp_percent": 0.9,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 5.912542343139648
+    },
+    {
+      "turn": 210,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 45,
+        "y": 47
+      },
+      "player_hp": 126,
+      "player_hp_percent": 0.9,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 6.762504577636719
+    },
+    {
+      "turn": 211,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 45,
+        "y": 47
+      },
+      "player_hp": 126,
+      "player_hp_percent": 0.9,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 7.338285446166992
+    },
+    {
+      "turn": 212,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 45,
+        "y": 47
+      },
+      "player_hp": 126,
+      "player_hp_percent": 0.9,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 7.446527481079102
+    },
+    {
+      "turn": 213,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 45,
+        "y": 47
+      },
+      "player_hp": 126,
+      "player_hp_percent": 0.9,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 7.150888442993164
+    },
+    {
+      "turn": 214,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 45,
+        "y": 47
+      },
+      "player_hp": 126,
+      "player_hp_percent": 0.9,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 7.318735122680664
+    },
+    {
+      "turn": 215,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 46,
+        "y": 47
+      },
+      "player_hp": 126,
+      "player_hp_percent": 0.9,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 10.56528091430664
+    },
+    {
+      "turn": 216,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 46,
+        "y": 47
+      },
+      "player_hp": 126,
+      "player_hp_percent": 0.9,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 6.989717483520508
+    },
+    {
+      "turn": 217,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 46,
+        "y": 47
+      },
+      "player_hp": 126,
+      "player_hp_percent": 0.9,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 9.125471115112305
+    },
+    {
+      "turn": 218,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 47,
+        "y": 47
+      },
+      "player_hp": 126,
+      "player_hp_percent": 0.9,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 5.044221878051758
+    },
+    {
+      "turn": 219,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 47,
+        "y": 47
+      },
+      "player_hp": 126,
+      "player_hp_percent": 0.9,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 7.758855819702148
+    },
+    {
+      "turn": 220,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 47,
+        "y": 48
+      },
+      "player_hp": 126,
+      "player_hp_percent": 0.9,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 8.857488632202148
+    },
+    {
+      "turn": 221,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 47,
+        "y": 48
+      },
+      "player_hp": 126,
+      "player_hp_percent": 0.9,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 6.139516830444336
+    },
+    {
+      "turn": 222,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 47,
+        "y": 48
+      },
+      "player_hp": 126,
+      "player_hp_percent": 0.9,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 9.130001068115234
+    },
+    {
+      "turn": 223,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 47,
+        "y": 48
+      },
+      "player_hp": 126,
+      "player_hp_percent": 0.9,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 6.082296371459961
+    },
+    {
+      "turn": 224,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 48,
+        "y": 48
+      },
+      "player_hp": 126,
+      "player_hp_percent": 0.9,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 7.283210754394531
+    },
+    {
+      "turn": 225,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 48,
+        "y": 48
+      },
+      "player_hp": 126,
+      "player_hp_percent": 0.9,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 6.819009780883789
+    },
+    {
+      "turn": 226,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 48,
+        "y": 47
+      },
+      "player_hp": 126,
+      "player_hp_percent": 0.9,
+      "player_level": 3,
+      "current_tile": 1,
+      "decision_time_ms": 8.701562881469727
+    },
+    {
+      "turn": 227,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 126,
+      "player_hp_percent": 0.9,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.4000663757324219
+    },
+    {
+      "turn": 228,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 123,
+      "player_hp_percent": 0.8785714285714286,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.19812583923339844
+    },
+    {
+      "turn": 229,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 48,
+        "y": 46
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 4.630804061889648
+    },
+    {
+      "turn": 230,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 48,
+        "y": 46
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 6.558656692504883
+    },
+    {
+      "turn": 231,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 48,
+        "y": 46
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 4.7931671142578125
+    },
+    {
+      "turn": 232,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 48,
+        "y": 46
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 6.26826286315918
+    },
+    {
+      "turn": 233,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 48,
+        "y": 46
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 8.74781608581543
+    },
+    {
+      "turn": 234,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 48,
+        "y": 46
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 8.794307708740234
+    },
+    {
+      "turn": 235,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 48,
+        "y": 46
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 9.051322937011719
+    },
+    {
+      "turn": 236,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 48,
+        "y": 45
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 6.305932998657227
+    },
+    {
+      "turn": 237,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 48,
+        "y": 44
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 4.804372787475586
+    },
+    {
+      "turn": 238,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 48,
+        "y": 43
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 10.17308235168457
+    },
+    {
+      "turn": 239,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 48,
+        "y": 42
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 6.031036376953125
+    },
+    {
+      "turn": 240,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 48,
+        "y": 41
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 6.504297256469727
+    },
+    {
+      "turn": 241,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 48,
+        "y": 40
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 7.819414138793945
+    },
+    {
+      "turn": 242,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 48,
+        "y": 39
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 7.098913192749023
+    },
+    {
+      "turn": 243,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 48,
+        "y": 39
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 7.893085479736328
+    },
+    {
+      "turn": 244,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 49,
+        "y": 39
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 8.626937866210938
+    },
+    {
+      "turn": 245,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 49,
+        "y": 39
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 5.7086944580078125
+    },
+    {
+      "turn": 246,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 49,
+        "y": 40
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 9.69839096069336
+    },
+    {
+      "turn": 247,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 49,
+        "y": 41
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 14.48202133178711
+    },
+    {
+      "turn": 248,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 49,
+        "y": 41
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 7.777929306030273
+    },
+    {
+      "turn": 249,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 49,
+        "y": 41
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 7.925987243652344
+    },
+    {
+      "turn": 250,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 49,
+        "y": 41
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 11.569976806640625
+    },
+    {
+      "turn": 251,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 49,
+        "y": 41
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 5.255937576293945
+    },
+    {
+      "turn": 252,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 49,
+        "y": 40
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 7.505655288696289
+    },
+    {
+      "turn": 253,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 49,
+        "y": 39
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 6.875514984130859
+    },
+    {
+      "turn": 254,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.5922317504882812
+    },
+    {
+      "turn": 255,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 49,
+        "y": 38
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 8.120536804199219
+    },
+    {
+      "turn": 256,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 49,
+        "y": 38
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 6.796360015869141
+    },
+    {
+      "turn": 257,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 49,
+        "y": 38
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 6.556510925292969
+    },
+    {
+      "turn": 258,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 49,
+        "y": 37
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 8.011341094970703
+    },
+    {
+      "turn": 259,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 49,
+        "y": 36
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 6.944894790649414
+    },
+    {
+      "turn": 260,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 49,
+        "y": 35
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 11.28530502319336
+    },
+    {
+      "turn": 261,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 49,
+        "y": 34
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 7.559776306152344
+    },
+    {
+      "turn": 262,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 49,
+        "y": 34
+      },
+      "player_hp": 160,
+      "player_hp_percent": 1.0,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 8.097171783447266
+    },
+    {
+      "turn": 263,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 48,
+        "y": 34
+      },
+      "player_hp": 153,
+      "player_hp_percent": 0.95625,
+      "player_level": 4,
+      "current_tile": 6,
+      "decision_time_ms": 10.118484497070312
+    },
+    {
+      "turn": 264,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 48,
+        "y": 34
+      },
+      "player_hp": 153,
+      "player_hp_percent": 0.95625,
+      "player_level": 4,
+      "current_tile": 6,
+      "decision_time_ms": 7.021188735961914
+    },
+    {
+      "turn": 265,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 48,
+        "y": 33
+      },
+      "player_hp": 153,
+      "player_hp_percent": 0.95625,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 6.688356399536133
+    },
+    {
+      "turn": 266,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 48,
+        "y": 32
+      },
+      "player_hp": 153,
+      "player_hp_percent": 0.95625,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 3.567218780517578
+    },
+    {
+      "turn": 267,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 48,
+        "y": 31
+      },
+      "player_hp": 153,
+      "player_hp_percent": 0.95625,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 7.14421272277832
+    },
+    {
+      "turn": 268,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 48,
+        "y": 31
+      },
+      "player_hp": 153,
+      "player_hp_percent": 0.95625,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 11.476516723632812
+    },
+    {
+      "turn": 269,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 48,
+        "y": 31
+      },
+      "player_hp": 153,
+      "player_hp_percent": 0.95625,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 6.3266754150390625
+    },
+    {
+      "turn": 270,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 48,
+        "y": 31
+      },
+      "player_hp": 153,
+      "player_hp_percent": 0.95625,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 8.914709091186523
+    },
+    {
+      "turn": 271,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 48,
+        "y": 31
+      },
+      "player_hp": 153,
+      "player_hp_percent": 0.95625,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 6.959438323974609
+    },
+    {
+      "turn": 272,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 48,
+        "y": 31
+      },
+      "player_hp": 153,
+      "player_hp_percent": 0.95625,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 6.880760192871094
+    },
+    {
+      "turn": 273,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 48,
+        "y": 31
+      },
+      "player_hp": 153,
+      "player_hp_percent": 0.95625,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 7.297515869140625
+    },
+    {
+      "turn": 274,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 48,
+        "y": 31
+      },
+      "player_hp": 153,
+      "player_hp_percent": 0.95625,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 13.755083084106445
+    },
+    {
+      "turn": 275,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 49,
+        "y": 31
+      },
+      "player_hp": 153,
+      "player_hp_percent": 0.95625,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 6.81757926940918
+    },
+    {
+      "turn": 276,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 49,
+        "y": 31
+      },
+      "player_hp": 153,
+      "player_hp_percent": 0.95625,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 7.0629119873046875
+    },
+    {
+      "turn": 277,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 49,
+        "y": 31
+      },
+      "player_hp": 153,
+      "player_hp_percent": 0.95625,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 10.028600692749023
+    },
+    {
+      "turn": 278,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 49,
+        "y": 31
+      },
+      "player_hp": 153,
+      "player_hp_percent": 0.95625,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 6.730794906616211
+    },
+    {
+      "turn": 279,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 49,
+        "y": 31
+      },
+      "player_hp": 153,
+      "player_hp_percent": 0.95625,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 7.483005523681641
+    },
+    {
+      "turn": 280,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 49,
+        "y": 31
+      },
+      "player_hp": 153,
+      "player_hp_percent": 0.95625,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 8.821249008178711
+    },
+    {
+      "turn": 281,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 49,
+        "y": 31
+      },
+      "player_hp": 153,
+      "player_hp_percent": 0.95625,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 5.227088928222656
+    },
+    {
+      "turn": 282,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 48,
+        "y": 31
+      },
+      "player_hp": 153,
+      "player_hp_percent": 0.95625,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 6.525516510009766
+    },
+    {
+      "turn": 283,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 47,
+        "y": 31
+      },
+      "player_hp": 153,
+      "player_hp_percent": 0.95625,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 6.453514099121094
+    },
+    {
+      "turn": 284,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 47,
+        "y": 31
+      },
+      "player_hp": 153,
+      "player_hp_percent": 0.95625,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 5.128383636474609
+    },
+    {
+      "turn": 285,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 153,
+      "player_hp_percent": 0.95625,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.4031658172607422
+    },
+    {
+      "turn": 286,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 146,
+      "player_hp_percent": 0.9125,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.278472900390625
+    },
+    {
+      "turn": 287,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 47,
+        "y": 30
+      },
+      "player_hp": 146,
+      "player_hp_percent": 0.9125,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 7.313251495361328
+    },
+    {
+      "turn": 288,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 47,
+        "y": 30
+      },
+      "player_hp": 146,
+      "player_hp_percent": 0.9125,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 4.644870758056641
+    },
+    {
+      "turn": 289,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 47,
+        "y": 30
+      },
+      "player_hp": 146,
+      "player_hp_percent": 0.9125,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 7.6351165771484375
+    },
+    {
+      "turn": 290,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 47,
+        "y": 30
+      },
+      "player_hp": 146,
+      "player_hp_percent": 0.9125,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 6.646633148193359
+    },
+    {
+      "turn": 291,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 47,
+        "y": 30
+      },
+      "player_hp": 146,
+      "player_hp_percent": 0.9125,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 6.570577621459961
+    },
+    {
+      "turn": 292,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 47,
+        "y": 31
+      },
+      "player_hp": 146,
+      "player_hp_percent": 0.9125,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 5.390644073486328
+    },
+    {
+      "turn": 293,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 47,
+        "y": 32
+      },
+      "player_hp": 146,
+      "player_hp_percent": 0.9125,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 5.370140075683594
+    },
+    {
+      "turn": 294,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 47,
+        "y": 32
+      },
+      "player_hp": 146,
+      "player_hp_percent": 0.9125,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 10.066032409667969
+    },
+    {
+      "turn": 295,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 47,
+        "y": 32
+      },
+      "player_hp": 146,
+      "player_hp_percent": 0.9125,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 8.960247039794922
+    },
+    {
+      "turn": 296,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 47,
+        "y": 32
+      },
+      "player_hp": 146,
+      "player_hp_percent": 0.9125,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 8.374929428100586
+    },
+    {
+      "turn": 297,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 47,
+        "y": 32
+      },
+      "player_hp": 146,
+      "player_hp_percent": 0.9125,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 8.665323257446289
+    },
+    {
+      "turn": 298,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 47,
+        "y": 32
+      },
+      "player_hp": 146,
+      "player_hp_percent": 0.9125,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 8.583784103393555
+    },
+    {
+      "turn": 299,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 48,
+        "y": 32
+      },
+      "player_hp": 146,
+      "player_hp_percent": 0.9125,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 7.564544677734375
+    },
+    {
+      "turn": 300,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 48,
+        "y": 32
+      },
+      "player_hp": 146,
+      "player_hp_percent": 0.9125,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 8.253812789916992
+    },
+    {
+      "turn": 301,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 48,
+        "y": 31
+      },
+      "player_hp": 146,
+      "player_hp_percent": 0.9125,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 13.877391815185547
+    },
+    {
+      "turn": 302,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 48,
+        "y": 31
+      },
+      "player_hp": 146,
+      "player_hp_percent": 0.9125,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 8.451700210571289
+    },
+    {
+      "turn": 303,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 49,
+        "y": 31
+      },
+      "player_hp": 146,
+      "player_hp_percent": 0.9125,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 7.815361022949219
+    },
+    {
+      "turn": 304,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 49,
+        "y": 31
+      },
+      "player_hp": 146,
+      "player_hp_percent": 0.9125,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 6.100654602050781
+    },
+    {
+      "turn": 305,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 49,
+        "y": 31
+      },
+      "player_hp": 146,
+      "player_hp_percent": 0.9125,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 7.54547119140625
+    },
+    {
+      "turn": 306,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 146,
+      "player_hp_percent": 0.9125,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.5090236663818359
+    },
+    {
+      "turn": 307,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 143,
+      "player_hp_percent": 0.89375,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.2880096435546875
+    },
+    {
+      "turn": 308,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 48,
+        "y": 31
+      },
+      "player_hp": 143,
+      "player_hp_percent": 0.89375,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 11.828422546386719
+    },
+    {
+      "turn": 309,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 47,
+        "y": 31
+      },
+      "player_hp": 143,
+      "player_hp_percent": 0.89375,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 5.177021026611328
+    },
+    {
+      "turn": 310,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 47,
+        "y": 31
+      },
+      "player_hp": 143,
+      "player_hp_percent": 0.89375,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 5.605459213256836
+    },
+    {
+      "turn": 311,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 47,
+        "y": 32
+      },
+      "player_hp": 143,
+      "player_hp_percent": 0.89375,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 6.757974624633789
+    },
+    {
+      "turn": 312,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 47,
+        "y": 32
+      },
+      "player_hp": 143,
+      "player_hp_percent": 0.89375,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 6.375551223754883
+    },
+    {
+      "turn": 313,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 46,
+        "y": 32
+      },
+      "player_hp": 143,
+      "player_hp_percent": 0.89375,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 7.928133010864258
+    },
+    {
+      "turn": 314,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 46,
+        "y": 32
+      },
+      "player_hp": 143,
+      "player_hp_percent": 0.89375,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 7.396459579467773
+    },
+    {
+      "turn": 315,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 46,
+        "y": 32
+      },
+      "player_hp": 143,
+      "player_hp_percent": 0.89375,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 7.103204727172852
+    },
+    {
+      "turn": 316,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 46,
+        "y": 32
+      },
+      "player_hp": 143,
+      "player_hp_percent": 0.89375,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 5.095005035400391
+    },
+    {
+      "turn": 317,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 46,
+        "y": 32
+      },
+      "player_hp": 143,
+      "player_hp_percent": 0.89375,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 8.29935073852539
+    },
+    {
+      "turn": 318,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 47,
+        "y": 32
+      },
+      "player_hp": 143,
+      "player_hp_percent": 0.89375,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 7.427692413330078
+    },
+    {
+      "turn": 319,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 143,
+      "player_hp_percent": 0.89375,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.33473968505859375
+    },
+    {
+      "turn": 320,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.6775856018066406
+    },
+    {
+      "turn": 321,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 48,
+        "y": 32
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 11.259078979492188
+    },
+    {
+      "turn": 322,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 49,
+        "y": 32
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 5,
+      "decision_time_ms": 7.146120071411133
+    },
+    {
+      "turn": 323,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 50,
+        "y": 32
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 7.968664169311523
+    },
+    {
+      "turn": 324,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 50,
+        "y": 32
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 5.41996955871582
+    },
+    {
+      "turn": 325,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 50,
+        "y": 32
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 9.442567825317383
+    },
+    {
+      "turn": 326,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 50,
+        "y": 32
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 7.260560989379883
+    },
+    {
+      "turn": 327,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 50,
+        "y": 32
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 8.29625129699707
+    },
+    {
+      "turn": 328,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 50,
+        "y": 32
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 5.890607833862305
+    },
+    {
+      "turn": 329,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 50,
+        "y": 31
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 7.336139678955078
+    },
+    {
+      "turn": 330,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 50,
+        "y": 30
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 5.569934844970703
+    },
+    {
+      "turn": 331,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 50,
+        "y": 29
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 7.47227668762207
+    },
+    {
+      "turn": 332,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 50,
+        "y": 29
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 7.142305374145508
+    },
+    {
+      "turn": 333,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 49,
+        "y": 29
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 8.263587951660156
+    },
+    {
+      "turn": 334,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.3237724304199219
+    },
+    {
+      "turn": 335,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 48,
+        "y": 29
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 8.751153945922852
+    },
+    {
+      "turn": 336,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 47,
+        "y": 29
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 77.75139808654785
+    },
+    {
+      "turn": 337,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 47,
+        "y": 29
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 71.69246673583984
+    },
+    {
+      "turn": 338,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 47,
+        "y": 30
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 67.73543357849121
+    },
+    {
+      "turn": 339,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 47,
+        "y": 30
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 86.71760559082031
+    },
+    {
+      "turn": 340,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 48,
+        "y": 30
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 58.135271072387695
+    },
+    {
+      "turn": 341,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 49,
+        "y": 30
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 80.69133758544922
+    },
+    {
+      "turn": 342,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 49,
+        "y": 30
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 50.10342597961426
+    },
+    {
+      "turn": 343,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 49,
+        "y": 30
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 69.8401927947998
+    },
+    {
+      "turn": 344,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 48,
+        "y": 30
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 71.50745391845703
+    },
+    {
+      "turn": 345,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 47,
+        "y": 30
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 62.8361701965332
+    },
+    {
+      "turn": 346,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 47,
+        "y": 30
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 59.23151969909668
+    },
+    {
+      "turn": 347,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 47,
+        "y": 30
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 80.6131362915039
+    },
+    {
+      "turn": 348,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 47,
+        "y": 30
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 66.47753715515137
+    },
+    {
+      "turn": 349,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 47,
+        "y": 29
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 91.0642147064209
+    },
+    {
+      "turn": 350,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 47,
+        "y": 29
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 64.3918514251709
+    },
+    {
+      "turn": 351,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 48,
+        "y": 29
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 80.9783935546875
+    },
+    {
+      "turn": 352,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 48,
+        "y": 29
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 75.3011703491211
+    },
+    {
+      "turn": 353,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 48,
+        "y": 30
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 68.1145191192627
+    },
+    {
+      "turn": 354,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 48,
+        "y": 30
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 64.53299522399902
+    },
+    {
+      "turn": 355,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 48,
+        "y": 30
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 73.15945625305176
+    },
+    {
+      "turn": 356,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 48,
+        "y": 29
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 45.728206634521484
+    },
+    {
+      "turn": 357,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 48,
+        "y": 29
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 62.96205520629883
+    },
+    {
+      "turn": 358,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 48,
+        "y": 29
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 58.14957618713379
+    },
+    {
+      "turn": 359,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 48,
+        "y": 29
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 77.21352577209473
+    },
+    {
+      "turn": 360,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 47,
+        "y": 29
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 69.25821304321289
+    },
+    {
+      "turn": 361,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 47,
+        "y": 29
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 97.71442413330078
+    },
+    {
+      "turn": 362,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 47,
+        "y": 29
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 63.99226188659668
+    },
+    {
+      "turn": 363,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 47,
+        "y": 29
+      },
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 4,
+      "current_tile": 1,
+      "decision_time_ms": 66.49637222290039
+    },
+    {
+      "turn": 364,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 136,
+      "player_hp_percent": 0.85,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.6184577941894531
+    },
+    {
+      "turn": 365,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 129,
+      "player_hp_percent": 0.80625,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.2856254577636719
+    },
+    {
+      "turn": 366,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 47,
+        "y": 28
+      },
+      "player_hp": 180,
+      "player_hp_percent": 1.0,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 51.47433280944824
+    },
+    {
+      "turn": 367,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 47,
+        "y": 28
+      },
+      "player_hp": 180,
+      "player_hp_percent": 1.0,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 51.57613754272461
+    },
+    {
+      "turn": 368,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 47,
+        "y": 28
+      },
+      "player_hp": 180,
+      "player_hp_percent": 1.0,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 64.51106071472168
+    },
+    {
+      "turn": 369,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 47,
+        "y": 28
+      },
+      "player_hp": 180,
+      "player_hp_percent": 1.0,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 61.70296669006348
+    },
+    {
+      "turn": 370,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 46,
+        "y": 28
+      },
+      "player_hp": 180,
+      "player_hp_percent": 1.0,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 30.841827392578125
+    },
+    {
+      "turn": 371,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 45,
+        "y": 28
+      },
+      "player_hp": 180,
+      "player_hp_percent": 1.0,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 43.95008087158203
+    },
+    {
+      "turn": 372,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 45,
+        "y": 28
+      },
+      "player_hp": 180,
+      "player_hp_percent": 1.0,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 39.632320404052734
+    },
+    {
+      "turn": 373,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 45,
+        "y": 28
+      },
+      "player_hp": 180,
+      "player_hp_percent": 1.0,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 44.280290603637695
+    },
+    {
+      "turn": 374,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 45,
+        "y": 28
+      },
+      "player_hp": 180,
+      "player_hp_percent": 1.0,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 33.94198417663574
+    },
+    {
+      "turn": 375,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 45,
+        "y": 28
+      },
+      "player_hp": 180,
+      "player_hp_percent": 1.0,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 61.837196350097656
+    },
+    {
+      "turn": 376,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 45,
+        "y": 28
+      },
+      "player_hp": 180,
+      "player_hp_percent": 1.0,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 20.020008087158203
+    },
+    {
+      "turn": 377,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 45,
+        "y": 28
+      },
+      "player_hp": 180,
+      "player_hp_percent": 1.0,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 52.033185958862305
+    },
+    {
+      "turn": 378,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 44,
+        "y": 28
+      },
+      "player_hp": 180,
+      "player_hp_percent": 1.0,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 30.755281448364258
+    },
+    {
+      "turn": 379,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 43,
+        "y": 28
+      },
+      "player_hp": 180,
+      "player_hp_percent": 1.0,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 32.40489959716797
+    },
+    {
+      "turn": 380,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 43,
+        "y": 28
+      },
+      "player_hp": 180,
+      "player_hp_percent": 1.0,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 43.00737380981445
+    },
+    {
+      "turn": 381,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 43,
+        "y": 28
+      },
+      "player_hp": 180,
+      "player_hp_percent": 1.0,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 23.85115623474121
+    },
+    {
+      "turn": 382,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 43,
+        "y": 28
+      },
+      "player_hp": 180,
+      "player_hp_percent": 1.0,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 37.66131401062012
+    },
+    {
+      "turn": 383,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 43,
+        "y": 28
+      },
+      "player_hp": 180,
+      "player_hp_percent": 1.0,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 44.6474552154541
+    },
+    {
+      "turn": 384,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 43,
+        "y": 28
+      },
+      "player_hp": 180,
+      "player_hp_percent": 1.0,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 47.97554016113281
+    },
+    {
+      "turn": 385,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 43,
+        "y": 28
+      },
+      "player_hp": 180,
+      "player_hp_percent": 1.0,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 56.26702308654785
+    },
+    {
+      "turn": 386,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 180,
+      "player_hp_percent": 1.0,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.7619857788085938
+    },
+    {
+      "turn": 387,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 173,
+      "player_hp_percent": 0.9611111111111111,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.2884864807128906
+    },
+    {
+      "turn": 388,
+      "phase": "combat",
+      "action": "magic",
+      "position": null,
+      "player_hp": 166,
+      "player_hp_percent": 0.9222222222222223,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 7.100820541381836
+    },
+    {
+      "turn": 389,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 42,
+        "y": 28
+      },
+      "player_hp": 166,
+      "player_hp_percent": 0.9222222222222223,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 26.688337326049805
+    },
+    {
+      "turn": 390,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 41,
+        "y": 28
+      },
+      "player_hp": 166,
+      "player_hp_percent": 0.9222222222222223,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 24.309158325195312
+    },
+    {
+      "turn": 391,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 41,
+        "y": 28
+      },
+      "player_hp": 166,
+      "player_hp_percent": 0.9222222222222223,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 18.09072494506836
+    },
+    {
+      "turn": 392,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 41,
+        "y": 28
+      },
+      "player_hp": 166,
+      "player_hp_percent": 0.9222222222222223,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 26.273727416992188
+    },
+    {
+      "turn": 393,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 40,
+        "y": 28
+      },
+      "player_hp": 166,
+      "player_hp_percent": 0.9222222222222223,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 34.722089767456055
+    },
+    {
+      "turn": 394,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 40,
+        "y": 28
+      },
+      "player_hp": 166,
+      "player_hp_percent": 0.9222222222222223,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 56.82730674743652
+    },
+    {
+      "turn": 395,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 40,
+        "y": 28
+      },
+      "player_hp": 166,
+      "player_hp_percent": 0.9222222222222223,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 37.56213188171387
+    },
+    {
+      "turn": 396,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 40,
+        "y": 28
+      },
+      "player_hp": 166,
+      "player_hp_percent": 0.9222222222222223,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 36.736488342285156
+    },
+    {
+      "turn": 397,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 40,
+        "y": 27
+      },
+      "player_hp": 166,
+      "player_hp_percent": 0.9222222222222223,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 29.369115829467773
+    },
+    {
+      "turn": 398,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 40,
+        "y": 27
+      },
+      "player_hp": 166,
+      "player_hp_percent": 0.9222222222222223,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 33.80846977233887
+    },
+    {
+      "turn": 399,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 39,
+        "y": 27
+      },
+      "player_hp": 166,
+      "player_hp_percent": 0.9222222222222223,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 24.106502532958984
+    },
+    {
+      "turn": 400,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 39,
+        "y": 27
+      },
+      "player_hp": 166,
+      "player_hp_percent": 0.9222222222222223,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 54.570913314819336
+    },
+    {
+      "turn": 401,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 39,
+        "y": 27
+      },
+      "player_hp": 166,
+      "player_hp_percent": 0.9222222222222223,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 38.66386413574219
+    },
+    {
+      "turn": 402,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 39,
+        "y": 27
+      },
+      "player_hp": 166,
+      "player_hp_percent": 0.9222222222222223,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 27.1608829498291
+    },
+    {
+      "turn": 403,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 39,
+        "y": 28
+      },
+      "player_hp": 166,
+      "player_hp_percent": 0.9222222222222223,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 63.291311264038086
+    },
+    {
+      "turn": 404,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 39,
+        "y": 28
+      },
+      "player_hp": 166,
+      "player_hp_percent": 0.9222222222222223,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 54.941415786743164
+    },
+    {
+      "turn": 405,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 39,
+        "y": 28
+      },
+      "player_hp": 166,
+      "player_hp_percent": 0.9222222222222223,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 54.69942092895508
+    },
+    {
+      "turn": 406,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 166,
+      "player_hp_percent": 0.9222222222222223,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.36787986755371094
+    },
+    {
+      "turn": 407,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 158,
+      "player_hp_percent": 0.8777777777777778,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.28014183044433594
+    },
+    {
+      "turn": 408,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 39,
+        "y": 27
+      },
+      "player_hp": 158,
+      "player_hp_percent": 0.8777777777777778,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 42.62995719909668
+    },
+    {
+      "turn": 409,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 39,
+        "y": 26
+      },
+      "player_hp": 158,
+      "player_hp_percent": 0.8777777777777778,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 34.03449058532715
+    },
+    {
+      "turn": 410,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 39,
+        "y": 25
+      },
+      "player_hp": 158,
+      "player_hp_percent": 0.8777777777777778,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 34.089088439941406
+    },
+    {
+      "turn": 411,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 39,
+        "y": 24
+      },
+      "player_hp": 158,
+      "player_hp_percent": 0.8777777777777778,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 25.906801223754883
+    },
+    {
+      "turn": 412,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 39,
+        "y": 23
+      },
+      "player_hp": 158,
+      "player_hp_percent": 0.8777777777777778,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 16.58010482788086
+    },
+    {
+      "turn": 413,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 158,
+      "player_hp_percent": 0.8777777777777778,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.29754638671875
+    },
+    {
+      "turn": 414,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 151,
+      "player_hp_percent": 0.8388888888888889,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.48804283142089844
+    },
+    {
+      "turn": 415,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 39,
+        "y": 22
+      },
+      "player_hp": 151,
+      "player_hp_percent": 0.8388888888888889,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 5.982398986816406
+    },
+    {
+      "turn": 416,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 39,
+        "y": 21
+      },
+      "player_hp": 151,
+      "player_hp_percent": 0.8388888888888889,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 21.709680557250977
+    },
+    {
+      "turn": 417,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 39,
+        "y": 20
+      },
+      "player_hp": 151,
+      "player_hp_percent": 0.8388888888888889,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 21.599769592285156
+    },
+    {
+      "turn": 418,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 39,
+        "y": 20
+      },
+      "player_hp": 151,
+      "player_hp_percent": 0.8388888888888889,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 39.46185111999512
+    },
+    {
+      "turn": 419,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 40,
+        "y": 20
+      },
+      "player_hp": 151,
+      "player_hp_percent": 0.8388888888888889,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 33.07962417602539
+    },
+    {
+      "turn": 420,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 151,
+      "player_hp_percent": 0.8388888888888889,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.3287792205810547
+    },
+    {
+      "turn": 421,
+      "phase": "combat",
+      "action": "magic",
+      "position": null,
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.5028247833251953
+    },
+    {
+      "turn": 422,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 41,
+        "y": 20
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 6.667375564575195
+    },
+    {
+      "turn": 423,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 41,
+        "y": 20
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 9.548187255859375
+    },
+    {
+      "turn": 424,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 41,
+        "y": 21
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 9.650230407714844
+    },
+    {
+      "turn": 425,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 41,
+        "y": 21
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 7.781505584716797
+    },
+    {
+      "turn": 426,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 41,
+        "y": 21
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 7.4005126953125
+    },
+    {
+      "turn": 427,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 41,
+        "y": 21
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 25.899410247802734
+    },
+    {
+      "turn": 428,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 40,
+        "y": 21
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 46.92697525024414
+    },
+    {
+      "turn": 429,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 39,
+        "y": 21
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 20.163774490356445
+    },
+    {
+      "turn": 430,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 38,
+        "y": 21
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 19.697189331054688
+    },
+    {
+      "turn": 431,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 37,
+        "y": 21
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 19.22917366027832
+    },
+    {
+      "turn": 432,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 37,
+        "y": 21
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 21.04496955871582
+    },
+    {
+      "turn": 433,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.2598762512207031
+    },
+    {
+      "turn": 434,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 37,
+        "y": 20
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 9.341001510620117
+    },
+    {
+      "turn": 435,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 37,
+        "y": 19
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 27.57859230041504
+    },
+    {
+      "turn": 436,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 37,
+        "y": 19
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 9.067773818969727
+    },
+    {
+      "turn": 437,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 36,
+        "y": 19
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 4.85992431640625
+    },
+    {
+      "turn": 438,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 36,
+        "y": 19
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 18.224239349365234
+    },
+    {
+      "turn": 439,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 36,
+        "y": 19
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 60.30893325805664
+    },
+    {
+      "turn": 440,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 36,
+        "y": 19
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 6.717920303344727
+    },
+    {
+      "turn": 441,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 36,
+        "y": 19
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 6.593465805053711
+    },
+    {
+      "turn": 442,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 37,
+        "y": 19
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 22.327423095703125
+    },
+    {
+      "turn": 443,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 38,
+        "y": 19
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 21.56805992126465
+    },
+    {
+      "turn": 444,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 38,
+        "y": 19
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 23.372411727905273
+    },
+    {
+      "turn": 445,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 38,
+        "y": 19
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 27.793407440185547
+    },
+    {
+      "turn": 446,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 38,
+        "y": 19
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 12.428998947143555
+    },
+    {
+      "turn": 447,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 38,
+        "y": 20
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 19.3936824798584
+    },
+    {
+      "turn": 448,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 38,
+        "y": 20
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 9.819269180297852
+    },
+    {
+      "turn": 449,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 37,
+        "y": 20
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 22.673368453979492
+    },
+    {
+      "turn": 450,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 36,
+        "y": 20
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 17.37666130065918
+    },
+    {
+      "turn": 451,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 36,
+        "y": 20
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 37.242889404296875
+    },
+    {
+      "turn": 452,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 36,
+        "y": 20
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 8.271932601928711
+    },
+    {
+      "turn": 453,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.2624988555908203
+    },
+    {
+      "turn": 454,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 35,
+        "y": 20
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 17.311573028564453
+    },
+    {
+      "turn": 455,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 34,
+        "y": 20
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 5.784511566162109
+    },
+    {
+      "turn": 456,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 33,
+        "y": 20
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 7.781744003295898
+    },
+    {
+      "turn": 457,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 33,
+        "y": 20
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 21.84581756591797
+    },
+    {
+      "turn": 458,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 33,
+        "y": 19
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 10.399341583251953
+    },
+    {
+      "turn": 459,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 33,
+        "y": 19
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 8.034467697143555
+    },
+    {
+      "turn": 460,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 34,
+        "y": 19
+      },
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 10.359764099121094
+    },
+    {
+      "turn": 461,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 144,
+      "player_hp_percent": 0.8,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.3185272216796875
+    },
+    {
+      "turn": 462,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 137,
+      "player_hp_percent": 0.7611111111111111,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.25653839111328125
+    },
+    {
+      "turn": 463,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 35,
+        "y": 19
+      },
+      "player_hp": 137,
+      "player_hp_percent": 0.7611111111111111,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 9.404182434082031
+    },
+    {
+      "turn": 464,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 35,
+        "y": 19
+      },
+      "player_hp": 137,
+      "player_hp_percent": 0.7611111111111111,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 23.548364639282227
+    },
+    {
+      "turn": 465,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 35,
+        "y": 19
+      },
+      "player_hp": 137,
+      "player_hp_percent": 0.7611111111111111,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 12.53056526184082
+    },
+    {
+      "turn": 466,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 35,
+        "y": 19
+      },
+      "player_hp": 137,
+      "player_hp_percent": 0.7611111111111111,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 8.822202682495117
+    },
+    {
+      "turn": 467,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 35,
+        "y": 19
+      },
+      "player_hp": 137,
+      "player_hp_percent": 0.7611111111111111,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 14.279842376708984
+    },
+    {
+      "turn": 468,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 35,
+        "y": 19
+      },
+      "player_hp": 137,
+      "player_hp_percent": 0.7611111111111111,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 14.832258224487305
+    },
+    {
+      "turn": 469,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 35,
+        "y": 20
+      },
+      "player_hp": 137,
+      "player_hp_percent": 0.7611111111111111,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 12.7410888671875
+    },
+    {
+      "turn": 470,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 35,
+        "y": 20
+      },
+      "player_hp": 137,
+      "player_hp_percent": 0.7611111111111111,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 22.42136001586914
+    },
+    {
+      "turn": 471,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 34,
+        "y": 20
+      },
+      "player_hp": 137,
+      "player_hp_percent": 0.7611111111111111,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 27.545928955078125
+    },
+    {
+      "turn": 472,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 34,
+        "y": 20
+      },
+      "player_hp": 137,
+      "player_hp_percent": 0.7611111111111111,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 14.242887496948242
+    },
+    {
+      "turn": 473,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 34,
+        "y": 20
+      },
+      "player_hp": 137,
+      "player_hp_percent": 0.7611111111111111,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 23.751497268676758
+    },
+    {
+      "turn": 474,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 35,
+        "y": 20
+      },
+      "player_hp": 137,
+      "player_hp_percent": 0.7611111111111111,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 11.605501174926758
+    },
+    {
+      "turn": 475,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 36,
+        "y": 20
+      },
+      "player_hp": 137,
+      "player_hp_percent": 0.7611111111111111,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 12.495756149291992
+    },
+    {
+      "turn": 476,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 36,
+        "y": 20
+      },
+      "player_hp": 137,
+      "player_hp_percent": 0.7611111111111111,
+      "player_level": 5,
+      "current_tile": 1,
+      "decision_time_ms": 20.924091339111328
+    },
+    {
+      "turn": 477,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 137,
+      "player_hp_percent": 0.7611111111111111,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.8087158203125
+    },
+    {
+      "turn": 478,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 129,
+      "player_hp_percent": 0.7166666666666667,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.2646446228027344
+    },
+    {
+      "turn": 479,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 36,
+        "y": 19
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 13.569831848144531
+    },
+    {
+      "turn": 480,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 36,
+        "y": 19
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 12.619256973266602
+    },
+    {
+      "turn": 481,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 36,
+        "y": 19
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 37.551164627075195
+    },
+    {
+      "turn": 482,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 36,
+        "y": 19
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 24.172306060791016
+    },
+    {
+      "turn": 483,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 37,
+        "y": 19
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 12.267351150512695
+    },
+    {
+      "turn": 484,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 38,
+        "y": 19
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 23.20718765258789
+    },
+    {
+      "turn": 485,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 39,
+        "y": 19
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 11.15560531616211
+    },
+    {
+      "turn": 486,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 40,
+        "y": 19
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 19.975662231445312
+    },
+    {
+      "turn": 487,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 40,
+        "y": 19
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 22.65000343322754
+    },
+    {
+      "turn": 488,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 40,
+        "y": 19
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 26.67403221130371
+    },
+    {
+      "turn": 489,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 41,
+        "y": 19
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 31.815052032470703
+    },
+    {
+      "turn": 490,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 41,
+        "y": 19
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 8.839845657348633
+    },
+    {
+      "turn": 491,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 41,
+        "y": 18
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 64.3155574798584
+    },
+    {
+      "turn": 492,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 41,
+        "y": 17
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 19.690990447998047
+    },
+    {
+      "turn": 493,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 41,
+        "y": 16
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 10.01882553100586
+    },
+    {
+      "turn": 494,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 41,
+        "y": 16
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 9.554147720336914
+    },
+    {
+      "turn": 495,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 41,
+        "y": 16
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 26.71194076538086
+    },
+    {
+      "turn": 496,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 41,
+        "y": 16
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 24.84607696533203
+    },
+    {
+      "turn": 497,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 41,
+        "y": 16
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 8.345842361450195
+    },
+    {
+      "turn": 498,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 41,
+        "y": 16
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 24.13630485534668
+    },
+    {
+      "turn": 499,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 41,
+        "y": 16
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 9.24825668334961
+    },
+    {
+      "turn": 500,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 41,
+        "y": 16
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 5.673408508300781
+    },
+    {
+      "turn": 501,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 41,
+        "y": 16
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 6.80232048034668
+    },
+    {
+      "turn": 502,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 41,
+        "y": 16
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 55.40871620178223
+    },
+    {
+      "turn": 503,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 40,
+        "y": 16
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 20.343303680419922
+    },
+    {
+      "turn": 504,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 39,
+        "y": 16
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 8.765697479248047
+    },
+    {
+      "turn": 505,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 38,
+        "y": 16
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 5,
+      "decision_time_ms": 9.409427642822266
+    },
+    {
+      "turn": 506,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 38,
+        "y": 16
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 5,
+      "decision_time_ms": 25.716543197631836
+    },
+    {
+      "turn": 507,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.23698806762695312
+    },
+    {
+      "turn": 508,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 38,
+        "y": 15
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 7.500648498535156
+    },
+    {
+      "turn": 509,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 38,
+        "y": 15
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 46.84925079345703
+    },
+    {
+      "turn": 510,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 39,
+        "y": 15
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 25.570154190063477
+    },
+    {
+      "turn": 511,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 40,
+        "y": 15
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 72.45373725891113
+    },
+    {
+      "turn": 512,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 40,
+        "y": 15
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 25.38275718688965
+    },
+    {
+      "turn": 513,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 40,
+        "y": 14
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 24.59883689880371
+    },
+    {
+      "turn": 514,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 40,
+        "y": 14
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 85.33644676208496
+    },
+    {
+      "turn": 515,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 40,
+        "y": 14
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 41.05091094970703
+    },
+    {
+      "turn": 516,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 40,
+        "y": 13
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 49.55148696899414
+    },
+    {
+      "turn": 517,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 40,
+        "y": 13
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 40.30561447143555
+    },
+    {
+      "turn": 518,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 40,
+        "y": 13
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 43.57290267944336
+    },
+    {
+      "turn": 519,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 40,
+        "y": 12
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 54.93307113647461
+    },
+    {
+      "turn": 520,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 40,
+        "y": 11
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 55.86671829223633
+    },
+    {
+      "turn": 521,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 40,
+        "y": 11
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 55.79829216003418
+    },
+    {
+      "turn": 522,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 40,
+        "y": 11
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 44.17014122009277
+    },
+    {
+      "turn": 523,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 40,
+        "y": 11
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 41.24903678894043
+    },
+    {
+      "turn": 524,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 39,
+        "y": 11
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 65.00101089477539
+    },
+    {
+      "turn": 525,
+      "phase": "exploration",
+      "action": "turn_left",
+      "position": {
+        "x": 39,
+        "y": 11
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 58.8068962097168
+    },
+    {
+      "turn": 526,
+      "phase": "exploration",
+      "action": "turn_right",
+      "position": {
+        "x": 39,
+        "y": 11
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 45.7911491394043
+    },
+    {
+      "turn": 527,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 39,
+        "y": 11
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 41.69869422912598
+    },
+    {
+      "turn": 528,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 39,
+        "y": 10
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 48.728227615356445
+    },
+    {
+      "turn": 529,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 39,
+        "y": 9
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 9.425640106201172
+    },
+    {
+      "turn": 530,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 39,
+        "y": 8
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 5.317211151123047
+    },
+    {
+      "turn": 531,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.36334991455078125
+    },
+    {
+      "turn": 532,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 39,
+        "y": 7
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 51.27835273742676
+    },
+    {
+      "turn": 533,
+      "phase": "exploration",
+      "action": "move_forward",
+      "position": {
+        "x": 39,
+        "y": 6
+      },
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 6,
+      "current_tile": 1,
+      "decision_time_ms": 211.82727813720703
+    },
+    {
+      "turn": 534,
+      "phase": "combat",
+      "action": "magic",
+      "position": null,
+      "player_hp": 200,
+      "player_hp_percent": 1.0,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 2.676248550415039
+    },
+    {
+      "turn": 535,
+      "phase": "combat",
+      "action": "defend",
+      "position": null,
+      "player_hp": 181,
+      "player_hp_percent": 0.905,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 2.696990966796875
+    },
+    {
+      "turn": 536,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 181,
+      "player_hp_percent": 0.905,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 2.8123855590820312
+    },
+    {
+      "turn": 537,
+      "phase": "combat",
+      "action": "defend",
+      "position": null,
+      "player_hp": 162,
+      "player_hp_percent": 0.81,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 2.5289058685302734
+    },
+    {
+      "turn": 538,
+      "phase": "combat",
+      "action": "defend",
+      "position": null,
+      "player_hp": 149,
+      "player_hp_percent": 0.745,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 2.498626708984375
+    },
+    {
+      "turn": 539,
+      "phase": "combat",
+      "action": "magic",
+      "position": null,
+      "player_hp": 142,
+      "player_hp_percent": 0.71,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 2.7725696563720703
+    },
+    {
+      "turn": 540,
+      "phase": "combat",
+      "action": "magic",
+      "position": null,
+      "player_hp": 118,
+      "player_hp_percent": 0.59,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 2.1004676818847656
+    },
+    {
+      "turn": 541,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 73,
+      "player_hp_percent": 0.365,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 1.3158321380615234
+    },
+    {
+      "turn": 542,
+      "phase": "combat",
+      "action": "defend",
+      "position": null,
+      "player_hp": 54,
+      "player_hp_percent": 0.27,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.9739398956298828
+    },
+    {
+      "turn": 543,
+      "phase": "combat",
+      "action": "defend",
+      "position": null,
+      "player_hp": 49,
+      "player_hp_percent": 0.245,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.4832744598388672
+    },
+    {
+      "turn": 544,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 36,
+      "player_hp_percent": 0.18,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.8246898651123047
+    },
+    {
+      "turn": 545,
+      "phase": "combat",
+      "action": "attack",
+      "position": null,
+      "player_hp": 12,
+      "player_hp_percent": 0.06,
+      "player_level": 1,
+      "current_tile": null,
+      "decision_time_ms": 0.720977783203125
+    }
+  ],
+  "decision_times": [
+    3.609180450439453,
+    2.767801284790039,
+    2.5205612182617188,
+    3.259420394897461,
+    2.618074417114258,
+    3.5331249237060547,
+    3.0188560485839844,
+    3.692150115966797,
+    2.5141239166259766,
+    4.389286041259766,
+    4.602193832397461,
+    3.660440444946289,
+    4.172086715698242,
+    3.3876895904541016,
+    0.354766845703125,
+    0.46825408935546875,
+    4.640817642211914,
+    7.837533950805664,
+    5.140542984008789,
+    4.780292510986328,
+    3.7207603454589844,
+    5.154848098754883,
+    4.419565200805664,
+    3.7920475006103516,
+    5.771875381469727,
+    6.157398223876953,
+    5.111455917358398,
+    6.777763366699219,
+    4.43720817565918,
+    6.634235382080078,
+    6.914854049682617,
+    4.419088363647461,
+    0.7777214050292969,
+    0.2884864807128906,
+    4.978656768798828,
+    5.08570671081543,
+    5.592107772827148,
+    4.651784896850586,
+    4.765033721923828,
+    10.524749755859375,
+    4.912853240966797,
+    4.23121452331543,
+    5.709171295166016,
+    4.466533660888672,
+    7.509946823120117,
+    5.644321441650391,
+    4.902839660644531,
+    6.484746932983398,
+    5.420923233032227,
+    5.576133728027344,
+    5.853176116943359,
+    5.462169647216797,
+    5.4645538330078125,
+    6.249904632568359,
+    6.903648376464844,
+    4.955291748046875,
+    4.540920257568359,
+    4.813432693481445,
+    7.306575775146484,
+    5.707263946533203,
+    7.125139236450195,
+    4.73785400390625,
+    6.098031997680664,
+    4.838705062866211,
+    5.570888519287109,
+    6.2541961669921875,
+    4.969358444213867,
+    6.087541580200195,
+    4.342794418334961,
+    5.391836166381836,
+    4.971027374267578,
+    5.22160530090332,
+    6.536006927490234,
+    3.9751529693603516,
+    4.611730575561523,
+    4.805803298950195,
+    23.47278594970703,
+    3.653287887573242,
+    0.48351287841796875,
+    0.3528594970703125,
+    0.34332275390625,
+    0.3170967102050781,
+    0.396728515625,
+    3.985166549682617,
+    4.073143005371094,
+    3.802776336669922,
+    4.967927932739258,
+    4.113912582397461,
+    2.959728240966797,
+    3.553152084350586,
+    3.850698471069336,
+    2.9456615447998047,
+    3.6427974700927734,
+    2.8128623962402344,
+    3.117084503173828,
+    3.4825801849365234,
+    3.9844512939453125,
+    3.6504268646240234,
+    4.563570022583008,
+    3.2927989959716797,
+    2.972126007080078,
+    4.201650619506836,
+    4.030942916870117,
+    3.1576156616210938,
+    4.306554794311523,
+    3.5817623138427734,
+    3.0670166015625,
+    3.2444000244140625,
+    4.179477691650391,
+    5.843639373779297,
+    3.162860870361328,
+    4.420995712280273,
+    3.554821014404297,
+    3.3698081970214844,
+    4.197120666503906,
+    3.4558773040771484,
+    3.8797855377197266,
+    3.771543502807617,
+    3.4227371215820312,
+    3.5097599029541016,
+    3.2885074615478516,
+    4.689931869506836,
+    2.963542938232422,
+    3.3020973205566406,
+    4.202127456665039,
+    3.6466121673583984,
+    3.549337387084961,
+    3.1104087829589844,
+    4.912376403808594,
+    0.5044937133789062,
+    0.31638145446777344,
+    3.5293102264404297,
+    3.7202835083007812,
+    3.3965110778808594,
+    4.050970077514648,
+    4.518270492553711,
+    4.766702651977539,
+    4.820108413696289,
+    5.909919738769531,
+    4.145145416259766,
+    4.086494445800781,
+    5.77855110168457,
+    3.3922195434570312,
+    5.496501922607422,
+    6.853818893432617,
+    5.193948745727539,
+    4.743337631225586,
+    4.849910736083984,
+    3.847360610961914,
+    4.516839981079102,
+    5.184412002563477,
+    4.196882247924805,
+    4.360675811767578,
+    5.248546600341797,
+    6.476163864135742,
+    6.016731262207031,
+    5.547285079956055,
+    6.12187385559082,
+    4.552125930786133,
+    5.620002746582031,
+    4.192352294921875,
+    5.535602569580078,
+    4.63414192199707,
+    4.35328483581543,
+    6.066560745239258,
+    4.572391510009766,
+    7.004022598266602,
+    4.738569259643555,
+    5.138874053955078,
+    4.423856735229492,
+    0.36597251892089844,
+    0.3669261932373047,
+    0.66375732421875,
+    4.7168731689453125,
+    5.453348159790039,
+    5.6514739990234375,
+    5.274057388305664,
+    4.644155502319336,
+    0.6132125854492188,
+    0.5481243133544922,
+    0.5578994750976562,
+    0.4425048828125,
+    0.4475116729736328,
+    8.39090347290039,
+    6.651878356933594,
+    7.079839706420898,
+    6.211280822753906,
+    6.352663040161133,
+    6.576299667358398,
+    5.354166030883789,
+    6.229162216186523,
+    7.297039031982422,
+    5.976200103759766,
+    5.939960479736328,
+    6.16908073425293,
+    0.7300376892089844,
+    0.2911090850830078,
+    7.445096969604492,
+    7.325410842895508,
+    6.8111419677734375,
+    7.497072219848633,
+    7.09986686706543,
+    14.662981033325195,
+    5.242586135864258,
+    5.835056304931641,
+    5.519390106201172,
+    0.4086494445800781,
+    0.3006458282470703,
+    5.912542343139648,
+    6.762504577636719,
+    7.338285446166992,
+    7.446527481079102,
+    7.150888442993164,
+    7.318735122680664,
+    10.56528091430664,
+    6.989717483520508,
+    9.125471115112305,
+    5.044221878051758,
+    7.758855819702148,
+    8.857488632202148,
+    6.139516830444336,
+    9.130001068115234,
+    6.082296371459961,
+    7.283210754394531,
+    6.819009780883789,
+    8.701562881469727,
+    0.4000663757324219,
+    0.19812583923339844,
+    4.630804061889648,
+    6.558656692504883,
+    4.7931671142578125,
+    6.26826286315918,
+    8.74781608581543,
+    8.794307708740234,
+    9.051322937011719,
+    6.305932998657227,
+    4.804372787475586,
+    10.17308235168457,
+    6.031036376953125,
+    6.504297256469727,
+    7.819414138793945,
+    7.098913192749023,
+    7.893085479736328,
+    8.626937866210938,
+    5.7086944580078125,
+    9.69839096069336,
+    14.48202133178711,
+    7.777929306030273,
+    7.925987243652344,
+    11.569976806640625,
+    5.255937576293945,
+    7.505655288696289,
+    6.875514984130859,
+    0.5922317504882812,
+    8.120536804199219,
+    6.796360015869141,
+    6.556510925292969,
+    8.011341094970703,
+    6.944894790649414,
+    11.28530502319336,
+    7.559776306152344,
+    8.097171783447266,
+    10.118484497070312,
+    7.021188735961914,
+    6.688356399536133,
+    3.567218780517578,
+    7.14421272277832,
+    11.476516723632812,
+    6.3266754150390625,
+    8.914709091186523,
+    6.959438323974609,
+    6.880760192871094,
+    7.297515869140625,
+    13.755083084106445,
+    6.81757926940918,
+    7.0629119873046875,
+    10.028600692749023,
+    6.730794906616211,
+    7.483005523681641,
+    8.821249008178711,
+    5.227088928222656,
+    6.525516510009766,
+    6.453514099121094,
+    5.128383636474609,
+    0.4031658172607422,
+    0.278472900390625,
+    7.313251495361328,
+    4.644870758056641,
+    7.6351165771484375,
+    6.646633148193359,
+    6.570577621459961,
+    5.390644073486328,
+    5.370140075683594,
+    10.066032409667969,
+    8.960247039794922,
+    8.374929428100586,
+    8.665323257446289,
+    8.583784103393555,
+    7.564544677734375,
+    8.253812789916992,
+    13.877391815185547,
+    8.451700210571289,
+    7.815361022949219,
+    6.100654602050781,
+    7.54547119140625,
+    0.5090236663818359,
+    0.2880096435546875,
+    11.828422546386719,
+    5.177021026611328,
+    5.605459213256836,
+    6.757974624633789,
+    6.375551223754883,
+    7.928133010864258,
+    7.396459579467773,
+    7.103204727172852,
+    5.095005035400391,
+    8.29935073852539,
+    7.427692413330078,
+    0.33473968505859375,
+    0.6775856018066406,
+    11.259078979492188,
+    7.146120071411133,
+    7.968664169311523,
+    5.41996955871582,
+    9.442567825317383,
+    7.260560989379883,
+    8.29625129699707,
+    5.890607833862305,
+    7.336139678955078,
+    5.569934844970703,
+    7.47227668762207,
+    7.142305374145508,
+    8.263587951660156,
+    0.3237724304199219,
+    8.751153945922852,
+    77.75139808654785,
+    71.69246673583984,
+    67.73543357849121,
+    86.71760559082031,
+    58.135271072387695,
+    80.69133758544922,
+    50.10342597961426,
+    69.8401927947998,
+    71.50745391845703,
+    62.8361701965332,
+    59.23151969909668,
+    80.6131362915039,
+    66.47753715515137,
+    91.0642147064209,
+    64.3918514251709,
+    80.9783935546875,
+    75.3011703491211,
+    68.1145191192627,
+    64.53299522399902,
+    73.15945625305176,
+    45.728206634521484,
+    62.96205520629883,
+    58.14957618713379,
+    77.21352577209473,
+    69.25821304321289,
+    97.71442413330078,
+    63.99226188659668,
+    66.49637222290039,
+    0.6184577941894531,
+    0.2856254577636719,
+    51.47433280944824,
+    51.57613754272461,
+    64.51106071472168,
+    61.70296669006348,
+    30.841827392578125,
+    43.95008087158203,
+    39.632320404052734,
+    44.280290603637695,
+    33.94198417663574,
+    61.837196350097656,
+    20.020008087158203,
+    52.033185958862305,
+    30.755281448364258,
+    32.40489959716797,
+    43.00737380981445,
+    23.85115623474121,
+    37.66131401062012,
+    44.6474552154541,
+    47.97554016113281,
+    56.26702308654785,
+    0.7619857788085938,
+    0.2884864807128906,
+    7.100820541381836,
+    26.688337326049805,
+    24.309158325195312,
+    18.09072494506836,
+    26.273727416992188,
+    34.722089767456055,
+    56.82730674743652,
+    37.56213188171387,
+    36.736488342285156,
+    29.369115829467773,
+    33.80846977233887,
+    24.106502532958984,
+    54.570913314819336,
+    38.66386413574219,
+    27.1608829498291,
+    63.291311264038086,
+    54.941415786743164,
+    54.69942092895508,
+    0.36787986755371094,
+    0.28014183044433594,
+    42.62995719909668,
+    34.03449058532715,
+    34.089088439941406,
+    25.906801223754883,
+    16.58010482788086,
+    0.29754638671875,
+    0.48804283142089844,
+    5.982398986816406,
+    21.709680557250977,
+    21.599769592285156,
+    39.46185111999512,
+    33.07962417602539,
+    0.3287792205810547,
+    0.5028247833251953,
+    6.667375564575195,
+    9.548187255859375,
+    9.650230407714844,
+    7.781505584716797,
+    7.4005126953125,
+    25.899410247802734,
+    46.92697525024414,
+    20.163774490356445,
+    19.697189331054688,
+    19.22917366027832,
+    21.04496955871582,
+    0.2598762512207031,
+    9.341001510620117,
+    27.57859230041504,
+    9.067773818969727,
+    4.85992431640625,
+    18.224239349365234,
+    60.30893325805664,
+    6.717920303344727,
+    6.593465805053711,
+    22.327423095703125,
+    21.56805992126465,
+    23.372411727905273,
+    27.793407440185547,
+    12.428998947143555,
+    19.3936824798584,
+    9.819269180297852,
+    22.673368453979492,
+    17.37666130065918,
+    37.242889404296875,
+    8.271932601928711,
+    0.2624988555908203,
+    17.311573028564453,
+    5.784511566162109,
+    7.781744003295898,
+    21.84581756591797,
+    10.399341583251953,
+    8.034467697143555,
+    10.359764099121094,
+    0.3185272216796875,
+    0.25653839111328125,
+    9.404182434082031,
+    23.548364639282227,
+    12.53056526184082,
+    8.822202682495117,
+    14.279842376708984,
+    14.832258224487305,
+    12.7410888671875,
+    22.42136001586914,
+    27.545928955078125,
+    14.242887496948242,
+    23.751497268676758,
+    11.605501174926758,
+    12.495756149291992,
+    20.924091339111328,
+    0.8087158203125,
+    0.2646446228027344,
+    13.569831848144531,
+    12.619256973266602,
+    37.551164627075195,
+    24.172306060791016,
+    12.267351150512695,
+    23.20718765258789,
+    11.15560531616211,
+    19.975662231445312,
+    22.65000343322754,
+    26.67403221130371,
+    31.815052032470703,
+    8.839845657348633,
+    64.3155574798584,
+    19.690990447998047,
+    10.01882553100586,
+    9.554147720336914,
+    26.71194076538086,
+    24.84607696533203,
+    8.345842361450195,
+    24.13630485534668,
+    9.24825668334961,
+    5.673408508300781,
+    6.80232048034668,
+    55.40871620178223,
+    20.343303680419922,
+    8.765697479248047,
+    9.409427642822266,
+    25.716543197631836,
+    0.23698806762695312,
+    7.500648498535156,
+    46.84925079345703,
+    25.570154190063477,
+    72.45373725891113,
+    25.38275718688965,
+    24.59883689880371,
+    85.33644676208496,
+    41.05091094970703,
+    49.55148696899414,
+    40.30561447143555,
+    43.57290267944336,
+    54.93307113647461,
+    55.86671829223633,
+    55.79829216003418,
+    44.17014122009277,
+    41.24903678894043,
+    65.00101089477539,
+    58.8068962097168,
+    45.7911491394043,
+    41.69869422912598,
+    48.728227615356445,
+    9.425640106201172,
+    5.317211151123047,
+    0.36334991455078125,
+    51.27835273742676,
+    211.82727813720703,
+    2.676248550415039,
+    2.696990966796875,
+    2.8123855590820312,
+    2.5289058685302734,
+    2.498626708984375,
+    2.7725696563720703,
+    2.1004676818847656,
+    1.3158321380615234,
+    0.9739398956298828,
+    0.4832744598388672,
+    0.8246898651123047,
+    0.720977783203125
+  ],
+  "prompt_samples": null
+}
